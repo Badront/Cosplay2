@@ -42,7 +42,7 @@
     <style name="BaseTheme.Difs" parent="BaseTheme.Base" />
 
     <style name="BaseTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/list_background</item>
+        <item name="android:windowBackground">?attr/colorPrimary</item>
         <item name="windowActionModeOverlay">true</item>
         <!--<item name="android:textViewStyle">@style/Widget.TextView</item>-->
     </style>
