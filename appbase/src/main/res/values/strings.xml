@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back_toast">Нажмите снова для выхода</string>
+    <string name="no_data">Нет данных</string>
+    <string name="repeat">Повтор</string>
+    <string name="search">Поиск</string>
+    <string name="no_matches_found">Совпадений не найдено</string>
+    <string name="edit">Изменить</string>
+    <string name="filters">Фильтры</string>
+    <string name="save">Сохранить</string>
+    <string name="changes_saved">Изменения сохранены</string>
+    <string name="saved">Сохранено</string>
+    <string name="saving">Сохраняем</string>
+    <string name="deleted">Удалено</string>
+    <string name="done">Готово</string>
+    <string name="show_all">К списку</string>
+    <string name="open_in_browser">В браузере</string>
+</resources>

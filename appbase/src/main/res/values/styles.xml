@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/abc_spinner_mtrl_am_alpha</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="BaseTheme.Red" parent="BaseTheme.Difs">
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryDark">@color/red_dark</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="BaseTheme.Green" parent="BaseTheme.Difs">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/green_dark</item>
+        <item name="colorAccent">@color/blue</item>
+    </style>
+
+    <style name="BaseTheme.Blue" parent="BaseTheme.Difs">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue_dark</item>
+        <item name="colorAccent">@color/red</item>
+    </style>
+
+    <style name="BaseTheme.Grey" parent="BaseTheme.Difs">
+        <item name="colorPrimary">@color/grey</item>
+        <item name="colorPrimaryDark">@color/grey_dark</item>
+        <item name="colorAccent">@color/grey</item>
+    </style>
+
+    <style name="BaseTheme" parent="BaseTheme.Difs">
+        <item name="colorPrimary">@color/red_dark</item>
+        <item name="colorPrimaryDark">@color/red_dark</item>
+        <item name="colorAccent">@color/extra_purple</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="BaseTheme.Difs" parent="BaseTheme.Base" />
+
+    <style name="BaseTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/list_background</item>
+        <item name="windowActionModeOverlay">true</item>
+        <!--<item name="android:textViewStyle">@style/Widget.TextView</item>-->
+    </style>
+
+    <!--<style name="Widget.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textIsSelectable">true</item>
+
+    </style>-->
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:padding">16dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.SimpleText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="Widget.IconPageIndicator" parent="android:Widget">
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+</resources>

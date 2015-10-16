@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Opencon 2015</string>
+
+    <string name="members">Участники</string>
+    <string name="jury">Организаторы и Жюри</string>
+    <string name="news">Новости</string>
+    <string name="about">О фестивале</string>
+    <string name="about_title">OPENCON 2015</string>
+    <string name="about_text">Приглашаем посетить 4-й Межрегиональный фестиваль азиатской культуры и фантастики OPENCON 2015. Тема в этом году спорт! А значит нас ждут настоящие косплейные соревнования! В этом году новые секции — тематическое спортивное дефиле и KING SIZE для больших делегаций. К призовому фонду в этом году мы добавляем ГРАН-ПРИ — оверлок, обладателем которого может стать любой участник дефиле фестиваля OPENCON. Зрителей ждут конкурсы и подарки! Ждем всех в Казани 5 декабря!</string>
+    <string name="about_when_and_where">5 декабря 2015\n
+Начало продажи билетов и прохода на фестиваль: 10:30\n
+Открытие фестиваля: 11:00\n
+Окончание фестиваля: 21:00\n\n
+г.Казань, ДК имени Ленина\n
+ул. Копылова, 2а.
+</string>
+    <string name="address">г.Казань, ул. Копылова, 2а</string>
+    <string name="where_and_when">Где и когда</string>
+    <string name="open_map">Открыть карту</string>
+    <string name="no_tweets">Не найдено твитов</string>
+</resources>

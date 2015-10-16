@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Организаторы",
+    "list": [
+      {
+        "vk": "http://vk.com/switch696",
+        "image": "http://opencon.ru/wp-content/uploads/2013/06/kira1-e1440954529672.png",
+        "name": "Кира Волкова",
+        "description": "<i>Главный организатор. Заявки, правила, все виды дефиле, сценическая постановка, фотокосплей</i><br/>Косплеер, призёр многочисленных фестивалей, член косбендов «Akarui Engi» и «Party Hard»Общий E-Mail (не для заявок!): opencon.kzn@yandex.ru"
+      },
+      {
+        "vk": "http://vk.com/id6853339",
+        "image": "http://opencon.ru/wp-content/uploads/2013/06/Zhenya-e1440954388965.png",
+        "name": "Евгения Глухова",
+        "description": "<i>Куратор секций Cover Dance и Ярмарки</i><br/>Организатор корейских вечеринок в Казани — Candy Crime с 2012 года, руководитель магазина Panda&Coala Store"
+      },
+      {
+        "vk": "http://vk.com/h.chiba",
+        "image": "http://opencon.ru/wp-content/uploads/2013/06/polina2.png",
+        "name": "Полина «Heion Chiba»",
+        "description": "<i>Куратор секций Cover Dance и Ярмарки</i><br/>Организатор корейских вечеринок в Казани — Candy Crime с 2012 года, руководитель магазина Panda&Coala Store"
+      },
+      {
+        "vk": "https://vk.com/id7612641",
+        "image": "http://opencon.ru/wp-content/uploads/2013/06/mitya-e1440954611414.png",
+        "name": "Митя «Ryuk»",
+        "description": "<i>Техническое обеспечение по вопросам света и общего оборудования</i>"
+      },
+      {
+        "vk": "https://vk.com/juniversal",
+        "image": "http://opencon.ru/wp-content/uploads/2013/06/Arina-e1440954464283.png",
+        "name": "Арина Хохлова",
+        "description": "<i>Куратор волонтёров, куратор секции Караоке, техническое обеспечение по вопросам звука</i><br/>Постоянный ведущий и представитель в Казани радио Himawari"
+      }
+    ]
+  },
+  {
+    "name": "Жюри",
+    "list": [
+    ]
+  }
+]

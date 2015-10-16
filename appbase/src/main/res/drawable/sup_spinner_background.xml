@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:autoMirrored="true">
+    <item android:state_enabled="false">
+        <nine-patch android:src="@drawable/abc_spinner_mtrl_am_alpha" android:tint="?attr/colorControlNormal" />
+    </item>
+    <item android:state_focused="false" android:state_pressed="false">
+        <nine-patch android:src="@drawable/abc_spinner_mtrl_am_alpha" android:tint="?attr/colorControlNormal" />
+    </item>
+    <item>
+        <nine-patch android:src="@drawable/abc_spinner_mtrl_am_alpha" android:tint="?attr/colorControlActivated" />
+    </item>
+</selector>

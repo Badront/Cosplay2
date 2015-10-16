@@ -1,5 +1,4 @@
 # Built application files
-*.apk
 *.ap_
 
 # Files for the Dalvik VM
@@ -12,10 +11,12 @@
 bin/
 gen/
 
+#Idea directories
+.idea/
+
 # Gradle files
 .gradle/
 build/
-/*/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -25,3 +26,4 @@ proguard/
 
 # Log Files
 *.log
+*.iml
