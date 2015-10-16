@@ -16,6 +16,8 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.tonicartos.superslim.LayoutManager;
 
+import org.apache.commons.lang3.StringUtils;
+
 import ru.badr.base.adapter.OnItemClickListener;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseFragment;
@@ -99,8 +101,9 @@ public class JuryAndOrgsList extends BaseFragment implements RequestListener<Jur
     public void onItemClick(View view, int position) {
         LineItem lineItem = (LineItem) mAdapter.getItem(position);
         JuryEntity entity = (JuryEntity) lineItem.data;
-        Uri uri = Uri.parse(entity.getVk());
-
-        startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        if (!StringUtils.isEmpty(entity.getVk())) {
+            Uri uri = Uri.parse(entity.getVk());
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        }
     }
 }
