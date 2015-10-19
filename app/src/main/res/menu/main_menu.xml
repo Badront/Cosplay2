@@ -7,9 +7,21 @@
             android:icon="@drawable/members"
             android:title="@string/members" />
         <item
+            android:id="@+id/photocosplay"
+            android:icon="@drawable/photocosplay"
+            android:title="@string/photocosplay" />
+        <item
+            android:id="@+id/fanart"
+            android:icon="@drawable/fanart"
+            android:title="@string/fanart" />
+        <item
             android:id="@+id/jury"
             android:icon="@drawable/jury"
             android:title="@string/jury" />
+        <item
+            android:id="@+id/media"
+            android:icon="@drawable/media"
+            android:title="@string/media" />
         <item
             android:id="@+id/news"
             android:icon="@drawable/news"

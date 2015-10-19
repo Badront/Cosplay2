@@ -13,10 +13,10 @@ import ru.badr.cosplay2.api.JurySectionEntity;
  * 16.10.2015
  * 18:10
  */
-public class JuryAndOrgsLoaderRequest extends TaskRequest<JurySectionEntity.List> {
+public class JuryAndOrgsLoadRequest extends TaskRequest<JurySectionEntity.List> {
     private Context mContext;
 
-    public JuryAndOrgsLoaderRequest(Context context) {
+    public JuryAndOrgsLoadRequest(Context context) {
         super(JurySectionEntity.List.class);
         this.mContext = context;
     }

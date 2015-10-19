@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="list_background">#eaeaea</color>
+    <color name="list_background">@android:color/white</color>
+    <color name="alpha_black">#AA000000</color>
 
     <color name="red">#F44336</color>
     <color name="red_dark">#D32F2F</color>

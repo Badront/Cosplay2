@@ -26,14 +26,14 @@ import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.JuryAndOrgsAdapter;
 import ru.badr.cosplay2.api.JuryEntity;
 import ru.badr.cosplay2.api.JurySectionEntity;
-import ru.badr.cosplay2.task.JuryAndOrgsLoaderRequest;
+import ru.badr.cosplay2.task.JuryAndOrgsLoadRequest;
 
 /**
  * Created by ABadretdinov
  * 16.10.2015
  * 18:16
  */
-public class JuryAndOrgsList extends BaseFragment implements RequestListener<JurySectionEntity.List>, OnItemClickListener {
+public class JuryAndOrgsFragment extends BaseFragment implements RequestListener<JurySectionEntity.List>, OnItemClickListener {
     protected SpiceManager mSpiceManager = new SpiceManager(LocalSpiceService.class);
 
     protected View mProgressBarHolder;
@@ -51,7 +51,7 @@ public class JuryAndOrgsList extends BaseFragment implements RequestListener<Jur
         if (!mSpiceManager.isStarted()) {
             Context context = getActivity().getApplicationContext();
             mSpiceManager.start(context);
-            mSpiceManager.execute(new JuryAndOrgsLoaderRequest(context), this);
+            mSpiceManager.execute(new JuryAndOrgsLoadRequest(context), this);
         }
     }
 

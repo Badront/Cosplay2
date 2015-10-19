@@ -11,6 +11,7 @@ import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 import ru.badr.base.util.SettingsUtils;
 import ru.badr.base.util.json.DateLongDeserializer;
+import ru.badr.cosplay2.remote.Cosplay2RestService;
 import ru.badr.cosplay2.remote.InstagramRestService;
 
 /**
@@ -25,6 +26,8 @@ public class Cosplay2BeanContainer {
     private Properties properties;
     private RestAdapter instagramRestAdapter;
     private InstagramRestService instagramRestService;
+    private RestAdapter cosplay2RestAdapter;
+    private Cosplay2RestService cosplay2RestService;
 
     private Cosplay2BeanContainer(Context context) {
         properties = SettingsUtils.getAssetsProperties(context);
@@ -59,6 +62,24 @@ public class Cosplay2BeanContainer {
             instagramRestService = getInstagramRestAdapter().create(InstagramRestService.class);
         }
         return instagramRestService;
+    }
+
+    public RestAdapter getCosplay2RestAdapter() {
+        if (cosplay2RestAdapter == null) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            cosplay2RestAdapter = new RestAdapter.Builder()
+                    .setEndpoint(properties.getProperty("global.url"))
+                    .setConverter(new GsonConverter(gsonBuilder.create()))
+                    .build();
+        }
+        return cosplay2RestAdapter;
+    }
+
+    public Cosplay2RestService getCosplay2RestService() {
+        if (cosplay2RestService == null) {
+            cosplay2RestService = getCosplay2RestAdapter().create(Cosplay2RestService.class);
+        }
+        return cosplay2RestService;
     }
 
     public Properties getProperties() {

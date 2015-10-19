@@ -42,4 +42,7 @@
     <string name="how_to_get_there">Как доехать?</string>
     <string name="open_map">Открыть карту</string>
     <string name="no_tweets">Не найдено твитов</string>
+    <string name="media">Фото</string>
+    <string name="fanart">Фан-арт</string>
+    <string name="photocosplay">Фотокосплей</string>
 </resources>

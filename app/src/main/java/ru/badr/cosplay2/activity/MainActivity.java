@@ -15,9 +15,11 @@ import ru.badr.base.util.BackListener;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.fragment.AboutFragment;
-import ru.badr.cosplay2.fragment.JuryAndOrgsList;
+import ru.badr.cosplay2.fragment.FanArtListFragment;
+import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
+import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
 
 /**
  * Created by ABadretdinov
@@ -89,9 +91,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     Navigate.toMain(this, MembersList.class);
                 }
                 break;
-            case R.id.about:
-                if (!(fragment instanceof AboutFragment)) {
-                    Navigate.toMain(this, AboutFragment.class);
+            case R.id.photocosplay:
+                if (!(fragment instanceof PhotoCosplayListFragment)) {
+                    Navigate.toMain(this, PhotoCosplayListFragment.class);
+                }
+                break;
+            case R.id.fanart:
+                if (!(fragment instanceof FanArtListFragment)) {
+                    Navigate.toMain(this, FanArtListFragment.class);
+                }
+                break;
+            case R.id.jury:
+                if (!(fragment instanceof JuryAndOrgsFragment)) {
+                    Navigate.toMain(this, JuryAndOrgsFragment.class);
                 }
                 break;
             case R.id.news:
@@ -99,27 +111,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     Navigate.toMain(this, NewsFragment.class);
                 }
                 break;
-            case R.id.jury:
-                if (!(fragment instanceof JuryAndOrgsList)) {
-                    Navigate.toMain(this, JuryAndOrgsList.class);
+            case R.id.about:
+                if (!(fragment instanceof AboutFragment)) {
+                    Navigate.toMain(this, AboutFragment.class);
                 }
                 break;
-            /*case R.id.nominations:
-                if (!(fragment instanceof NominationsFragment)) {
-                    Navigate.toMain(this, NominationsFragment.class);
-                }
-                break;
-            case R.id.scheme:
-                if (!(fragment instanceof SchemeFragment)) {
-                    Navigate.toMain(this, SchemeFragment.class);
-                }
-                break;
-            case R.id.afterparty:
-                if (!(fragment instanceof AfterPartyFragment)) {
-                    Navigate.toMain(this, AfterPartyFragment.class);
-                }
-                break;
-            */
         }
         return true;
     }

@@ -27,13 +27,13 @@ import ru.badr.cosplay2.task.InstaFeedRequest;
  */
 public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedViewHolder> implements RequestListener<InstaResult> {
     public static final String INSTAGRAM_PACKAGE = "com.instagram.android";
-    private SpiceManager mSpiceManger = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
     private Long mNextMaxFeedId;
 
     @Override
     public void onStart() {
-        if (!mSpiceManger.isStarted()) {
-            mSpiceManger.start(getActivity().getApplicationContext());
+        if (!mSpiceManager.isStarted()) {
+            mSpiceManager.start(getActivity().getApplicationContext());
             onRefresh();
         }
         super.onStart();
@@ -41,8 +41,8 @@ public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedView
 
     @Override
     public void onDestroy() {
-        if (mSpiceManger.isStarted()) {
-            mSpiceManger.shouldStop();
+        if (mSpiceManager.isStarted()) {
+            mSpiceManager.shouldStop();
         }
         super.onDestroy();
     }
@@ -66,7 +66,7 @@ public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedView
     private void loadFeed() {
         setRefreshing(true);
 
-        mSpiceManger.execute(new InstaFeedRequest(getActivity().getApplicationContext(), mNextMaxFeedId), this);
+        mSpiceManager.execute(new InstaFeedRequest(getActivity().getApplicationContext(), mNextMaxFeedId), this);
     }
 
     @Override
