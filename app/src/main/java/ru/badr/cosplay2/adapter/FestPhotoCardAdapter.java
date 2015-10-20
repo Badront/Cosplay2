@@ -12,7 +12,7 @@ import java.util.List;
 import ru.badr.base.adapter.BaseRecyclerAdapter;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
-import ru.badr.cosplay2.api.cards.Card;
+import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.util.Utils;
 
 /**
@@ -20,8 +20,8 @@ import ru.badr.cosplay2.util.Utils;
  * 19.10.2015
  * 16:29
  */
-public class FestPhotoCardAdapter extends BaseRecyclerAdapter<Card, FestPhotoCardViewHolder> {
-    public FestPhotoCardAdapter(List<Card> data) {
+public class FestPhotoCardAdapter extends BaseRecyclerAdapter<ListCard, FestPhotoCardViewHolder> {
+    public FestPhotoCardAdapter(List<ListCard> data) {
         super(data);
     }
 
@@ -33,7 +33,7 @@ public class FestPhotoCardAdapter extends BaseRecyclerAdapter<Card, FestPhotoCar
 
     @Override
     public void onBindViewHolder(FestPhotoCardViewHolder holder, int position) {
-        Card card = getItem(position);
+        ListCard card = getItem(position);
         Context context = holder.itemView.getContext();
         holder.title.setText(card.getVotingTitle());
 

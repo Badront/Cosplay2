@@ -6,7 +6,7 @@ import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.service.NavigationService;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.activity.MainActivity;
-import ru.badr.cosplay2.fragment.NewsFragment;
+import ru.badr.cosplay2.fragment.FanArtListFragment;
 
 
 /**
@@ -27,7 +27,7 @@ public class NavigationServiceImpl implements NavigationService {
 
     @Override
     public int getDefaultFragmentResId() {
-        return R.id.news;
+        return R.id.fanart;
     }
 
     @Override
@@ -37,6 +37,6 @@ public class NavigationServiceImpl implements NavigationService {
 
     @Override
     public Class<? extends Fragment> getMainFragment(int resId) {
-        return NewsFragment.class;
+        return FanArtListFragment.class;
     }
 }

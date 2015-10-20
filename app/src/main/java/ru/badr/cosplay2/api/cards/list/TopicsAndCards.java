@@ -1,9 +1,11 @@
-package ru.badr.cosplay2.api.cards;
+package ru.badr.cosplay2.api.cards.list;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
+
+import ru.badr.cosplay2.api.cards.Topic;
 
 /**
  * Created by ABadretdinov
@@ -13,7 +15,7 @@ import java.util.List;
 public class TopicsAndCards implements Serializable {
     List<Topic> topics;
     @SerializedName("requests")
-    List<Card> cards;
+    List<ListCard> cards;
 
     public List<Topic> getTopics() {
         return topics;
@@ -23,11 +25,11 @@ public class TopicsAndCards implements Serializable {
         this.topics = topics;
     }
 
-    public List<Card> getCards() {
+    public List<ListCard> getCards() {
         return cards;
     }
 
-    public void setCards(List<Card> cards) {
+    public void setCards(List<ListCard> cards) {
         this.cards = cards;
     }
 }

@@ -1,7 +1,5 @@
 package ru.badr.cosplay2.fragment;
 
-import android.view.View;
-
 import ru.badr.cosplay2.R;
 
 /**
@@ -13,11 +11,6 @@ public class FanArtListFragment extends FestSectionListFragment {
     @Override
     protected String getSectionPropertyTag() {
         return "opencon.tag.fanart";
-    }
-
-    @Override
-    public void onRecyclerViewItemClick(View v, int position) {
-
     }
 
     @Override

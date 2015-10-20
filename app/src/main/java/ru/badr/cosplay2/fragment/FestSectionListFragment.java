@@ -1,5 +1,6 @@
 package ru.badr.cosplay2.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.octo.android.robospice.SpiceManager;
@@ -8,10 +9,12 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 import ru.badr.base.fragment.BaseRecyclerFragment;
+import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.FestPhotoCardAdapter;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
 import ru.badr.cosplay2.api.cards.Card;
+import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.task.TaggedCardsLoadRequest;
 
 /**
@@ -19,7 +22,7 @@ import ru.badr.cosplay2.task.TaggedCardsLoadRequest;
  * 19.10.2015
  * 16:20
  */
-public abstract class FestSectionListFragment extends BaseRecyclerFragment<Card, FestPhotoCardViewHolder> implements RequestListener<Card.List> {
+public abstract class FestSectionListFragment extends BaseRecyclerFragment<ListCard, FestPhotoCardViewHolder> implements RequestListener<ListCard.List> {
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
 
 
@@ -64,8 +67,17 @@ public abstract class FestSectionListFragment extends BaseRecyclerFragment<Card,
     }
 
     @Override
-    public void onRequestSuccess(Card.List cards) {
+    public void onRequestSuccess(ListCard.List cards) {
         setRefreshing(false);
         setAdapter(new FestPhotoCardAdapter(cards));
+    }
+
+    @Override
+    public void onRecyclerViewItemClick(View v, int position) {
+        Card card = getAdapter().getItem(position);
+        Bundle bundle = new Bundle();
+        bundle.putString(FestCardInfoFragment.TITLE, getTitle());
+        bundle.putSerializable(FestCardInfoFragment.CARD, card);
+        Navigate.to(getActivity(), FestCardInfoFragment.class, bundle, false);
     }
 }

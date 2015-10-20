@@ -1,7 +1,5 @@
 package ru.badr.cosplay2.fragment;
 
-import android.view.View;
-
 import ru.badr.cosplay2.R;
 
 /**
@@ -14,12 +12,6 @@ public class PhotoCosplayListFragment extends FestSectionListFragment {
     protected String getSectionPropertyTag() {
         return "opencon.tag.photo";
     }
-
-    @Override
-    public void onRecyclerViewItemClick(View v, int position) {
-
-    }
-
 
     @Override
     protected String getTitle() {

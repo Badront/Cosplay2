@@ -3,7 +3,6 @@ package ru.badr.cosplay2.api.cards;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import ru.badr.base.util.HasId;
 
@@ -23,7 +22,6 @@ public class Card implements Serializable, HasId {
     private String win;
     @SerializedName("user_id")
     private long userId;
-    private CardImage image;
 
     @Override
     public long getId() {
@@ -74,14 +72,4 @@ public class Card implements Serializable, HasId {
         this.userId = userId;
     }
 
-    public CardImage getImage() {
-        return image;
-    }
-
-    public void setImage(CardImage image) {
-        this.image = image;
-    }
-
-    public static class List extends ArrayList<Card> {
-    }
 }
