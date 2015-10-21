@@ -19,6 +19,7 @@ import ru.badr.base.service.NavigationService;
  */
 public class Navigate {
     public static final String PARAM_CLASS = "class";
+    public static final String PARAM_MENU_ID = "menu_id";
     public static final String PARAM_ARGS = "args";
     public static final String PARAM_HAS_MENU = "has_menu";
     public static final String PARAM_THEME = "theme";
@@ -31,18 +32,25 @@ public class Navigate {
 
 
     public static void toMain(Context context, Class fragmentClass) {
-        toMain(context, fragmentClass, null);
+        toMain(context, fragmentClass, 0);
     }
 
-    public static void toMain(Context context, Class fragmentClass, Bundle bundle) {
-        toMain(context, fragmentClass, bundle, false);
+    public static void toMain(Context context, Class fragmentClass, int menuId) {
+        toMain(context, fragmentClass, menuId, null);
     }
 
-    public static void toMain(Context context, Class fragmentClass, Bundle bundle, boolean reOpen) {
+    public static void toMain(Context context, Class fragmentClass, int menuId, Bundle bundle) {
+        toMain(context, fragmentClass, menuId, bundle, false);
+    }
+
+    public static void toMain(Context context, Class fragmentClass, int menuId, Bundle bundle, boolean reOpen) {
         NavigationService navigationService = BaseBeanContainer.getInstance().getNavigationService();
         Class mainActivity = navigationService.getMainActivityClass();
         Intent intent = new Intent(context, mainActivity);
         intent.putExtra(PARAM_CLASS, fragmentClass.getName());
+        if (menuId != 0) {
+            intent.putExtra(PARAM_MENU_ID, menuId);
+        }
         if (bundle == null) {
             bundle = new Bundle();
         }

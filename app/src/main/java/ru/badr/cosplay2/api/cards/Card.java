@@ -23,6 +23,20 @@ public class Card implements Serializable, HasId {
     @SerializedName("user_id")
     private long userId;
 
+    public Card() {
+        super();
+    }
+
+    public Card(Card card) {
+        super();
+        this.id = card.id;
+        this.topicId = card.topicId;
+        this.votingNumber = card.votingNumber;
+        this.votingTitle = card.votingTitle;
+        this.win = card.win;
+        this.userId = card.userId;
+    }
+
     @Override
     public long getId() {
         return id;

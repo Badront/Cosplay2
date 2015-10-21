@@ -11,6 +11,17 @@ public class ImageSize implements Serializable {
     private int width;
     private int height;
 
+    public ImageSize() {
+        super();
+    }
+
+    public ImageSize(ImageSize imageSize) {
+        super();
+        /*we do not trust clones*/
+        this.width = imageSize.width;
+        this.height = imageSize.height;
+    }
+
     public int getWidth() {
         return width;
     }

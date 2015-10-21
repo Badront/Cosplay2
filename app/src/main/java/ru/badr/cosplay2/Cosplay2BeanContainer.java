@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.GsonBuilder;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
@@ -11,6 +12,7 @@ import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 import ru.badr.base.util.SettingsUtils;
 import ru.badr.base.util.json.DateLongDeserializer;
+import ru.badr.base.util.json.SimpleDateSerializer;
 import ru.badr.cosplay2.remote.Cosplay2RestService;
 import ru.badr.cosplay2.remote.InstagramRestService;
 
@@ -66,7 +68,7 @@ public class Cosplay2BeanContainer {
 
     public RestAdapter getCosplay2RestAdapter() {
         if (cosplay2RestAdapter == null) {
-            GsonBuilder gsonBuilder = new GsonBuilder();
+            GsonBuilder gsonBuilder = new GsonBuilder().registerTypeAdapter(Date.class, new SimpleDateSerializer(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
             cosplay2RestAdapter = new RestAdapter.Builder()
                     .setEndpoint(properties.getProperty("global.url"))
                     .setConverter(new GsonConverter(gsonBuilder.create()))

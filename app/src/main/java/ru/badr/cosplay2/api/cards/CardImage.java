@@ -7,11 +7,23 @@ import java.io.Serializable;
  * 19.10.2015
  * 13:29
  */
-public class CardImage implements Serializable {
+public class CardImage implements Serializable, Cloneable {
     private long filename;
     private ImageSize original;
     private ImageSize large;
     private ImageSize medium;
+
+    public CardImage() {
+        super();
+    }
+
+    public CardImage(CardImage cardImage) {
+        super();
+        this.filename = cardImage.filename;
+        this.original = cardImage.original != null ? new ImageSize(cardImage.original) : null;
+        this.large = cardImage.large != null ? new ImageSize(cardImage.large) : null;
+        this.medium = cardImage.medium != null ? new ImageSize(cardImage.medium) : null;
+    }
 
     public long getFilename() {
         return filename;

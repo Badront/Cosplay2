@@ -14,6 +14,7 @@ import ru.badr.cosplay2.api.cards.CardImage;
 import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.info.Field;
 import ru.badr.cosplay2.api.cards.info.GetCardResult;
+import ru.badr.cosplay2.api.cards.info.InfoCard;
 import ru.badr.cosplay2.api.cards.info.ReqValue;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 
@@ -39,6 +40,7 @@ public class CardResultLoadRequest extends TaskRequest<ReqValuesHolder.List> {
         ReqValuesHolder.List list = new ReqValuesHolder.List();
         if (result != null) {
             List<Field> fields = result.getFields();
+            InfoCard defCard = result.getCard();
             List<ReqValue> reqValues = result.getReqValues();
             List<User> users = result.getUsers();
             if (fields != null && reqValues != null) {
@@ -67,9 +69,12 @@ public class CardResultLoadRequest extends TaskRequest<ReqValuesHolder.List> {
                             } else if ("image".equals(field.getType())) {
                                 holder.setType(ReqValuesHolder.Types.image);
                                 CardImage cardImage = new Gson().fromJson(value.getValue(), CardImage.class);
-                                holder.setValue(cardImage);
+                                InfoCard card = new InfoCard(defCard);
+                                card.setImage(cardImage);
+                                holder.setValue(card);
                             } else {
                                 System.out.println("new undefined field.type = " + field.getTitle());
+                                break;
                             }
                             list.add(holder);
                             reqValuesIterator.remove();

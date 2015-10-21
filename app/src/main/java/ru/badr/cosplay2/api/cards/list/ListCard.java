@@ -13,6 +13,15 @@ import ru.badr.cosplay2.api.cards.CardImage;
 public class ListCard extends Card {
     private CardImage image;
 
+    public ListCard() {
+        super();
+    }
+
+    public ListCard(ListCard card) {
+        super(card);
+        this.image = card.image != null ? new CardImage(card.image) : null;
+    }
+
     public CardImage getImage() {
         return image;
     }
