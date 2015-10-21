@@ -23,6 +23,7 @@ import ru.badr.cosplay2.task.CardResultLoadRequest;
 import ru.badr.cosplay2.view.FestCardImageFieldView;
 import ru.badr.cosplay2.view.FestCardLinkFieldView;
 import ru.badr.cosplay2.view.FestCardTextFieldView;
+import ru.badr.cosplay2.view.FestCardUserFieldView;
 
 /**
  * Created by ABadretdinov
@@ -140,6 +141,11 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
                     FestCardLinkFieldView linkFieldView = new FestCardLinkFieldView(context);
                     linkFieldView.setReqValueHolder(reqValuesHolder);
                     mFieldsHolder.addView(linkFieldView);
+                    break;
+                case user:
+                    FestCardUserFieldView userFieldView = new FestCardUserFieldView(context);
+                    userFieldView.setReqValueHolder(reqValuesHolder);
+                    mFieldsHolder.addView(userFieldView);
                     break;
             }
         }

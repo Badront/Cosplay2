@@ -7,6 +7,7 @@ import java.util.Properties;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.CardImage;
+import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.list.ListCard;
 
 /**
@@ -24,5 +25,12 @@ public class Utils {
             return baseUrl + "uploads/" + eventId + "/" + card.getId() + "/" + cardImage.getFilename() + "_large.jpg";
         }
         return baseUrl + "images/avatars/" + card.getUserId() + ".png";
+    }
+
+    public static String getUserAvatar(Context context, User user) {
+        Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
+        String baseUrl = properties.getProperty("global.url");
+        return baseUrl + "images/avatars/" + user.getId() + ".png";
+
     }
 }
