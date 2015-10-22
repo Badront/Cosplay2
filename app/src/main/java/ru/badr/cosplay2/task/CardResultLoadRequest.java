@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.task;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
@@ -12,10 +13,12 @@ import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.CardImage;
 import ru.badr.cosplay2.api.cards.User;
+import ru.badr.cosplay2.api.cards.info.Badge;
 import ru.badr.cosplay2.api.cards.info.Field;
 import ru.badr.cosplay2.api.cards.info.GetCardResult;
 import ru.badr.cosplay2.api.cards.info.InfoCard;
 import ru.badr.cosplay2.api.cards.info.ReqValue;
+import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 
 /**
@@ -23,32 +26,55 @@ import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
  * 20.10.2015
  * 17:54
  */
-public class CardResultLoadRequest extends TaskRequest<ReqValuesHolder.List> {
+public class CardResultLoadRequest extends TaskRequest<ReqSectionHolder.List> {
     private Context mContext;
     private Card mCard;
 
     public CardResultLoadRequest(Context context, Card card) {
-        super(ReqValuesHolder.List.class);
+        super(ReqSectionHolder.List.class);
         this.mContext = context;
         this.mCard = card;
     }
 
     @Override
-    public ReqValuesHolder.List loadData() throws Exception {
+    public ReqSectionHolder.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
         GetCardResult result = container.getCosplay2RestService().getCard(mCard.getId());
-        ReqValuesHolder.List list = new ReqValuesHolder.List();
+        ReqSectionHolder.List list = new ReqSectionHolder.List();
         if (result != null) {
             List<Field> fields = result.getFields();
             InfoCard defCard = result.getCard();
             List<ReqValue> reqValues = result.getReqValues();
             List<User> users = result.getUsers();
             if (fields != null && reqValues != null) {
+                ReqSectionHolder reqSectionHolder = null;
                 for (Field field : fields) {
                     Iterator<ReqValue> reqValuesIterator = reqValues.iterator();
                     while (reqValuesIterator.hasNext()) {
                         ReqValue value = reqValuesIterator.next();
                         if (value.getFieldId() == field.getId()) {
+                            if (reqSectionHolder == null) {
+                                reqSectionHolder = new ReqSectionHolder();
+                                reqSectionHolder.setId(value.getRequestSectionId());
+                                Badge badge = getBadgeIfHolds(value.getRequestSectionId(), result.getBadges());
+                                if (badge != null) {
+                                    reqSectionHolder.setTitle(badge.getCard());
+                                }
+                            } else {
+                                if (reqSectionHolder.getId() != value.getRequestSectionId()) {
+                                    Badge newBadge = getBadgeIfHolds(value.getRequestSectionId(), result.getBadges());
+                                    if (!TextUtils.isEmpty(reqSectionHolder.getTitle()) || newBadge != null) {
+                                        list.add(reqSectionHolder);
+                                        reqSectionHolder = new ReqSectionHolder();
+                                        reqSectionHolder.setId(value.getRequestSectionId());
+                                        if (newBadge != null) {
+                                            reqSectionHolder.setTitle(newBadge.getCard());
+                                        }
+                                    } else {
+                                        reqSectionHolder.setId(value.getRequestSectionId());
+                                    }
+                                }
+                            }
                             ReqValuesHolder holder = new ReqValuesHolder();
                             holder.setTitle(field.getTitle());
                             if ("text".equals(field.getType())) {
@@ -76,14 +102,28 @@ public class CardResultLoadRequest extends TaskRequest<ReqValuesHolder.List> {
                                 System.out.println("new undefined field.type = " + field.getTitle());
                                 break;
                             }
-                            list.add(holder);
+                            reqSectionHolder.getList().add(holder);
                             reqValuesIterator.remove();
                             break;
                         }
                     }
                 }
+                if (reqSectionHolder != null) {
+                    list.add(reqSectionHolder);
+                }
             }
         }
         return list;
+    }
+
+    private Badge getBadgeIfHolds(long sectionId, List<Badge> badges) {
+        if (badges != null && !badges.isEmpty()) {
+            for (Badge badge : badges) {
+                if (badge.getSectionId() == sectionId) {
+                    return badge;
+                }
+            }
+        }
+        return null;
     }
 }

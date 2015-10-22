@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,12 @@ import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
+import java.util.List;
+
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.api.cards.Card;
+import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 import ru.badr.cosplay2.task.CardResultLoadRequest;
 import ru.badr.cosplay2.view.FestCardImageFieldView;
@@ -30,7 +34,7 @@ import ru.badr.cosplay2.view.FestCardUserFieldView;
  * 20.10.2015
  * 11:07
  */
-public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, RequestListener<ReqValuesHolder.List> {
+public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, RequestListener<ReqSectionHolder.List> {
     public static final String TITLE = "title";
     public static final String CARD = "card";
 
@@ -111,41 +115,57 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
     }
 
     @Override
-    public void onRequestSuccess(ReqValuesHolder.List reqValuesHolders) {
+    public void onRequestSuccess(ReqSectionHolder.List reqValuesHolders) {
         mProgressBar.setVisibility(View.GONE);
         mContentView.setVisibility(View.VISIBLE);
         initData(reqValuesHolders);
     }
 
-    private void initData(ReqValuesHolder.List reqValuesHolders) {
+    private void initData(ReqSectionHolder.List reqValuesHolders) {
         mFieldsHolder.removeAllViews();
         Context context = getActivity();
         LayoutInflater inflater = LayoutInflater.from(context);
+        for (ReqSectionHolder section : reqValuesHolders) {
+            View sectionView = inflater.inflate(R.layout.fest_card_section, mFieldsHolder, false);
+            TextView titleView = (TextView) sectionView.findViewById(R.id.title);
+            if (!TextUtils.isEmpty(section.getTitle())) {
+                titleView.setText(section.getTitle());
+            } else {
+                titleView.setVisibility(View.GONE);
+            }
+            initSection((ViewGroup) sectionView.findViewById(R.id.fields), section.getList());
+            mFieldsHolder.addView(sectionView);
+        }
+    }
+
+    private void initSection(ViewGroup sectionView, List<ReqValuesHolder> reqValuesHolders) {
+        Context context = sectionView.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
         for (int i = 0, size = reqValuesHolders.size(); i < size; i++) {
             if (i != 0) {
-                mFieldsHolder.addView(inflater.inflate(R.layout.list_divider, mFieldsHolder, false));
+                sectionView.addView(inflater.inflate(R.layout.list_divider, sectionView, false));
             }
             ReqValuesHolder reqValuesHolder = reqValuesHolders.get(i);
             switch (reqValuesHolder.getType()) {
                 case text:
                     FestCardTextFieldView textFieldView = new FestCardTextFieldView(context);
                     textFieldView.setReqValueHolder(reqValuesHolder);
-                    mFieldsHolder.addView(textFieldView);
+                    sectionView.addView(textFieldView);
                     break;
                 case image:
                     FestCardImageFieldView imageFieldView = new FestCardImageFieldView(context);
                     imageFieldView.setReqValueHolder(reqValuesHolder);
-                    mFieldsHolder.addView(imageFieldView);
+                    sectionView.addView(imageFieldView);
                     break;
                 case link:
                     FestCardLinkFieldView linkFieldView = new FestCardLinkFieldView(context);
                     linkFieldView.setReqValueHolder(reqValuesHolder);
-                    mFieldsHolder.addView(linkFieldView);
+                    sectionView.addView(linkFieldView);
                     break;
                 case user:
                     FestCardUserFieldView userFieldView = new FestCardUserFieldView(context);
                     userFieldView.setReqValueHolder(reqValuesHolder);
-                    mFieldsHolder.addView(userFieldView);
+                    sectionView.addView(userFieldView);
                     break;
             }
         }

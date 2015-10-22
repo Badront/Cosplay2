@@ -1,7 +1,6 @@
 package ru.badr.cosplay2.api.cards.info.json;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by ABadretdinov
@@ -42,9 +41,5 @@ public class ReqValuesHolder<T> implements Serializable {
         user,
         link,
         image
-    }
-
-    public static class List extends ArrayList<ReqValuesHolder> {
-
     }
 }
