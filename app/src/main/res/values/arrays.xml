@@ -4,5 +4,8 @@
         <item>Twitter</item>
         <item>Instagram</item>
     </string-array>
-
+    <string-array name="media_tabs">
+        <item>Фотографии</item>
+        <item>Альбомы</item>
+    </string-array>
 </resources>

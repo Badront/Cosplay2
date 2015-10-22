@@ -15,6 +15,7 @@ import ru.badr.base.util.json.DateLongDeserializer;
 import ru.badr.base.util.json.SimpleDateSerializer;
 import ru.badr.cosplay2.remote.Cosplay2RestService;
 import ru.badr.cosplay2.remote.InstagramRestService;
+import ru.badr.cosplay2.remote.VkRestService;
 
 /**
  * Created by ABadretdinov
@@ -30,6 +31,9 @@ public class Cosplay2BeanContainer {
     private InstagramRestService instagramRestService;
     private RestAdapter cosplay2RestAdapter;
     private Cosplay2RestService cosplay2RestService;
+
+    private RestAdapter vkRestAdapter;
+    private VkRestService vkRestService;
 
     private Cosplay2BeanContainer(Context context) {
         properties = SettingsUtils.getAssetsProperties(context);
@@ -82,6 +86,24 @@ public class Cosplay2BeanContainer {
             cosplay2RestService = getCosplay2RestAdapter().create(Cosplay2RestService.class);
         }
         return cosplay2RestService;
+    }
+
+    public RestAdapter getVkRestAdapter() {
+        if (vkRestAdapter == null) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            vkRestAdapter = new RestAdapter.Builder()
+                    .setEndpoint(properties.getProperty("vk.url"))
+                    .setConverter(new GsonConverter(gsonBuilder.create()))
+                    .build();
+        }
+        return vkRestAdapter;
+    }
+
+    public VkRestService getVkRestService() {
+        if (vkRestService == null) {
+            vkRestService = getVkRestAdapter().create(VkRestService.class);
+        }
+        return vkRestService;
     }
 
     public Properties getProperties() {

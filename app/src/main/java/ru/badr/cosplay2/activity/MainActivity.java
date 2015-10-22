@@ -15,7 +15,6 @@ import ru.badr.cosplay2.R;
 
 //todo https://github.com/RubenGees/Introduction
 //todo https://github.com/MiguelCatalan/MaterialSearchView
-//todo http://opencon14.cosplay2.ru/cards
 public class MainActivity extends FragmentWrapperActivity {
     private boolean mDoubleBackToExitPressedOnce = false;
 

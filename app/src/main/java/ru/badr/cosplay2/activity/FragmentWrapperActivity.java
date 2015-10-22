@@ -15,6 +15,7 @@ import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.fragment.AboutFragment;
 import ru.badr.cosplay2.fragment.FanArtListFragment;
 import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
+import ru.badr.cosplay2.fragment.MediaFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
@@ -52,6 +53,11 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
             case R.id.jury:
                 if (!(fragment instanceof JuryAndOrgsFragment)) {
                     Navigate.toMain(this, JuryAndOrgsFragment.class, menuItem.getItemId());
+                }
+                break;
+            case R.id.media:
+                if (!(fragment instanceof MediaFragment)) {
+                    Navigate.toMain(this, MediaFragment.class, menuItem.getItemId());
                 }
                 break;
             case R.id.news:

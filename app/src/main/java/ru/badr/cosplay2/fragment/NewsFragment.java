@@ -1,6 +1,6 @@
 package ru.badr.cosplay2.fragment;
 
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import ru.badr.base.fragment.BaseViewPagerFragment;
 import ru.badr.cosplay2.R;
@@ -19,7 +19,7 @@ public class NewsFragment extends BaseViewPagerFragment {
     }
 
     @Override
-    public FragmentPagerAdapter getAdapter() {
+    public PagerAdapter getAdapter() {
         return new NewsPagerAdapter(getActivity(), getChildFragmentManager());
     }
 

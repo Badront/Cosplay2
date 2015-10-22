@@ -16,9 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        <!--
-            app:layout_scrollFlags="scroll|enterAlways"-->
 
     </android.support.design.widget.AppBarLayout>
 
@@ -35,6 +34,7 @@
         android:id="@+id/listContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView
