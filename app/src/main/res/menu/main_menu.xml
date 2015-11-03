@@ -27,6 +27,10 @@
             android:icon="@drawable/news"
             android:title="@string/news" />
         <item
+            android:id="@+id/scheme"
+            android:icon="@drawable/scheme"
+            android:title="@string/scheme" />
+        <item
             android:id="@+id/about"
             android:icon="@drawable/about"
             android:title="@string/about" />

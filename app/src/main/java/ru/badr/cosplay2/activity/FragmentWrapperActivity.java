@@ -19,6 +19,7 @@ import ru.badr.cosplay2.fragment.MediaFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
+import ru.badr.cosplay2.fragment.SchemeFragment;
 
 /**
  * Created by ABadretdinov
@@ -63,6 +64,11 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
             case R.id.news:
                 if (!(fragment instanceof NewsFragment)) {
                     Navigate.toMain(this, NewsFragment.class, menuItem.getItemId());
+                }
+                break;
+            case R.id.scheme:
+                if (!(fragment instanceof SchemeFragment)) {
+                    Navigate.toMain(this, SchemeFragment.class);
                 }
                 break;
             case R.id.about:

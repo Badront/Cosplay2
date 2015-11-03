@@ -8,4 +8,10 @@
         <item>Фотографии</item>
         <item>Альбомы</item>
     </string-array>
+    <string-array name="scheme_names">
+        <item>1 этаж</item>
+        <item>2 этаж</item>
+        <item>3 этаж</item>
+        <item>Обозначения</item>
+    </string-array>
 </resources>
