@@ -85,11 +85,13 @@ public class CardResultLoadRequest extends TaskRequest<ReqSectionHolder.List> {
                                 holder.setValue(value.getValue());
                             } else if ("user".equals(field.getType())) {
                                 holder.setType(ReqValuesHolder.Types.user);
-                                long userId = Long.valueOf(value.getValue());
-                                for (User user : users) {
-                                    if (user.getId() == userId) {
-                                        holder.setValue(user);
-                                        break;
+                                if (!TextUtils.isEmpty(value.getValue())) {
+                                    long userId = Long.valueOf(value.getValue());
+                                    for (User user : users) {
+                                        if (user.getId() == userId) {
+                                            holder.setValue(user);
+                                            break;
+                                        }
                                     }
                                 }
                             } else if ("image".equals(field.getType())) {

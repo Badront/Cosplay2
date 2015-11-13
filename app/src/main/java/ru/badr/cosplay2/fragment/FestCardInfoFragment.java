@@ -28,6 +28,7 @@ import ru.badr.cosplay2.view.FestCardImageFieldView;
 import ru.badr.cosplay2.view.FestCardLinkFieldView;
 import ru.badr.cosplay2.view.FestCardTextFieldView;
 import ru.badr.cosplay2.view.FestCardUserFieldView;
+import ru.badr.cosplay2.view.FestCardView;
 
 /**
  * Created by ABadretdinov
@@ -142,31 +143,32 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
         Context context = sectionView.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         for (int i = 0, size = reqValuesHolders.size(); i < size; i++) {
-            if (i != 0) {
-                sectionView.addView(inflater.inflate(R.layout.list_divider, sectionView, false));
-            }
+
             ReqValuesHolder reqValuesHolder = reqValuesHolders.get(i);
-            switch (reqValuesHolder.getType()) {
-                case text:
-                    FestCardTextFieldView textFieldView = new FestCardTextFieldView(context);
-                    textFieldView.setReqValueHolder(reqValuesHolder);
-                    sectionView.addView(textFieldView);
-                    break;
-                case image:
-                    FestCardImageFieldView imageFieldView = new FestCardImageFieldView(context);
-                    imageFieldView.setReqValueHolder(reqValuesHolder);
-                    sectionView.addView(imageFieldView);
-                    break;
-                case link:
-                    FestCardLinkFieldView linkFieldView = new FestCardLinkFieldView(context);
-                    linkFieldView.setReqValueHolder(reqValuesHolder);
-                    sectionView.addView(linkFieldView);
-                    break;
-                case user:
-                    FestCardUserFieldView userFieldView = new FestCardUserFieldView(context);
-                    userFieldView.setReqValueHolder(reqValuesHolder);
-                    sectionView.addView(userFieldView);
-                    break;
+            if (reqValuesHolder.getValue() != null) {
+                FestCardView view;
+                switch (reqValuesHolder.getType()) {
+                    default:
+                    case text:
+                        view = new FestCardTextFieldView(context);
+                        break;
+                    case image:
+                        view = new FestCardImageFieldView(context);
+                        break;
+                    case link:
+                        view = new FestCardLinkFieldView(context);
+                        break;
+                    case user:
+                        view = new FestCardUserFieldView(context);
+                        break;
+                }
+                view.setReqValueHolder(reqValuesHolder);
+                if (!view.isEmpty()) {
+                    if (sectionView.getChildCount() != 0) {
+                        sectionView.addView(inflater.inflate(R.layout.list_divider, sectionView, false));
+                    }
+                    sectionView.addView(view);
+                }
             }
         }
     }

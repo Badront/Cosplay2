@@ -1,11 +1,8 @@
 package ru.badr.cosplay2.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -20,35 +17,36 @@ import ru.badr.cosplay2.util.Utils;
  * 21.10.2015
  * 17:51
  */
-public class FestCardUserFieldView extends LinearLayout {
-    private ReqValuesHolder<User> mReqValueHolder;
+public class FestCardUserFieldView extends FestCardView<User> {
 
     private TextView mTitleView;
     private TextView mUserNameView;
     private ImageView mAvatarView;
 
     public FestCardUserFieldView(Context context) {
-        this(context, null);
+        super(context);
     }
 
     public FestCardUserFieldView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
 
     public FestCardUserFieldView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr, 0);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public FestCardUserFieldView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fest_card_user_field;
     }
 
     @SuppressWarnings("deprecation")
-    private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        inflate(context, R.layout.fest_card_user_field, this);
+    protected void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super.init(context, attrs, defStyleAttr, defStyleRes);
 
         mTitleView = (TextView) findViewById(android.R.id.text1);
         mUserNameView = (TextView) findViewById(android.R.id.text2);
@@ -56,7 +54,7 @@ public class FestCardUserFieldView extends LinearLayout {
     }
 
     public void setReqValueHolder(ReqValuesHolder<User> reqValueHolder) {
-        this.mReqValueHolder = reqValueHolder;
+        super.setReqValueHolder(reqValueHolder);
         setTitle(mReqValueHolder.getTitle());
         if (mReqValueHolder.getValue() != null) {
             User user = mReqValueHolder.getValue();
@@ -64,6 +62,10 @@ public class FestCardUserFieldView extends LinearLayout {
             Context context = getContext();
             Glide.with(context).load(Utils.getUserAvatar(context, user)).into(mAvatarView);
         }
+    }
+
+    public boolean isEmpty() {
+        return mReqValueHolder.getValue() == null || mReqValueHolder.getValue().getId() == 0;
     }
 
     public void setTitle(CharSequence title) {

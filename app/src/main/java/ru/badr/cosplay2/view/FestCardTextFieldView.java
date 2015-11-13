@@ -1,13 +1,10 @@
 package ru.badr.cosplay2.view;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ru.badr.cosplay2.R;
@@ -18,29 +15,25 @@ import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
  * 21.10.2015
  * 14:32
  */
-public class FestCardTextFieldView extends LinearLayout {
-    protected ReqValuesHolder<String> mReqValueHolder;
+public class FestCardTextFieldView extends FestCardView<String> {
 
     private TextView mTitleView;
     private TextView mValueView;
 
     public FestCardTextFieldView(Context context) {
-        this(context, null);
+        super(context);
     }
 
     public FestCardTextFieldView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
 
     public FestCardTextFieldView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr, 0);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public FestCardTextFieldView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, defStyleAttr, defStyleRes);
     }
 
     protected int getLayoutId() {
@@ -48,16 +41,20 @@ public class FestCardTextFieldView extends LinearLayout {
     }
 
     public void setReqValueHolder(ReqValuesHolder<String> reqValueHolder) {
-        this.mReqValueHolder = reqValueHolder;
+        super.setReqValueHolder(reqValueHolder);
         setTitle(mReqValueHolder.getTitle());
         if (mReqValueHolder.getValue() != null) {
             mValueView.setText(mReqValueHolder.getValue());
         }
     }
 
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(mReqValueHolder.getValue());
+    }
+
     @SuppressWarnings("deprecation")
     protected void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        inflate(context, getLayoutId(), this);
+        super.init(context, attrs, defStyleAttr, defStyleRes);
 
         mTitleView = (TextView) findViewById(android.R.id.text1);
         mValueView = (TextView) findViewById(android.R.id.text2);

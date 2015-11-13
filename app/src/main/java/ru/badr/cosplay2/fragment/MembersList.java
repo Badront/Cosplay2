@@ -1,12 +1,15 @@
 package ru.badr.cosplay2.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
+import com.tonicartos.superslim.LayoutManager;
 
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.entity.LineItem;
@@ -42,6 +45,11 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
             mSpiceManager.shouldStop();
         }
         super.onDestroy();
+    }
+
+    @Override
+    protected RecyclerView.LayoutManager getLayoutManager(Context context) {
+        return new LayoutManager(context);
     }
 
     @Override
