@@ -3,8 +3,11 @@ package ru.badr.cosplay2.api.cards;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import ru.badr.base.util.HasId;
+import ru.badr.cosplay2.api.cards.list.ListCard;
 
 /**
  * Created by ABadretdinov
@@ -18,6 +21,15 @@ public class Topic implements Serializable, HasId {
     @SerializedName("card_code")
     private String cardCode;
     private String title;
+    private java.util.List<ListCard> cards;
+
+    public java.util.List<ListCard> getCards() {
+        return cards;
+    }
+
+    public void setCards(java.util.List<ListCard> cards) {
+        this.cards = cards;
+    }
 
     @Override
     public long getId() {
@@ -50,5 +62,19 @@ public class Topic implements Serializable, HasId {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public static class List extends ArrayList<Topic> {
+        public List(Collection<? extends Topic> collection) {
+            super(collection);
+        }
+
+        public List(int capacity) {
+            super(capacity);
+        }
+
+        public List() {
+            super();
+        }
     }
 }

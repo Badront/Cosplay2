@@ -15,6 +15,7 @@ public class Card implements Serializable, HasId {
     private long id;
     @SerializedName("topic_id")
     private long topicId;
+    private String topicName;
     @SerializedName("voting_number")
     private String votingNumber;
     @SerializedName("voting_title")
@@ -52,6 +53,14 @@ public class Card implements Serializable, HasId {
 
     public void setTopicId(long topicId) {
         this.topicId = topicId;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 
     public String getVotingNumber() {

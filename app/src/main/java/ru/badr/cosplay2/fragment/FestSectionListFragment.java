@@ -52,6 +52,7 @@ public abstract class FestSectionListFragment extends BaseRecyclerFragment<ListC
 
     @Override
     public void onRefresh() {
+        setRefreshing(true);
         mSpiceManager.execute(new TaggedCardsLoadRequest(getActivity().getApplicationContext(), getSectionPropertyTag()), this);
     }
 

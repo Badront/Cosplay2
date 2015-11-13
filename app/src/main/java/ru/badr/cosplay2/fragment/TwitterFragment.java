@@ -83,6 +83,7 @@ public class TwitterFragment extends RecyclerFragment<Tweet, TweetViewHolder> {
             @Override
             public void failure(TwitterException e) {
                 setRefreshing(false);
+                setAdapter(new TweetsAdapter(null));
                 showMessage(e.getMessage());
             }
         });
