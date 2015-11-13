@@ -3,6 +3,8 @@ package ru.badr.cosplay2.task;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.octo.android.robospice.retry.DefaultRetryPolicy;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,6 +34,7 @@ public class AlbumsAndPhotosLoadRequest extends TaskRequest<AlbumsAndPhotos> {
     public AlbumsAndPhotosLoadRequest(Context context) {
         super(AlbumsAndPhotos.class);
         this.mContext = context;
+        setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override

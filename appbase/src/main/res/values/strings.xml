@@ -5,6 +5,7 @@
     <string name="repeat">Повтор</string>
     <string name="search">Поиск</string>
     <string name="no_matches_found">Совпадений не найдено</string>
+    <string name="no_data_available_yet">Данные пока недоступны</string>
     <string name="edit">Изменить</string>
     <string name="filters">Фильтры</string>
     <string name="save">Сохранить</string>

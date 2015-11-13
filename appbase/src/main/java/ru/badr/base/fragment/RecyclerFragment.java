@@ -52,7 +52,13 @@ public abstract class RecyclerFragment<T, VIEW_HOLDER extends BaseViewHolder> ex
     }
 
     public void showMessage(String message, String actionMessage, View.OnClickListener action) {
-        Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).setAction(actionMessage, action).show();
+        String resultMessage;
+        if ("500 Internal Server Error".equals(message)) {
+            resultMessage = getString(R.string.no_data_available_yet);
+        } else {
+            resultMessage = message;
+        }
+        Snackbar.make(getView(), resultMessage, Snackbar.LENGTH_LONG).setAction(actionMessage, action).show();
     }
 
     protected int getLayoutId() {
