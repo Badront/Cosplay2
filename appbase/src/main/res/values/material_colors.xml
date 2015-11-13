@@ -67,6 +67,7 @@
 
     <color name="grey">#9E9E9E</color>
     <color name="grey_dark">#616161</color>
+    <color name="menu_background">#fffafafa</color>
 
 
     <color name="blue_grey">#607D8B</color>

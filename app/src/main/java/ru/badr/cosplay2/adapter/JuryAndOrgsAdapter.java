@@ -89,6 +89,7 @@ public class JuryAndOrgsAdapter extends BaseRecyclerAdapter<Object, BaseViewHold
             Context context = jHolder.itemView.getContext();
             Glide.with(context).load(entity.getImage()).into(jHolder.avatar);
             jHolder.title.setText(entity.getName());
+            jHolder.city.setText(entity.getCity());
             jHolder.description.setText(Html.fromHtml(entity.getDescription()));
         }
         lp.setSlm(LinearSLM.ID);

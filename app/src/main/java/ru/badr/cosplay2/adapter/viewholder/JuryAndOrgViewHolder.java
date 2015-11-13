@@ -16,6 +16,7 @@ import ru.badr.cosplay2.R;
 public class JuryAndOrgViewHolder extends BaseViewHolder {
     public ImageView avatar;
     public TextView title;
+    public TextView city;
     public TextView description;
 
     public JuryAndOrgViewHolder(View itemView, OnItemClickListener clickListener) {
@@ -26,6 +27,7 @@ public class JuryAndOrgViewHolder extends BaseViewHolder {
     protected void initView(View itemView) {
         avatar = (ImageView) itemView.findViewById(R.id.avatar);
         title = (TextView) itemView.findViewById(android.R.id.text1);
-        description = (TextView) itemView.findViewById(android.R.id.text2);
+        city = (TextView) itemView.findViewById(android.R.id.text2);
+        description = (TextView) itemView.findViewById(R.id.description);
     }
 }

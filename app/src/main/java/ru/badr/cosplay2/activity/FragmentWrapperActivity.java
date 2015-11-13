@@ -13,12 +13,13 @@ import ru.badr.base.util.BackListener;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.fragment.AboutFragment;
-import ru.badr.cosplay2.fragment.FanArtListFragment;
+import ru.badr.cosplay2.fragment.FanArtPagerFragment;
 import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
 import ru.badr.cosplay2.fragment.MediaFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
+import ru.badr.cosplay2.fragment.RegulationsFragment;
 import ru.badr.cosplay2.fragment.SchemeFragment;
 
 /**
@@ -47,8 +48,8 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
                 }
                 break;
             case R.id.fanart:
-                if (!(fragment instanceof FanArtListFragment)) {
-                    Navigate.toMain(this, FanArtListFragment.class, menuItem.getItemId());
+                if (!(fragment instanceof FanArtPagerFragment)) {
+                    Navigate.toMain(this, FanArtPagerFragment.class, menuItem.getItemId());
                 }
                 break;
             case R.id.jury:
@@ -69,6 +70,11 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
             case R.id.scheme:
                 if (!(fragment instanceof SchemeFragment)) {
                     Navigate.toMain(this, SchemeFragment.class);
+                }
+                break;
+            case R.id.regulations:
+                if (!(fragment instanceof RegulationsFragment)) {
+                    Navigate.toMain(this, RegulationsFragment.class);
                 }
                 break;
             case R.id.about:

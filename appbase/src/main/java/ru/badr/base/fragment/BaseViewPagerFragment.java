@@ -31,6 +31,10 @@ public abstract class BaseViewPagerFragment extends BaseFragment {
         return view;
     }
 
+    public int getTabMode() {
+        return TabLayout.MODE_FIXED;
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -38,6 +42,7 @@ public abstract class BaseViewPagerFragment extends BaseFragment {
         View root = getView();
         if (root != null) {
             TabLayout tabLayout = (TabLayout) root.findViewById(R.id.tabs);
+            tabLayout.setTabMode(getTabMode());
             tabLayout.setupWithViewPager(mViewPager);
         }
     }

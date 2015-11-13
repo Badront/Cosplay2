@@ -24,7 +24,7 @@ public class SchemePagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         StringBuilder path = new StringBuilder("file:///android_asset/scheme/");
-        path.append(position + 1).append(".jpg");
+        path.append(position).append(".png");
         ImageFragment fragment = new ImageFragment();
         fragment.setImagePath(path.toString());
         return fragment;

@@ -6,32 +6,33 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ru.badr.cosplay2.R;
-import ru.badr.cosplay2.fragment.InstagramFragment;
-import ru.badr.cosplay2.fragment.TwitterFragment;
-
+import ru.badr.cosplay2.fragment.FanArtListFragment;
 
 /**
- * Created by ABadretdinov
- * 23.09.2015
- * 16:34
+ * Created by Badr on 13.11.2015.
  */
-public class NewsPagerAdapter extends FragmentPagerAdapter {
+public class FanArtPagerAdapter extends FragmentPagerAdapter {
     private String[] mTitles;
 
-    public NewsPagerAdapter(Context context, FragmentManager fm) {
+    public FanArtPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        mTitles = context.getResources().getStringArray(R.array.news_tabs);
+        mTitles = context.getResources().getStringArray(R.array.fan_art_tabs);
     }
 
     @Override
     public Fragment getItem(int position) {
+        FanArtListFragment fragment = new FanArtListFragment();
+        fragment.setTitle(getPageTitle(position));
         switch (position) {
             case 0:
-                return new TwitterFragment();
+                fragment.setTag("opencon.tag.traditional_fanart");
+                break;
             case 1:
             default:
-                return new InstagramFragment();
+                fragment.setTag("opencon.tag.digital_fanart");
+                break;
         }
+        return fragment;
     }
 
     @Override

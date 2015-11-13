@@ -18,10 +18,10 @@ import ru.badr.cosplay2.api.cards.list.ListCard;
 public class Utils {
     public static String getCardImageUrl(Context context, Card card) {
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
-        String baseUrl = properties.getProperty("global.url");
+        String baseUrl = properties.getProperty("global.url15");
         if (card instanceof ListCard && ((ListCard) card).getImage() != null) {
             CardImage cardImage = ((ListCard) card).getImage();
-            String eventId = properties.getProperty("global.event_id");
+            String eventId = properties.getProperty("global.event_id15");
             return baseUrl + "uploads/" + eventId + "/" + card.getId() + "/" + cardImage.getFilename() + "_large.jpg";
         }
         return baseUrl + "images/avatars/" + card.getUserId() + ".png";
@@ -29,7 +29,7 @@ public class Utils {
 
     public static String getUserAvatar(Context context, User user) {
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
-        String baseUrl = properties.getProperty("global.url");
+        String baseUrl = properties.getProperty("global.url15");
         return baseUrl + "images/avatars/" + user.getId() + ".png";
 
     }

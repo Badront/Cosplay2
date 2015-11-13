@@ -51,7 +51,7 @@ public abstract class RecyclerFragment<T, VIEW_HOLDER extends BaseViewHolder> ex
         Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
     }
 
-    public void reportError(String message, String actionMessage, View.OnClickListener action) {
+    public void showMessage(String message, String actionMessage, View.OnClickListener action) {
         Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).setAction(actionMessage, action).show();
     }
 

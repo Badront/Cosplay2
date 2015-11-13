@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class JuryEntity implements Serializable {
     private String vk;
     private String name;
+    private String city;
     private String image;
     private String description;
 
@@ -27,6 +28,14 @@ public class JuryEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getImage() {

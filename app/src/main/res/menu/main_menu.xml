@@ -31,6 +31,10 @@
             android:icon="@drawable/scheme"
             android:title="@string/scheme" />
         <item
+            android:id="@+id/regulations"
+            android:icon="@drawable/regulations"
+            android:title="@string/regulations" />
+        <item
             android:id="@+id/about"
             android:icon="@drawable/about"
             android:title="@string/about" />

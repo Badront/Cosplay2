@@ -1,5 +1,6 @@
 package ru.badr.cosplay2.fragment;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ru.badr.base.fragment.BaseViewPagerFragment;
@@ -15,6 +16,11 @@ public class SchemeFragment extends BaseViewPagerFragment {
     @Override
     public int getLayoutId() {
         return R.layout.simple_viewpager_layout;
+    }
+
+    @Override
+    public int getTabMode() {
+        return TabLayout.MODE_SCROLLABLE;
     }
 
     @Override

@@ -35,8 +35,6 @@
         <item name="colorPrimary">@color/red_dark</item>
         <item name="colorPrimaryDark">@color/red_dark</item>
         <item name="colorAccent">@color/extra_purple</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
     </style>
 
     <style name="BaseTheme.Difs" parent="BaseTheme.Base" />

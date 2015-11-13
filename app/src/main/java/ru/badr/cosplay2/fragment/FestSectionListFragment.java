@@ -58,7 +58,9 @@ public abstract class FestSectionListFragment extends BaseRecyclerFragment<ListC
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         setRefreshing(false);
-        showMessage(spiceException.getLocalizedMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        setAdapter(new FestPhotoCardAdapter(null));
+
+        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRefresh();

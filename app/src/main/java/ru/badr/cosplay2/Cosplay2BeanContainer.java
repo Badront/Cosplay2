@@ -74,7 +74,7 @@ public class Cosplay2BeanContainer {
         if (cosplay2RestAdapter == null) {
             GsonBuilder gsonBuilder = new GsonBuilder().registerTypeAdapter(Date.class, new SimpleDateSerializer(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
             cosplay2RestAdapter = new RestAdapter.Builder()
-                    .setEndpoint(properties.getProperty("global.url"))
+                    .setEndpoint(properties.getProperty("global.url15"))
                     .setConverter(new GsonConverter(gsonBuilder.create()))
                     .build();
         }

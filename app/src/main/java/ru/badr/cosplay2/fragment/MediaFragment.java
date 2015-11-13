@@ -67,7 +67,7 @@ public class MediaFragment extends BaseViewPagerFragment implements SwipeRefresh
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         ((MediaPagerAdapter) getAdapter()).setAlbumsAndPhotos(null);
-        showMessage(spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRefresh();

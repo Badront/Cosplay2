@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="fan_art_tabs">
+        <item>Традиционный</item>
+        <item>Digital</item>
+    </string-array>
     <string-array name="news_tabs">
         <item>Twitter</item>
         <item>Instagram</item>
@@ -9,9 +13,9 @@
         <item>Альбомы</item>
     </string-array>
     <string-array name="scheme_names">
+        <item>Обозначения</item>
         <item>1 этаж</item>
         <item>2 этаж</item>
         <item>3 этаж</item>
-        <item>Обозначения</item>
     </string-array>
 </resources>

@@ -2,6 +2,8 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
+import com.octo.android.robospice.retry.DefaultRetryPolicy;
+
 import java.util.List;
 
 import ru.badr.base.util.retrofit.TaskRequest;
@@ -23,6 +25,7 @@ public class TaggedCardsLoadRequest extends TaskRequest<ListCard.List> {
         super(ListCard.List.class);
         this.mContext = context;
         this.mPropertyTag = propertyTag;
+        setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override
@@ -35,7 +38,7 @@ public class TaggedCardsLoadRequest extends TaskRequest<ListCard.List> {
             List<Topic> topics = result.getTopics();
             Long topicId = null;
             for (Topic topic : topics) {
-                if (topic.getTitle() != null && topic.getTitle().contains(topicName)) {
+                if (topic.getTitle() != null && topic.getTitle().equalsIgnoreCase(topicName)) {
                     topicId = topic.getId();
                     break;
                 }
