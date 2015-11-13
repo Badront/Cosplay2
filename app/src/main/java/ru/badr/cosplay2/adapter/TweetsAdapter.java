@@ -10,8 +10,8 @@ import com.twitter.sdk.android.tweetui.TweetView;
 import java.util.List;
 
 import ru.badr.base.adapter.BasePageableRecyclerAdapter;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.TweetViewHolder;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

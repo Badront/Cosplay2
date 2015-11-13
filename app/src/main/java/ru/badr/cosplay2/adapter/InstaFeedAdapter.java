@@ -12,11 +12,11 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ru.badr.base.adapter.BasePageableRecyclerAdapter;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.InstaFeedViewHolder;
 import ru.badr.cosplay2.api.instagram.InstaFeed;
 import ru.badr.cosplay2.api.instagram.InstaImages;
 import ru.badr.cosplay2.api.instagram.InstaUser;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

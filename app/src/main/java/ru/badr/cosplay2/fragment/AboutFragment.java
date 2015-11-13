@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.MapUtils;
-import ru.badr.cosplay2.R;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

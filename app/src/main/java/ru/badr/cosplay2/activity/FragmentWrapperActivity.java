@@ -11,7 +11,6 @@ import android.view.View;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.util.BackListener;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.fragment.AboutFragment;
 import ru.badr.cosplay2.fragment.FanArtPagerFragment;
 import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
@@ -21,6 +20,7 @@ import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
 import ru.badr.cosplay2.fragment.RegulationsFragment;
 import ru.badr.cosplay2.fragment.SchemeFragment;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ru.badr.base.fragment.BaseFragment;
-import ru.badr.cosplay2.R;
+import ru.badr.opencon.R;
 
 /**
  * Created by Badr on 13.11.2015.

@@ -18,10 +18,10 @@ import ru.badr.base.adapter.BaseRecyclerAdapter;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.adapter.viewholder.HeaderViewHolder;
 import ru.badr.base.entity.LineItem;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.JuryAndOrgViewHolder;
 import ru.badr.cosplay2.api.JuryEntity;
 import ru.badr.cosplay2.api.JurySectionEntity;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

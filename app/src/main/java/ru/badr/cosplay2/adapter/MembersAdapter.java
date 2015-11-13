@@ -17,11 +17,11 @@ import ru.badr.base.adapter.BaseRecyclerAdapter;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.adapter.viewholder.HeaderViewHolder;
 import ru.badr.base.entity.LineItem;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
 import ru.badr.cosplay2.api.cards.Topic;
 import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.util.Utils;
+import ru.badr.opencon.R;
 
 /**
  * Created by Badr on 13.11.2015.

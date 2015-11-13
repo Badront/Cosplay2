@@ -10,10 +10,10 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 import ru.badr.base.fragment.BaseViewPagerFragment;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.MediaPagerAdapter;
 import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
 import ru.badr.cosplay2.task.AlbumsAndPhotosLoadRequest;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

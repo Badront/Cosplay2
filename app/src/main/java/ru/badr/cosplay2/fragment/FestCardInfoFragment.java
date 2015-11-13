@@ -19,7 +19,6 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import java.util.List;
 
 import ru.badr.base.fragment.BaseFragment;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
@@ -29,6 +28,7 @@ import ru.badr.cosplay2.view.FestCardLinkFieldView;
 import ru.badr.cosplay2.view.FestCardTextFieldView;
 import ru.badr.cosplay2.view.FestCardUserFieldView;
 import ru.badr.cosplay2.view.FestCardView;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

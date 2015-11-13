@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.service.NavigationService;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.activity.FragmentWrapperActivity;
 import ru.badr.cosplay2.activity.MainActivity;
 import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
+import ru.badr.opencon.R;
 
 
 /**

@@ -5,7 +5,7 @@ import android.view.View;
 
 import ru.badr.base.adapter.OnItemClickListener;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
-import ru.badr.cosplay2.R;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

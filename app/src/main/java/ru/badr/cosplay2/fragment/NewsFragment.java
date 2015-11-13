@@ -3,8 +3,8 @@ package ru.badr.cosplay2.fragment;
 import android.support.v4.view.PagerAdapter;
 
 import ru.badr.base.fragment.BaseViewPagerFragment;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.NewsPagerAdapter;
+import ru.badr.opencon.R;
 
 
 /**

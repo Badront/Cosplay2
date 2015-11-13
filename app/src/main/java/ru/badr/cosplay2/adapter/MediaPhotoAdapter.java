@@ -10,9 +10,9 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ru.badr.base.adapter.BaseRecyclerAdapter;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.viewholder.MediaPhotoViewHolder;
 import ru.badr.cosplay2.api.media.Photo;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

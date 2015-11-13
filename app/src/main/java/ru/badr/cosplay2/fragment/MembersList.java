@@ -15,11 +15,11 @@ import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseRecyclerFragment;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.MembersAdapter;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.Topic;
 import ru.badr.cosplay2.task.SectionedCardsLoadRequest;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "ru.badr.cosplay2"
+        applicationId "ru.badr.opencon"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

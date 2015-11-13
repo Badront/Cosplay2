@@ -10,12 +10,12 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 import ru.badr.base.fragment.BaseRecyclerFragment;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.FestPhotoCardAdapter;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.task.TaggedCardsLoadRequest;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

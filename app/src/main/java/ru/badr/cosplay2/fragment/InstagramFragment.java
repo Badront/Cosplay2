@@ -13,12 +13,12 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.InstaFeedAdapter;
 import ru.badr.cosplay2.adapter.viewholder.InstaFeedViewHolder;
 import ru.badr.cosplay2.api.instagram.InstaFeed;
 import ru.badr.cosplay2.api.instagram.InstaResult;
 import ru.badr.cosplay2.task.InstaFeedRequest;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import ru.badr.base.util.BackListener;
-import ru.badr.cosplay2.R;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

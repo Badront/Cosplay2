@@ -7,10 +7,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 import ru.badr.cosplay2.util.Utils;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

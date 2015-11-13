@@ -4,8 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ru.badr.base.fragment.BaseViewPagerFragment;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.SchemePagerAdapter;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

@@ -22,11 +22,11 @@ import ru.badr.base.adapter.OnItemClickListener;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.retrofit.LocalSpiceService;
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.adapter.JuryAndOrgsAdapter;
 import ru.badr.cosplay2.api.JuryEntity;
 import ru.badr.cosplay2.api.JurySectionEntity;
 import ru.badr.cosplay2.task.JuryAndOrgsLoadRequest;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

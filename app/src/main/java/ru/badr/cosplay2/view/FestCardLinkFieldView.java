@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import ru.badr.cosplay2.R;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov

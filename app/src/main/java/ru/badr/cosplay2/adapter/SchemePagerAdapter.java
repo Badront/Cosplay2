@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import ru.badr.cosplay2.R;
 import ru.badr.cosplay2.fragment.ImageFragment;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov
