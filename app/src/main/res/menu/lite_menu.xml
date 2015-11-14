@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/members"
+            android:icon="@drawable/members"
+            android:title="@string/members"
+            android:visible="false" />
+        <item
+            android:id="@+id/photocosplay"
+            android:icon="@drawable/photocosplay"
+            android:title="@string/photocosplay"
+            android:visible="false" />
+        <item
+            android:id="@+id/fanart"
+            android:icon="@drawable/fanart"
+            android:title="@string/fanart"
+            android:visible="false" />
+        <item
+            android:id="@+id/jury"
+            android:icon="@drawable/jury"
+            android:title="@string/jury" />
+        <item
+            android:id="@+id/media"
+            android:icon="@drawable/media"
+            android:title="@string/media"
+            android:visible="false" />
+        <item
+            android:id="@+id/news"
+            android:icon="@drawable/news"
+            android:title="@string/news" />
+        <item
+            android:id="@+id/scheme"
+            android:icon="@drawable/scheme"
+            android:title="@string/scheme" />
+        <item
+            android:id="@+id/regulations"
+            android:icon="@drawable/regulations"
+            android:title="@string/regulations" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/about"
+            android:title="@string/about" />
+    </group>
+
+</menu>

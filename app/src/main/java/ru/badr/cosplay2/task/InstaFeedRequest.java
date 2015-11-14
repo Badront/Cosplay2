@@ -25,7 +25,7 @@ public class InstaFeedRequest extends TaskRequest<InstaResult> {
     public InstaResult loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
         String clientId = container.getProperties().getProperty("instagram.client_id");
-        String tag = container.getProperties().getProperty("global.tag");
+        String tag = container.getProperties().getProperty("global.tag.instagram");
         return container.getInstagramRestService().getRecent(tag, clientId, mNextMaxTagId);
     }
 }

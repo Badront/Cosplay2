@@ -44,9 +44,9 @@ public class TwitterFragment extends RecyclerFragment<Tweet, TweetViewHolder> {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        String tag = Cosplay2BeanContainer.getInstance(getActivity()).getProperties().getProperty("global.tag");
+        String tag = Cosplay2BeanContainer.getInstance(getActivity()).getProperties().getProperty("global.tag.twitter");
         mSearchTimeLine = new SearchTimeline.Builder()
-                .query("#" + tag)
+                .query(tag)
                 .build();
         getRecyclerView().addOnScrollListener(new EndlessRecycleScrollListener() {
             @Override
