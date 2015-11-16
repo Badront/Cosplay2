@@ -15,18 +15,16 @@ import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseRecyclerFragment;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.adapter.MembersAdapter;
+import ru.badr.cosplay2.adapter.ScheduleAdapter;
 import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.cards.Topic;
-import ru.badr.cosplay2.task.SectionedCardsLoadRequest;
+import ru.badr.cosplay2.api.schedule.ScheduleNode;
+import ru.badr.cosplay2.task.ScheduleLoadRequest;
 import ru.badr.opencon.R;
 
 /**
- * Created by ABadretdinov
- * 16.10.2015
- * 15:47
+ * Created by Badr on 16.11.2015.
  */
-public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<Topic.List> {
+public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<ScheduleNode.List> {
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
 
     @Override
@@ -52,26 +50,25 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
     }
 
     @Override
-    public boolean isNeedDivider() {
-        return false;
+    protected int getLayoutId() {
+        return R.layout.schedule_layout;
     }
-
 
     @Override
     protected String getTitle() {
-        return getString(R.string.members);
+        return getString(R.string.schedule);
     }
 
     @Override
     public void onRefresh() {
         setRefreshing(true);
-        mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity().getApplicationContext()), this);
+        mSpiceManager.execute(new ScheduleLoadRequest(getActivity().getApplicationContext()), this);
     }
 
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         setRefreshing(false);
-        setAdapter(new MembersAdapter(null));
+        setAdapter(new ScheduleAdapter(null));
 
         showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
@@ -82,18 +79,21 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
     }
 
     @Override
-    public void onRequestSuccess(Topic.List topics) {
+    public void onRequestSuccess(ScheduleNode.List nodes) {
         setRefreshing(false);
-        setAdapter(new MembersAdapter(topics));
+        setAdapter(new ScheduleAdapter(nodes));
     }
 
     @Override
     public void onRecyclerViewItemClick(View v, int position) {
         LineItem lineItem = (LineItem) getAdapter().getItem(position);
-        Card card = (Card) lineItem.data;
-        Bundle bundle = new Bundle();
-        bundle.putString(FestCardInfoFragment.TITLE, card.getTopicName());
-        bundle.putSerializable(FestCardInfoFragment.CARD, card);
-        Navigate.to(getActivity(), FestCardInfoFragment.class, bundle, false);
+        ScheduleNode node = (ScheduleNode) lineItem.data;
+        if (node.getCard() != null) {
+            Card card = node.getCard();
+            Bundle bundle = new Bundle();
+            bundle.putString(FestCardInfoFragment.TITLE, card.getTopicName());
+            bundle.putSerializable(FestCardInfoFragment.CARD, card);
+            Navigate.to(getActivity(), FestCardInfoFragment.class, bundle, false);
+        }
     }
 }

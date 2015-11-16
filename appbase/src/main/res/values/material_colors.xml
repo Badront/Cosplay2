@@ -62,8 +62,8 @@
     <color name="brown">#795548</color>
     <color name="brown_dark">#5D4037</color>
 
-    <color name="header_grey">#fff0f1f5</color>
-    <color name="header_text">#ff808080</color>
+    <color name="section_grey">#fff0f1f5</color>
+    <color name="section_text">#ff808080</color>
 
     <color name="grey">#9E9E9E</color>
     <color name="grey_dark">#616161</color>

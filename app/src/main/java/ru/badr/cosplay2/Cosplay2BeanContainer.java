@@ -11,7 +11,7 @@ import java.util.Properties;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 import ru.badr.base.util.SettingsUtils;
-import ru.badr.base.util.json.DateLongDeserializer;
+import ru.badr.base.util.json.DateShortLongDeserializer;
 import ru.badr.base.util.json.SimpleDateSerializer;
 import ru.badr.cosplay2.remote.Cosplay2RestService;
 import ru.badr.cosplay2.remote.InstagramRestService;
@@ -54,7 +54,7 @@ public class Cosplay2BeanContainer {
     public RestAdapter getInstagramRestAdapter() {
         if (instagramRestAdapter == null) {
             GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(Date.class, new DateLongDeserializer());
+            gsonBuilder.registerTypeAdapter(Date.class, new DateShortLongDeserializer());
             instagramRestAdapter = new RestAdapter.Builder()
                     .setEndpoint(properties.getProperty("instagram.url"))
                     .setConverter(new GsonConverter(gsonBuilder.create()))

@@ -12,17 +12,19 @@ import java.lang.reflect.Type;
 import java.util.Date;
 
 /**
- * Created by Badr on 16.11.2015.
+ * User: ABadretdinov
+ * Date: 30.09.2014
+ * Time: 10:46
  */
-public class DateLongDeserializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
+public class DateShortLongDeserializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
     @Override
     public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        return new Date(jsonElement.getAsLong());
+        return new Date(jsonElement.getAsLong() * 1000);
     }
 
     @Override
     public JsonElement serialize(Date date, Type type, JsonSerializationContext jsonSerializationContext) {
-        JsonElement element = new JsonPrimitive(date != null ? date.getTime() : 0L);
+        JsonElement element = new JsonPrimitive(date != null ? date.getTime() / 1000 : 0L);
         return element;
     }
 }

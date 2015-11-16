@@ -19,6 +19,7 @@ import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
 import ru.badr.cosplay2.fragment.RegulationsFragment;
+import ru.badr.cosplay2.fragment.ScheduleFragment;
 import ru.badr.cosplay2.fragment.SchemeFragment;
 import ru.badr.opencon.R;
 
@@ -37,6 +38,11 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.content_frame);
         switch (menuItem.getItemId()) {
+            case R.id.schedule:
+                if (!(fragment instanceof ScheduleFragment)) {
+                    Navigate.toMain(this, ScheduleFragment.class, menuItem.getItemId());
+                }
+                break;
             case R.id.members:
                 if (!(fragment instanceof MembersList)) {
                     Navigate.toMain(this, MembersList.class, menuItem.getItemId());

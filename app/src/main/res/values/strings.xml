@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OPENCON</string>
 
+    <string name="schedule">Расписание</string>
     <string name="members">Участники</string>
     <string name="jury">Жюри и Организаторы</string>
     <string name="news">Новости</string>

@@ -5,6 +5,7 @@ import retrofit.http.Query;
 import ru.badr.cosplay2.api.cards.info.GetCardResult;
 import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
 import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
+import ru.badr.cosplay2.api.schedule.base.Plan;
 
 /**
  * Created by ABadretdinov
@@ -12,6 +13,8 @@ import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
  * 13:21
  */
 public interface Cosplay2RestService {
+    @GET("/api/events/get_plan")
+    Plan getSchedule();
     @GET("/api/cards/get_topics_and_cards")
     TopicsAndCards getTopicsAndCards();
 
