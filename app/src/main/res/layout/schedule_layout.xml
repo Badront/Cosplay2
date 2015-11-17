@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -27,7 +28,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/no_data"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:visibility="gone" />
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -41,7 +41,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
             android:scrollbars="vertical" />
     </android.support.v4.widget.SwipeRefreshLayout>
 

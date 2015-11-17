@@ -106,7 +106,7 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         mProgressBar.setVisibility(View.GONE);
-        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        showMessage(spiceException.getCause() != null ? spiceException.getCause().getMessage() : spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mProgressBar.setVisibility(View.VISIBLE);

@@ -28,6 +28,8 @@ public abstract class BaseFragment extends Fragment {
         String resultMessage;
         if ("500 Internal Server Error".equals(message)) {
             resultMessage = getString(R.string.no_data_available_yet);
+        } else if ("Network is not available".equals(message)) {
+            resultMessage = getString(R.string.no_internet_connection);
         } else {
             resultMessage = message;
         }

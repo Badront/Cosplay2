@@ -177,4 +177,5 @@
     <string name="where_and_when">Где и когда</string>
     <string name="how_to_get_there">Как доехать?</string>
     <string name="open_map">Открыть карту</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
 </resources>

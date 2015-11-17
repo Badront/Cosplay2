@@ -93,7 +93,7 @@ public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedView
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         setRefreshing(false);
-        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        showMessage(spiceException.getCause() != null ? spiceException.getCause().getMessage() : spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadFeed();

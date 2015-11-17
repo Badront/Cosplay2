@@ -73,7 +73,7 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         setRefreshing(false);
         setAdapter(new MembersAdapter(null));
 
-        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        showMessage(spiceException.getCause() != null ? spiceException.getCause().getMessage() : spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRefresh();

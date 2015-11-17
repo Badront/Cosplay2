@@ -167,7 +167,7 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
     @Override
     public void onRequestFailure(SpiceException spiceException) {
         setRefreshing(false);
-        showMessage(spiceException.getCause().getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+        showMessage(spiceException.getCause() != null ? spiceException.getCause().getMessage() : spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRefresh();

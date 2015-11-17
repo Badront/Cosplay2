@@ -26,7 +26,7 @@ public class Utils {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.DATE, 20);
+        calendar.set(Calendar.DATE, 10);
         calendar.set(Calendar.MONTH, 10);
         calendar.set(Calendar.YEAR, 2015);
         return calendar.getTime().after(date);

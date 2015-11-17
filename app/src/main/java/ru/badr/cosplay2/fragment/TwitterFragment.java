@@ -15,6 +15,7 @@ import ru.badr.base.view.EndlessRecycleScrollListener;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.adapter.TweetsAdapter;
 import ru.badr.cosplay2.adapter.viewholder.TweetViewHolder;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov
@@ -84,7 +85,16 @@ public class TwitterFragment extends RecyclerFragment<Tweet, TweetViewHolder> {
             public void failure(TwitterException e) {
                 setRefreshing(false);
                 setAdapter(new TweetsAdapter(null));
-                showMessage(e.getMessage());
+                if (e.getMessage().contains("403")) {
+                    showMessage(getString(R.string.something_went_wrong), getString(R.string.repeat), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onRefresh();
+                        }
+                    });
+                } else {
+                    showMessage(e.getMessage());
+                }
             }
         });
     }
