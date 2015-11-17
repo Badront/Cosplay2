@@ -1,2 +1,2 @@
-# Cosplay2
-Unofficial android app for cosplay2.ru
+# Opencon 
+official android app for opencon (app for cosplay2.ru in future)
