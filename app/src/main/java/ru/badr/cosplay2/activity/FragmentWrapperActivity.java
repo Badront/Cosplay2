@@ -11,16 +11,6 @@ import android.view.View;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.util.BackListener;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.fragment.AboutFragment;
-import ru.badr.cosplay2.fragment.FanArtPagerFragment;
-import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
-import ru.badr.cosplay2.fragment.MediaFragment;
-import ru.badr.cosplay2.fragment.MembersList;
-import ru.badr.cosplay2.fragment.NewsFragment;
-import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
-import ru.badr.cosplay2.fragment.RegulationsFragment;
-import ru.badr.cosplay2.fragment.ScheduleFragment;
-import ru.badr.cosplay2.fragment.SchemeFragment;
 import ru.badr.opencon.R;
 
 /**
@@ -37,57 +27,9 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
         mDrawerLayout.closeDrawers();
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.content_frame);
-        switch (menuItem.getItemId()) {
-            case R.id.schedule:
-                if (!(fragment instanceof ScheduleFragment)) {
-                    Navigate.toMain(this, ScheduleFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.members:
-                if (!(fragment instanceof MembersList)) {
-                    Navigate.toMain(this, MembersList.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.photocosplay:
-                if (!(fragment instanceof PhotoCosplayListFragment)) {
-                    Navigate.toMain(this, PhotoCosplayListFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.fanart:
-                if (!(fragment instanceof FanArtPagerFragment)) {
-                    Navigate.toMain(this, FanArtPagerFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.jury:
-                if (!(fragment instanceof JuryAndOrgsFragment)) {
-                    Navigate.toMain(this, JuryAndOrgsFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.media:
-                if (!(fragment instanceof MediaFragment)) {
-                    Navigate.toMain(this, MediaFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.news:
-                if (!(fragment instanceof NewsFragment)) {
-                    Navigate.toMain(this, NewsFragment.class, menuItem.getItemId());
-                }
-                break;
-            case R.id.scheme:
-                if (!(fragment instanceof SchemeFragment)) {
-                    Navigate.toMain(this, SchemeFragment.class);
-                }
-                break;
-            case R.id.regulations:
-                if (!(fragment instanceof RegulationsFragment)) {
-                    Navigate.toMain(this, RegulationsFragment.class);
-                }
-                break;
-            case R.id.about:
-                if (!(fragment instanceof AboutFragment)) {
-                    Navigate.toMain(this, AboutFragment.class);
-                }
-                break;
+        Class newFragmentClass = mNavigationService.getMainFragment(menuItem.getItemId());
+        if (fragment == null || !fragment.getClass().equals(newFragmentClass)) {
+            Navigate.toMain(this, newFragmentClass, menuItem.getItemId());
         }
         return true;
     }
