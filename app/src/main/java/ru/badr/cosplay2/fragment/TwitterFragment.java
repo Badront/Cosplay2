@@ -10,6 +10,8 @@ import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TimelineResult;
 
+import java.util.ArrayList;
+
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
@@ -76,15 +78,19 @@ public class TwitterFragment extends RecyclerFragment<Tweet, TweetViewHolder> {
                     if (!mReloading && getAdapter() != null) {
                         ((TweetsAdapter) getAdapter()).addData(data.items);
                     } else {
-                        setAdapter(new TweetsAdapter(data.items));
+                        setAdapter(new TweetsAdapter(new ArrayList<Tweet>(data.items)));
                     }
                 }
+                mReloading = false;
             }
 
             @Override
             public void failure(TwitterException e) {
                 setRefreshing(false);
-                setAdapter(new TweetsAdapter(null));
+                if (getAdapter() == null) {
+                    setAdapter(new TweetsAdapter(null));
+                }
+                mReloading = false;
                 if (e.getMessage().contains("403")) {
                     showMessage(getString(R.string.something_went_wrong), getString(R.string.repeat), new View.OnClickListener() {
                         @Override
