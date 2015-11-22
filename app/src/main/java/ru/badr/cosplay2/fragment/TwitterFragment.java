@@ -91,7 +91,7 @@ public class TwitterFragment extends RecyclerFragment<Tweet, TweetViewHolder> {
                     setAdapter(new TweetsAdapter(null));
                 }
                 mReloading = false;
-                if (e.getMessage().contains("403")) {
+                if (e.getMessage().contains("403") && isVisible()) {
                     showMessage(getString(R.string.something_went_wrong), getString(R.string.repeat), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
