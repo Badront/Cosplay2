@@ -2,6 +2,7 @@ package ru.badr.cosplay2.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -20,6 +21,8 @@ import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.Topic;
 import ru.badr.cosplay2.task.SectionedCardsLoadRequest;
 import ru.badr.opencon.R;
+import xyz.danoz.recyclerviewfastscroller.sectionindicator.title.SectionTitleIndicator;
+import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
 /**
  * Created by ABadretdinov
@@ -27,6 +30,8 @@ import ru.badr.opencon.R;
  * 15:47
  */
 public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<Topic.List> {
+    VerticalRecyclerViewFastScroller mFastScroller;
+    SectionTitleIndicator mSectionTitleIndicator;
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
 
     @Override
@@ -47,6 +52,11 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.members_list;
+    }
+
+    @Override
     protected RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new LayoutManager(context);
     }
@@ -56,14 +66,33 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         return false;
     }
 
-
     @Override
     protected String getTitle() {
         return getString(R.string.members);
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mFastScroller = (VerticalRecyclerViewFastScroller) view.findViewById(R.id.fast_scroller);
+
+        mSectionTitleIndicator = (SectionTitleIndicator) view.findViewById(R.id.fast_scroller_section_title_indicator);
+
+
+        RecyclerView recyclerView = getRecyclerView();
+        mFastScroller.setRecyclerView(recyclerView);
+        recyclerView.addOnScrollListener(mFastScroller.getOnScrollListener());
+
+        mFastScroller.setSectionIndicator(mSectionTitleIndicator);
+
+        setRecyclerViewLayoutManager(recyclerView);
+    }
+
+
+    @Override
     public void onRefresh() {
+        mSectionTitleIndicator.setVisibility(View.GONE);
+        mFastScroller.setVisibility(View.GONE);
         setRefreshing(true);
         mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity().getApplicationContext()), this);
     }
@@ -85,6 +114,8 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
     public void onRequestSuccess(Topic.List topics) {
         setRefreshing(false);
         setAdapter(new MembersAdapter(topics));
+        mSectionTitleIndicator.setVisibility(View.VISIBLE);
+        mFastScroller.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -95,5 +126,21 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         bundle.putString(FestCardInfoFragment.TITLE, card.getTopicName());
         bundle.putSerializable(FestCardInfoFragment.CARD, card);
         Navigate.to(getActivity(), FestCardInfoFragment.class, bundle, false);
+    }
+
+    /**
+     * Set RecyclerView's LayoutManager
+     */
+    public void setRecyclerViewLayoutManager(RecyclerView recyclerView) {
+        int scrollPosition = 0;
+
+        // If a layout manager has already been set, get current scroll position.
+        if (recyclerView.getLayoutManager() != null) {
+            scrollPosition =
+                    ((LayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+        }
+
+        recyclerView.setLayoutManager(getLayoutManager(getActivity()));
+        recyclerView.scrollToPosition(scrollPosition);
     }
 }

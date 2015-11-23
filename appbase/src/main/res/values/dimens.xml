@@ -13,4 +13,13 @@
     <dimen name="fab_border_width_fix">0dp</dimen>
     <dimen name="half_view_margin">4dp</dimen>
     <dimen name="navigation_max_width">320dp</dimen>
+
+
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_huge">64dp</dimen>
+
+    <dimen name="list_item_height">72dp</dimen>
 </resources>

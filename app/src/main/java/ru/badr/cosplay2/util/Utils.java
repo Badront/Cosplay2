@@ -27,8 +27,8 @@ public class Utils {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.DATE, 3);
-        calendar.set(Calendar.MONTH, Calendar.DECEMBER);
+        calendar.set(Calendar.DATE, 25);
+        calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
         calendar.set(Calendar.YEAR, 2015);
         return calendar.getTime().after(date);
     }
