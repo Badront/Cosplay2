@@ -1,4 +1,4 @@
-package ru.badr.cosplay2.api.cards.info;
+package ru.badr.cosplay2.api.cards.info.json;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,6 +6,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import ru.badr.cosplay2.api.cards.User;
+import ru.badr.cosplay2.api.cards.info.Badge;
+import ru.badr.cosplay2.api.cards.info.Field;
+import ru.badr.cosplay2.api.cards.info.InfoCard;
+import ru.badr.cosplay2.api.cards.info.InfoTopic;
+import ru.badr.cosplay2.api.cards.info.ReqSection;
+import ru.badr.cosplay2.api.cards.info.ReqValue;
+import ru.badr.cosplay2.api.cards.info.Section;
 
 /**
  * Created by ABadretdinov

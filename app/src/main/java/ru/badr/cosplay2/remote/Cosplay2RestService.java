@@ -2,7 +2,8 @@ package ru.badr.cosplay2.remote;
 
 import retrofit.http.GET;
 import retrofit.http.Query;
-import ru.badr.cosplay2.api.cards.info.GetCardResult;
+import ru.badr.cosplay2.api.cards.info.json.GetCardResult;
+import ru.badr.cosplay2.api.cards.info.json.GetUserResult;
 import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
 import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
 import ru.badr.cosplay2.api.schedule.base.Plan;
@@ -20,6 +21,9 @@ public interface Cosplay2RestService {
 
     @GET("/api/cards/get_card")
     GetCardResult getCard(@Query("request_id") long cardId);
+
+    @GET("/api/users/get")
+    GetUserResult getUser(@Query("user_id") long userId);
 
     @GET("/api/media/get_data")
     AlbumsAndPhotos getAlbumsAndPhotos();

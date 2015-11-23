@@ -19,7 +19,9 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import java.util.List;
 
 import ru.badr.base.fragment.BaseFragment;
+import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.api.cards.Card;
+import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 import ru.badr.cosplay2.task.CardResultLoadRequest;
@@ -35,7 +37,7 @@ import ru.badr.opencon.R;
  * 20.10.2015
  * 11:07
  */
-public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, RequestListener<ReqSectionHolder.List> {
+public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, RequestListener<ReqSectionHolder.List>, View.OnClickListener {
     public static final String TITLE = "title";
     public static final String CARD = "card";
 
@@ -160,6 +162,7 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
                         break;
                     case user:
                         view = new FestCardUserFieldView(context);
+                        view.setOnClickListener(this);
                         break;
                 }
                 view.setReqValueHolder(reqValuesHolder);
@@ -169,6 +172,18 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
                     }
                     sectionView.addView(view);
                 }
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v instanceof FestCardUserFieldView) {
+            User user = ((FestCardUserFieldView) v).getUser();
+            if (user != null) {
+                Bundle bundle = new Bundle();
+                bundle.putLong(Navigate.PARAM_ID, user.getId());
+                Navigate.toForEntityResult(this, UserInfoFragment.class, bundle, CREATE_ENTITY_CODE);
             }
         }
     }

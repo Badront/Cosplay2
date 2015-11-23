@@ -15,9 +15,9 @@ import ru.badr.cosplay2.api.cards.CardImage;
 import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.info.Badge;
 import ru.badr.cosplay2.api.cards.info.Field;
-import ru.badr.cosplay2.api.cards.info.GetCardResult;
 import ru.badr.cosplay2.api.cards.info.InfoCard;
 import ru.badr.cosplay2.api.cards.info.ReqValue;
+import ru.badr.cosplay2.api.cards.info.json.GetCardResult;
 import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 

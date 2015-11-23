@@ -11,6 +11,7 @@ import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.CardImage;
 import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.api.cards.list.ListCard;
+import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov
@@ -57,6 +58,16 @@ public class Utils {
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
         String baseUrl = properties.getProperty("global.url15");
         return baseUrl + "images/avatars/" + user.getId() + "_full.png";
+    }
 
+    public static String getUserSex(Context context, User user) {
+        switch (user.getSex()) {
+            case male:
+                return context.getString(R.string.male);
+            case female:
+                return context.getString(R.string.female);
+            default:
+                return context.getString(R.string.unknown);
+        }
     }
 }

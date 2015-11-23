@@ -64,6 +64,13 @@ public class FestCardUserFieldView extends FestCardView<User> {
         }
     }
 
+    public User getUser() {
+        if (mReqValueHolder != null) {
+            return mReqValueHolder.getValue();
+        }
+        return null;
+    }
+
     public boolean isEmpty() {
         return mReqValueHolder.getValue() == null || mReqValueHolder.getValue().getId() == 0;
     }
