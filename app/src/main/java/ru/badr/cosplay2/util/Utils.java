@@ -50,13 +50,13 @@ public class Utils {
             String eventId = properties.getProperty("global.event_id15");
             return baseUrl + "uploads/" + eventId + "/" + card.getId() + "/" + cardImage.getFilename() + "_" + size + ".jpg";
         }
-        return baseUrl + "images/avatars/" + card.getUserId() + ".png";
+        return baseUrl + "images/avatars/" + card.getUserId() + "_full.png";
     }
 
     public static String getUserAvatar(Context context, User user) {
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
         String baseUrl = properties.getProperty("global.url15");
-        return baseUrl + "images/avatars/" + user.getId() + ".png";
+        return baseUrl + "images/avatars/" + user.getId() + "_full.png";
 
     }
 }

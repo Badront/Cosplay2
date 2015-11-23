@@ -48,11 +48,14 @@ public class CardResultLoadRequest extends TaskRequest<ReqSectionHolder.List> {
             List<User> users = result.getUsers();
             if (fields != null && reqValues != null) {
                 ReqSectionHolder reqSectionHolder = null;
-                for (Field field : fields) {
-                    Iterator<ReqValue> reqValuesIterator = reqValues.iterator();
-                    while (reqValuesIterator.hasNext()) {
-                        ReqValue value = reqValuesIterator.next();
+                Iterator<ReqValue> reqValuesIterator = reqValues.iterator();
+                while (reqValuesIterator.hasNext()) {
+                    ReqValue value = reqValuesIterator.next();
+                    boolean found = false;
+                    for (int i = 0, size = fields.size(); i < size && !found; i++) {
+                        Field field = fields.get(i);
                         if (value.getFieldId() == field.getId()) {
+                            found = true;
                             if (reqSectionHolder == null) {
                                 reqSectionHolder = new ReqSectionHolder();
                                 reqSectionHolder.setId(value.getRequestSectionId());
