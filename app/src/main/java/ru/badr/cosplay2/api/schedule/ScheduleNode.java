@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import ru.badr.cosplay2.api.cards.Card;
+import ru.badr.cosplay2.util.Utils;
 
 /**
  * Created by Badr on 15.11.2015.
@@ -100,6 +101,14 @@ public class ScheduleNode implements Serializable {
 
     public void setCollapsed(boolean collapsed) {
         this.collapsed = collapsed;
+    }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder(getTitle());
+        if (getStartTime() != null) {
+            builder.append(' ').append(Utils.SCHEDULE_TIME_FORMAT.format(getStartTime()));
+        }
+        return builder.toString();
     }
 
     public enum Type {

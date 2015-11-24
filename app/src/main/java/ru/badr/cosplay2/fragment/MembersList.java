@@ -114,6 +114,7 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
     public void onRequestSuccess(Topic.List topics) {
         setRefreshing(false);
         setAdapter(new MembersAdapter(topics));
+        setRecyclerViewLayoutManager(getRecyclerView());
         mSectionTitleIndicator.setVisibility(View.VISIBLE);
         mFastScroller.setVisibility(View.VISIBLE);
     }
@@ -140,7 +141,6 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
                     ((LayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         }
 
-        recyclerView.setLayoutManager(getLayoutManager(getActivity()));
         recyclerView.scrollToPosition(scrollPosition);
     }
 }

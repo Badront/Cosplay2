@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SectionIndexer;
 
 import com.bumptech.glide.Glide;
 import com.tonicartos.superslim.GridSLM;
 import com.tonicartos.superslim.LayoutManager;
 import com.tonicartos.superslim.LinearSLM;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +27,11 @@ import ru.badr.opencon.R;
 /**
  * Created by Badr on 16.11.2015.
  */
-public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder> {
-    public static final DateFormat TIME_FORMAT = DateFormat.getTimeInstance(DateFormat.SHORT);
+public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder> implements SectionIndexer {
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_SECTION = 1;
     private static final int VIEW_TYPE_CONTENT = 2;
+    private LineItem[] mSections;
 
     public ScheduleAdapter(ScheduleNode.List data) {
         super(null);
@@ -45,6 +45,7 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
     }
 
     private List<Object> setLineItems(List list) {
+        List<LineItem> sections = new ArrayList<>();
         List<Object> result = new ArrayList<>();
         if (list != null && !list.isEmpty()) {
             ScheduleNode.List data = (ScheduleNode.List) list;
@@ -55,9 +56,14 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
                     sectionFirstPosition = result.size();
                     isHeader = true;
                 }
-                result.add(new LineItem(sectionFirstPosition, isHeader, node));
+                LineItem lineItem = new LineItem(sectionFirstPosition, isHeader, node);
+                result.add(lineItem);
+                if (lineItem.isHeader) {
+                    sections.add(lineItem);
+                }
             }
         }
+        mSections = sections.toArray(new LineItem[sections.size()]);
         return result;
     }
 
@@ -90,7 +96,7 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
             lp.headerStartMarginIsAuto = true;
             if (node.getStartTime() != null) {
                 ScheduleSectionViewHolder hHolder = (ScheduleSectionViewHolder) holder;
-                hHolder.time.setText(TIME_FORMAT.format(node.getStartTime()));
+                hHolder.time.setText(Utils.SCHEDULE_TIME_FORMAT.format(node.getStartTime()));
                 hHolder.header.setText(node.getTitle());
             } else {
                 HeaderViewHolder hHolder = (HeaderViewHolder) holder;
@@ -100,9 +106,9 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
             ScheduleViewHolder sHolder = (ScheduleViewHolder) holder;
 
             Context context = sHolder.itemView.getContext();
-            Glide.with(context).load(Utils.getSmallCardImageUrl(context, node.getCard())).into(sHolder.photo);
+            Glide.with(context).load(Utils.getCardImageUrl(context, node.getCard())).into(sHolder.photo);
             sHolder.title.setText(node.getTitle());
-            sHolder.time.setText(TIME_FORMAT.format(node.getStartTime()));
+            sHolder.time.setText(Utils.SCHEDULE_TIME_FORMAT.format(node.getStartTime()));
         }
         lp.setSlm(LinearSLM.ID);
         lp.setFirstPosition(lineItem.sectionFirstPosition);
@@ -119,6 +125,30 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
             return VIEW_TYPE_SECTION;
         }
         return VIEW_TYPE_HEADER;
+    }
 
+    @Override
+    public Object[] getSections() {
+        return mSections;
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        return mSections[sectionIndex].sectionFirstPosition;
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        if (position >= getItemCount()) {
+            position = getItemCount() - 1;
+        }
+        LineItem item = (LineItem) getItem(position);
+        for (int i = 0; i < mSections.length; i++) {
+            LineItem section = mSections[i];
+            if (section.sectionFirstPosition == item.sectionFirstPosition) {
+                return i;
+            }
+        }
+        return 0;
     }
 }

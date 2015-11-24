@@ -2,6 +2,7 @@ package ru.badr.cosplay2.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -20,11 +21,15 @@ import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.schedule.ScheduleNode;
 import ru.badr.cosplay2.task.ScheduleLoadRequest;
 import ru.badr.opencon.R;
+import xyz.danoz.recyclerviewfastscroller.sectionindicator.title.SectionTitleIndicator;
+import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
 /**
  * Created by Badr on 16.11.2015.
  */
 public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<ScheduleNode.List> {
+    VerticalRecyclerViewFastScroller mFastScroller;
+    SectionTitleIndicator mSectionTitleIndicator;
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
 
     @Override
@@ -60,7 +65,27 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mFastScroller = (VerticalRecyclerViewFastScroller) view.findViewById(R.id.fast_scroller);
+
+        mSectionTitleIndicator = (SectionTitleIndicator) view.findViewById(R.id.fast_scroller_section_title_indicator);
+
+
+        RecyclerView recyclerView = getRecyclerView();
+        mFastScroller.setRecyclerView(recyclerView);
+        recyclerView.addOnScrollListener(mFastScroller.getOnScrollListener());
+
+        mFastScroller.setSectionIndicator(mSectionTitleIndicator);
+
+        setRecyclerViewLayoutManager(recyclerView);
+    }
+
+
+    @Override
     public void onRefresh() {
+        mSectionTitleIndicator.setVisibility(View.GONE);
+        mFastScroller.setVisibility(View.GONE);
         setRefreshing(true);
         mSpiceManager.execute(new ScheduleLoadRequest(getActivity().getApplicationContext()), this);
     }
@@ -82,6 +107,9 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
     public void onRequestSuccess(ScheduleNode.List nodes) {
         setRefreshing(false);
         setAdapter(new ScheduleAdapter(nodes));
+        setRecyclerViewLayoutManager(getRecyclerView());
+        mSectionTitleIndicator.setVisibility(View.VISIBLE);
+        mFastScroller.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -95,5 +123,20 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
             bundle.putSerializable(FestCardInfoFragment.CARD, card);
             Navigate.to(getActivity(), FestCardInfoFragment.class, bundle, false);
         }
+    }
+
+    /**
+     * Set RecyclerView's LayoutManager
+     */
+    public void setRecyclerViewLayoutManager(RecyclerView recyclerView) {
+        int scrollPosition = 0;
+
+        // If a layout manager has already been set, get current scroll position.
+        if (recyclerView.getLayoutManager() != null) {
+            scrollPosition =
+                    ((LayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+        }
+
+        recyclerView.scrollToPosition(scrollPosition);
     }
 }

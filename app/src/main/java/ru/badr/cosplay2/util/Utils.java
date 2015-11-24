@@ -2,6 +2,7 @@ package ru.badr.cosplay2.util;
 
 import android.content.Context;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -19,6 +20,7 @@ import ru.badr.opencon.R;
  * 16:33
  */
 public class Utils {
+    public static final DateFormat SCHEDULE_TIME_FORMAT = DateFormat.getTimeInstance(DateFormat.SHORT);
 
     public static boolean isTimeHasCome() {
         Date date = new Date();
