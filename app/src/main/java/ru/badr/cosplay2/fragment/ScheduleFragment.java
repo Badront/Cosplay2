@@ -71,7 +71,6 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
 
         mSectionTitleIndicator = (SectionTitleIndicator) view.findViewById(R.id.fast_scroller_section_title_indicator);
 
-
         RecyclerView recyclerView = getRecyclerView();
         mFastScroller.setRecyclerView(recyclerView);
         recyclerView.addOnScrollListener(mFastScroller.getOnScrollListener());

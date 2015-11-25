@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.TimeZone;
 
 import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.api.cards.Card;
@@ -21,6 +22,10 @@ import ru.badr.opencon.R;
  */
 public class Utils {
     public static final DateFormat SCHEDULE_TIME_FORMAT = DateFormat.getTimeInstance(DateFormat.SHORT);
+
+    static {
+        SCHEDULE_TIME_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
+    }
 
     public static boolean isTimeHasCome() {
         Date date = new Date();
