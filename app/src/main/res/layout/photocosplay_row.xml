@@ -41,7 +41,7 @@
                     android:singleLine="true"
                     android:textColor="@android:color/white" />
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/win"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
