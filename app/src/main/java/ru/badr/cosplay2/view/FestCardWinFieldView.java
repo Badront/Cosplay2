@@ -84,7 +84,6 @@ public class FestCardWinFieldView extends FestCardView<InfoCard> {
                 color = R.color.bronze;
             }
             mImageView.setColorFilter(context.getResources().getColor(color));
-            //mImageView.setSupportBackgroundTintList(csl);
         }
     }
 
