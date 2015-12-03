@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="FestCardWinFieldView">
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textAppearance" />
+    </declare-styleable>
     <declare-styleable name="FestCardImageFieldView">
         <attr name="android:text" />
         <attr name="android:textColor" />

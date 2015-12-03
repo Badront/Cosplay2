@@ -22,6 +22,7 @@ import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.api.cards.Card;
 import ru.badr.cosplay2.api.cards.User;
+import ru.badr.cosplay2.api.cards.info.InfoCard;
 import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
 import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 import ru.badr.cosplay2.task.CardResultLoadRequest;
@@ -30,6 +31,7 @@ import ru.badr.cosplay2.view.FestCardLinkFieldView;
 import ru.badr.cosplay2.view.FestCardTextFieldView;
 import ru.badr.cosplay2.view.FestCardUserFieldView;
 import ru.badr.cosplay2.view.FestCardView;
+import ru.badr.cosplay2.view.FestCardWinFieldView;
 import ru.badr.opencon.R;
 
 /**
@@ -155,6 +157,15 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
                         view = new FestCardTextFieldView(context);
                         break;
                     case image:
+                        InfoCard infoCard = (InfoCard) reqValuesHolder.getValue();
+                        if (!TextUtils.isEmpty(infoCard.getWin()) && !TextUtils.isEmpty(infoCard.getWinTitle())) {
+                            FestCardView winner = new FestCardWinFieldView(context);
+                            winner.setReqValueHolder(reqValuesHolder);
+                            if (sectionView.getChildCount() != 0) {
+                                sectionView.addView(inflater.inflate(R.layout.list_divider, sectionView, false));
+                            }
+                            sectionView.addView(winner);
+                        }
                         view = new FestCardImageFieldView(context);
                         break;
                     case link:

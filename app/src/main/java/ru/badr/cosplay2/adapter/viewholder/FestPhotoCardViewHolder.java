@@ -1,5 +1,6 @@
 package ru.badr.cosplay2.adapter.viewholder;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import ru.badr.opencon.R;
 public class FestPhotoCardViewHolder extends BaseViewHolder {
     public ImageView photo;
     public TextView title;
+    public AppCompatImageView win;
 
     public FestPhotoCardViewHolder(View itemView, OnItemClickListener clickListener) {
         super(itemView, clickListener);
@@ -25,5 +27,6 @@ public class FestPhotoCardViewHolder extends BaseViewHolder {
     protected void initView(View itemView) {
         photo = (ImageView) itemView.findViewById(R.id.image);
         title = (TextView) itemView.findViewById(R.id.title);
+        win = (AppCompatImageView) itemView.findViewById(R.id.win);
     }
 }

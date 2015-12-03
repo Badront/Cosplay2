@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,20 @@ public class FestPhotoCardAdapter extends BaseRecyclerAdapter<ListCard, FestPhot
         ListCard card = getItem(position);
         Context context = holder.itemView.getContext();
         holder.title.setText(card.getVotingTitle());
+        if (!TextUtils.isEmpty(card.getWin())) {
+            holder.win.setVisibility(View.VISIBLE);
+            int color;
+            if ("1".equals(card.getWin())) {
+                color = R.color.gold;
+            } else if ("2".equals(card.getWin())) {
+                color = R.color.silver;
+            } else {
+                color = R.color.bronze;
+            }
+            holder.win.setColorFilter(context.getResources().getColor(color));
+        } else {
+            holder.win.setVisibility(View.GONE);
+        }
 
         Glide.with(context).load(Utils.getCardImageUrl(context, card)).into(holder.photo);
 

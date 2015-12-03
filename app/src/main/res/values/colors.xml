@@ -3,4 +3,8 @@
     <color name="colorPrimary">@color/blue_grey</color>
     <color name="colorPrimaryDark">@color/blue_grey_dark</color>
     <color name="colorAccent">@color/red</color>
+
+    <color name="gold">#ffd700</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="bronze">#CD7F32</color>
 </resources>
