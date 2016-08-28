@@ -28,7 +28,7 @@ import ru.badr.opencon.R;
 public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedViewHolder> implements RequestListener<InstaResult> {
     public static final String INSTAGRAM_PACKAGE = "com.instagram.android";
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
-    private Long mNextMaxFeedId;
+    private String mNextMaxFeedId;
 
     @Override
     public void onStart() {

@@ -12,10 +12,10 @@ import ru.badr.cosplay2.api.instagram.InstaResult;
  * 15:44
  */
 public class InstaFeedRequest extends TaskRequest<InstaResult> {
-    private Long mNextMaxTagId;
+    private String mNextMaxTagId;
     private Context mContext;
 
-    public InstaFeedRequest(Context context, Long nextMaxTagId) {
+    public InstaFeedRequest(Context context, String nextMaxTagId) {
         super(InstaResult.class);
         this.mContext = context;
         mNextMaxTagId = nextMaxTagId;
@@ -24,8 +24,8 @@ public class InstaFeedRequest extends TaskRequest<InstaResult> {
     @Override
     public InstaResult loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        String clientId = container.getProperties().getProperty("instagram.client_id");
+        String accessToken = container.getProperties().getProperty("instagram.access_token");
         String tag = container.getProperties().getProperty("global.tag.instagram");
-        return container.getInstagramRestService().getRecent(tag, clientId, mNextMaxTagId);
+        return container.getInstagramRestService().getRecent(tag, accessToken, mNextMaxTagId);
     }
 }

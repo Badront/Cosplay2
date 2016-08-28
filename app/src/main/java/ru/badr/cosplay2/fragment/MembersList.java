@@ -115,8 +115,13 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         setRefreshing(false);
         setAdapter(new MembersAdapter(topics));
         setRecyclerViewLayoutManager(getRecyclerView());
-        mSectionTitleIndicator.setVisibility(View.VISIBLE);
-        mFastScroller.setVisibility(View.VISIBLE);
+        if (getAdapter().getItemCount() == 0) {
+            mSectionTitleIndicator.setVisibility(View.GONE);
+            mFastScroller.setVisibility(View.GONE);
+        } else {
+            mSectionTitleIndicator.setVisibility(View.VISIBLE);
+            mFastScroller.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -13,6 +13,6 @@ import ru.badr.cosplay2.api.instagram.InstaResult;
  */
 public interface InstagramRestService {
     @GET("/tags/{tag}/media/recent")
-    InstaResult getRecent(@Path("tag") String tag, @Query("client_id") String clientId, @Query("max_tag_id") Long maxTagId);
+    InstaResult getRecent(@Path("tag") String tag, @Query("access_token") String clientId, @Query("max_tag_id") String maxTagId);
 
 }

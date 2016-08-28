@@ -134,6 +134,9 @@ public class MembersAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder> 
 
     @Override
     public int getSectionForPosition(int position) {
+        if (getItemCount() == 0) {
+            return 0;
+        }
         if (position >= getItemCount()) {
             position = getItemCount() - 1;
         }

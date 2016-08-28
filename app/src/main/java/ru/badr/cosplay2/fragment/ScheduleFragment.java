@@ -107,8 +107,13 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
         setRefreshing(false);
         setAdapter(new ScheduleAdapter(nodes));
         setRecyclerViewLayoutManager(getRecyclerView());
-        mSectionTitleIndicator.setVisibility(View.VISIBLE);
-        mFastScroller.setVisibility(View.VISIBLE);
+        if (getAdapter().getItemCount() == 0) {
+            mSectionTitleIndicator.setVisibility(View.GONE);
+            mFastScroller.setVisibility(View.GONE);
+        } else {
+            mSectionTitleIndicator.setVisibility(View.VISIBLE);
+            mFastScroller.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

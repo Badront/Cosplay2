@@ -52,10 +52,10 @@ public class Utils {
             return null;
         }
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
-        String baseUrl = properties.getProperty("global.url15");
+        String baseUrl = properties.getProperty("global.url16");
         if (card instanceof ListCard && ((ListCard) card).getImage() != null) {
             CardImage cardImage = ((ListCard) card).getImage();
-            String eventId = properties.getProperty("global.event_id15");
+            String eventId = properties.getProperty("global.event_id16");
             return baseUrl + "uploads/" + eventId + "/" + card.getId() + "/" + cardImage.getFilename() + "_" + size + ".jpg";
         }
         return baseUrl + "images/avatars/" + card.getUserId() + "_full.png";
@@ -63,7 +63,7 @@ public class Utils {
 
     public static String getUserAvatar(Context context, User user) {
         Properties properties = Cosplay2BeanContainer.getInstance(context).getProperties();
-        String baseUrl = properties.getProperty("global.url15");
+        String baseUrl = properties.getProperty("global.url16");
         return baseUrl + "images/avatars/" + user.getId() + "_full.png";
     }
 

@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 public class InstaPagination implements Serializable {
     @SerializedName("next_max_tag_id")
-    private Long nextMaxTagId;
+    private String nextMaxTagId;
     @SerializedName("next_url")
     private String nextUrl;
 
@@ -23,11 +23,11 @@ public class InstaPagination implements Serializable {
         this.nextUrl = nextUrl;
     }
 
-    public Long getNextMaxTagId() {
+    public String getNextMaxTagId() {
         return nextMaxTagId;
     }
 
-    public void setNextMaxTagId(Long nextMaxTagId) {
+    public void setNextMaxTagId(String nextMaxTagId) {
         this.nextMaxTagId = nextMaxTagId;
     }
 }
