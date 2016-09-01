@@ -1,4 +1,4 @@
-package ru.badr.cosplay2.api.instagram;
+package com.histler.insta.api;
 
 import java.io.Serializable;
 

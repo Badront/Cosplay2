@@ -33,7 +33,7 @@ public class SectionedCardsLoadRequest extends TaskRequest<Topic.List> {
     @Override
     public Topic.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards();
+        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards().execute().body();
         Properties properties = container.getProperties();
         List<String> notToIncludeTags = Arrays.asList(properties.getProperty("opencon.tag.photo"), properties.getProperty("opencon.tag.digital_fanart"), properties.getProperty("opencon.tag.traditional_fanart"));
 

@@ -33,9 +33,9 @@ public class ScheduleLoadRequest extends TaskRequest<ScheduleNode.List> {
     @Override
     public ScheduleNode.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        Plan result = container.getCosplay2RestService().getSchedule();
+        Plan result = container.getCosplay2RestService().getSchedule().execute().body();
 
-        TopicsAndCards tac = container.getCosplay2RestService().getTopicsAndCards();
+        TopicsAndCards tac = container.getCosplay2RestService().getTopicsAndCards().execute().body();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Date.class, new DateLongDeserializer());

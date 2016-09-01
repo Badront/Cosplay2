@@ -23,7 +23,7 @@ public class UserInfoLoadRequest extends TaskRequest<User> {
     @Override
     public User loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        GetUserResult result = container.getCosplay2RestService().getUser(mUserId);
+        GetUserResult result = container.getCosplay2RestService().getUser(mUserId).execute().body();
         if (result != null) {
             return result.getUser();
         }

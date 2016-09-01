@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+import com.histler.insta.api.InstaFeed;
+import com.histler.insta.api.InstaResult;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -15,8 +17,6 @@ import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
 import ru.badr.cosplay2.adapter.InstaFeedAdapter;
 import ru.badr.cosplay2.adapter.viewholder.InstaFeedViewHolder;
-import ru.badr.cosplay2.api.instagram.InstaFeed;
-import ru.badr.cosplay2.api.instagram.InstaResult;
 import ru.badr.cosplay2.task.InstaFeedRequest;
 import ru.badr.opencon.R;
 

@@ -2,9 +2,10 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
+import com.histler.insta.api.InstaResult;
+
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.instagram.InstaResult;
 
 /**
  * Created by ABadretdinov
@@ -26,6 +27,6 @@ public class InstaFeedRequest extends TaskRequest<InstaResult> {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
         String accessToken = container.getProperties().getProperty("instagram.access_token");
         String tag = container.getProperties().getProperty("global.tag.instagram");
-        return container.getInstagramRestService().getRecent(tag, accessToken, mNextMaxTagId);
+        return container.getInstagramRestService().getRecent(tag, accessToken, mNextMaxTagId).execute().body();
     }
 }

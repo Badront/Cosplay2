@@ -4,14 +4,17 @@ import android.util.Base64;
 
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.Map;
 
-import retrofit.RequestInterceptor;
-import retrofit.RestAdapter;
-import retrofit.client.OkClient;
-import retrofit.converter.GsonConverter;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import ru.badr.base.util.json.UTCDateSerializer;
 
 /**
@@ -23,9 +26,8 @@ public class Base64ServiceGenerator {
 
     public static <S> S createService(Class<S> serviceClass, String baseUrl, String username, String password, Map<Type, Object> adapters) {
         // set endpoint url
-        RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(baseUrl)
-                .setClient(new OkClient());
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(baseUrl);
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         boolean needDefaultDateSerializer = true;
@@ -40,24 +42,31 @@ public class Base64ServiceGenerator {
         if (needDefaultDateSerializer) {
             gsonBuilder.registerTypeAdapter(Date.class, new UTCDateSerializer("yyyy-MM-dd'T'HH:mm:ss'Z'"));
         }
-        builder.setConverter(new GsonConverter(gsonBuilder.create()));
+        builder.addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()));
 
+        OkHttpClient.Builder okBuilder = new OkHttpClient.Builder();
         if (username != null && password != null) {
             // concatenate username and password with colon for authentication
             final String credentials = username + ":" + password;
-
-            builder.setRequestInterceptor(new RequestInterceptor() {
+            okBuilder.addInterceptor(new Interceptor() {
                 @Override
-                public void intercept(RequestInterceptor.RequestFacade request) {
+                public Response intercept(Chain chain) throws IOException {
+                    Request request = chain.request();
+
                     // create Base64 encoder string
                     String string = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-                    request.addHeader("Authorization", string);
-                    request.addHeader("Accept", "application/json");
+                    request = request.newBuilder()
+                            .addHeader("Authorization", string)
+                            .addHeader("Accept", "application/json")
+                            .build();
+                    return chain.proceed(request);
                 }
             });
         }
+        builder
+                .client(okBuilder.build());
 
-        RestAdapter adapter = builder.build();
+        Retrofit adapter = builder.build();
 
         return adapter.create(serviceClass);
     }

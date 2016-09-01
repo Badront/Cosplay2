@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "ru.badr.opencon"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 9
         versionName "1.8"
     }
@@ -31,6 +31,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':appbase')
+    compile project(':instagramintegration')
     compile "com.android.support:appcompat-v7:${support_libraries_version}"
     compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true;
