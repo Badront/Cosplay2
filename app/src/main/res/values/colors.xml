@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/deep_purple</color>
-    <color name="colorPrimaryDark">@color/deep_purple_dark</color>
-    <color name="colorAccent">@color/red</color>
+    <color name="colorPrimary">@color/extra_opencon_purple</color>
+    <color name="colorPrimaryDark">@color/extra_opencon_purple_dark</color>
+    <color name="colorAccent">@color/extra_opencon_red</color>
 
     <color name="gold">#ffd700</color>
     <color name="silver">#c0c0c0</color>
     <color name="bronze">#CD7F32</color>
+
+    <color name="extra_opencon_purple">#553679</color>
+    <color name="extra_opencon_purple_dark">#54376e</color>
+    <color name="extra_opencon_red">#E33956</color>
 </resources>

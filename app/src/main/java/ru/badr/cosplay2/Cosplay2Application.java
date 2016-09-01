@@ -2,6 +2,7 @@ package ru.badr.cosplay2;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 
@@ -22,7 +23,7 @@ public class Cosplay2Application extends Application {
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
+        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
         BeanInitializer.getInstance(this);
     }
 }
