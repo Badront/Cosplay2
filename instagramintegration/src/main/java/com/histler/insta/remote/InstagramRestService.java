@@ -40,7 +40,7 @@ public interface InstagramRestService {
             "x-instagram-ajax:1",
             "x-requested-with:XMLHttpRequest"
     })
-    Call<InstaSecondResult> getTagNodes(@Field("q") String query, @Field("ref") String predefined, @Header("Referer") String referer, @Header("Cookie") String cookie, @Header("x-csrftoken") String token);
+    Call<InstaSecondResult> getTagNodes(@Field("q") String query, @Field("ref") String predefined, @Header("Referer") String referer);
 
     @GET("/p/{code}/?tagged={tag}&__a=1")
     Call<InstaNodeResult> getNodeInfo(@Path("code") String instaCode, @Path("tag") String tag);
