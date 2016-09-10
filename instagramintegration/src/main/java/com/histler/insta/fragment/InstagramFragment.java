@@ -66,7 +66,7 @@ public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedView
     private void loadFeed() {
         setRefreshing(true);
 
-        mSpiceManager.execute(new InstaRequest("opencon", mNextMaxFeedId), this);
+        mSpiceManager.execute(new InstaRequest("опенкон", mNextMaxFeedId), this);
     }
 
     @Override
