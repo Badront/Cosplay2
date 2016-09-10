@@ -13,17 +13,17 @@ import ru.badr.cosplay2.api.JurySectionEntity;
  * 16.10.2015
  * 18:10
  */
-public class JuryAndOrgsLoadRequest extends TaskRequest<JurySectionEntity.List> {
+public class JuryLoadRequest extends TaskRequest<JurySectionEntity.List> {
     private Context mContext;
 
-    public JuryAndOrgsLoadRequest(Context context) {
+    public JuryLoadRequest(Context context) {
         super(JurySectionEntity.List.class);
         this.mContext = context;
     }
 
     @Override
     public JurySectionEntity.List loadData() throws Exception {
-        String fileText = FileUtils.getTextFromAsset(mContext, "orgs_n_jury.json");
+        String fileText = FileUtils.getTextFromAsset(mContext, "jury.json");
         return new Gson().fromJson(fileText, JurySectionEntity.List.class);
     }
 }

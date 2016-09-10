@@ -8,7 +8,7 @@ import ru.badr.cosplay2.activity.FragmentWrapperActivity;
 import ru.badr.cosplay2.activity.MainActivity;
 import ru.badr.cosplay2.fragment.AboutFragment;
 import ru.badr.cosplay2.fragment.FanArtPagerFragment;
-import ru.badr.cosplay2.fragment.JuryAndOrgsFragment;
+import ru.badr.cosplay2.fragment.JuryFragment;
 import ru.badr.cosplay2.fragment.MediaFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
@@ -66,7 +66,7 @@ public class NavigationServiceImpl implements NavigationService {
             case R.id.fanart:
                 return FanArtPagerFragment.class;
             case R.id.jury:
-                return JuryAndOrgsFragment.class;
+                return JuryFragment.class;
             case R.id.media:
                 return MediaFragment.class;
             case R.id.news:

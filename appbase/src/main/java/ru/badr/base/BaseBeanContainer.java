@@ -1,7 +1,14 @@
 package ru.badr.base;
 
 
+import com.google.gson.GsonBuilder;
+
+import java.util.Date;
+
+import retrofit2.Retrofit;
+import ru.badr.base.remote.TimeApiService;
 import ru.badr.base.service.NavigationService;
+import ru.badr.base.util.json.DateShortLongDeserializer;
 
 /**
  * Created by ABadretdinov
@@ -10,29 +17,43 @@ import ru.badr.base.service.NavigationService;
  */
 public class BaseBeanContainer {
     private static final Object MONITOR = new Object();
-    private static BaseBeanContainer instance = null;
-    private NavigationService navigationService;
+    private static BaseBeanContainer sInstance = null;
+    private NavigationService mNavigationService;
+
+    private TimeApiService mTimeApiService;
 
     private BaseBeanContainer() {
     }
 
     public static BaseBeanContainer getInstance() {
-        if (instance != null) {
-            return instance;
+        if (sInstance != null) {
+            return sInstance;
         }
         synchronized (MONITOR) {
-            if (instance == null) {
-                instance = new BaseBeanContainer();
+            if (sInstance == null) {
+                sInstance = new BaseBeanContainer();
             }
         }
-        return instance;
+        return sInstance;
     }
 
     public NavigationService getNavigationService() {
-        return navigationService;
+        return mNavigationService;
     }
 
     public void setNavigationService(NavigationService navigationService) {
-        this.navigationService = navigationService;
+        mNavigationService = navigationService;
+    }
+
+    public TimeApiService getTimeApiService() {
+        if (mTimeApiService == null) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(Date.class, new DateShortLongDeserializer());
+            Retrofit timeApiRetrofit = new Retrofit.Builder()
+                    .baseUrl("http://www.timeapi.org/")
+                    .build();
+            mTimeApiService = timeApiRetrofit.create(TimeApiService.class);
+        }
+        return mTimeApiService;
     }
 }
