@@ -11,11 +11,15 @@ import com.histler.insta.adapter.InstaFeedAdapter;
 import com.histler.insta.adapter.viewholder.InstaFeedViewHolder;
 import com.histler.insta.api.v2.InstaMedia;
 import com.histler.insta.api.v2.node.InstaNode;
+import com.histler.insta.api.v2.node.InstaUser;
 import com.histler.insta.task.InstaRequest;
+import com.histler.insta.task.InstaUserRequest;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
+
+import java.util.Set;
 
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
@@ -29,6 +33,7 @@ public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedView
     public static final String INSTAGRAM_PACKAGE = "com.instagram.android";
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
     private String mNextMaxFeedId;
+    private UserRequestListener mUserRequestsListener = new UserRequestListener();
 
     @Override
     public void onStart() {
@@ -107,10 +112,47 @@ public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedView
         if (instaMedia != null) {
             if (mNextMaxFeedId == null || getAdapter() == null) {
                 setAdapter(new InstaFeedAdapter(instaMedia.getNodes()));
+                loadFirstUser();
             } else {
+                boolean noMoreUsers = ((InstaFeedAdapter) getAdapter()).getWaitIds().isEmpty();
                 ((InstaFeedAdapter) getAdapter()).addData(instaMedia.getNodes());
+                if (noMoreUsers) {
+                    loadFirstUser();
+                }
             }
             mNextMaxFeedId = instaMedia.getPageInfo().getNextPageTag();
+        }
+    }
+
+    private void loadFirstUser() {
+        InstaFeedAdapter adapter = (InstaFeedAdapter) getAdapter();
+        if (adapter != null) {
+            Set<String> unsetUsersId = adapter.getWaitIds();
+            if (!unsetUsersId.isEmpty()) {
+                mSpiceManager.execute(new InstaUserRequest(unsetUsersId.iterator().next()), mUserRequestsListener);
+            }
+        }
+    }
+
+    private class UserRequestListener implements RequestListener<InstaUser> {
+
+        @Override
+        public void onRequestFailure(SpiceException spiceException) {
+            showMessage(spiceException.getCause() != null ? spiceException.getCause().getMessage() : spiceException.getMessage(), getString(R.string.repeat), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadFirstUser();
+                }
+            });
+        }
+
+        @Override
+        public void onRequestSuccess(InstaUser instaUser) {
+            InstaFeedAdapter adapter = (InstaFeedAdapter) getAdapter();
+            if (adapter != null) {
+                adapter.updateUser(instaUser);
+                loadFirstUser();
+            }
         }
     }
 }

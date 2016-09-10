@@ -24,9 +24,13 @@ public class InstaUserRequest extends TaskRequest<InstaUser> {
     public InstaUser loadData() throws Exception {
         InstaBeanContainer beanContainer = InstaBeanContainer.getInstance();
         InstagramRestService restService = beanContainer.getInstagramRestService();
-        Call<InstaUser> firstResult = restService.getUserInfo(mUserId);
+        Call<InstaUser> firstResult = restService.getUserInfo(generateComplexUserId(mUserId));
         Response<InstaUser> response = firstResult.execute();
 
         return response.body();
+    }
+
+    private String generateComplexUserId(String userId) {
+        return "ig_user(" + userId + "){id,username,profile_pic_url}";
     }
 }

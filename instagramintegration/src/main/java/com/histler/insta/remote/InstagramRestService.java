@@ -32,8 +32,8 @@ public interface InstagramRestService {
     @GET("/query/")
     Call<InstaSecondResult> getNextTagNodes(@Query("q") String complexQuery);
 
-    @GET("/query/?q=ig_user({userId}){id,username,profile_pic_url}")
-    Call<InstaUser> getUserInfo(@Path("userId") String userId);
+    @GET("/query/")
+    Call<InstaUser> getUserInfo(@Query("q") String complexUserId);
 
     @POST("/query/")
     @FormUrlEncoded

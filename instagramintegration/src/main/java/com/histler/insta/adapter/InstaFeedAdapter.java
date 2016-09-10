@@ -15,6 +15,7 @@ import com.histler.insta.api.v2.node.InstaUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +29,7 @@ import ru.badr.base.adapter.BasePageableRecyclerAdapter;
  */
 public class InstaFeedAdapter extends BasePageableRecyclerAdapter<InstaNode, InstaFeedViewHolder> {
     private Map<String, InstaUser> mUsersMap = new HashMap<>();
-    private Map<String, List<Integer>> mWaitList = new HashMap<>();
+    private Map<String, List<Integer>> mWaitList = new LinkedHashMap<>();
 
     public InstaFeedAdapter(List<InstaNode> data) {
         super(data);
@@ -51,7 +52,7 @@ public class InstaFeedAdapter extends BasePageableRecyclerAdapter<InstaNode, Ins
         }
     }
 
-    public Set<String> getWaitIds() {
+    public synchronized Set<String> getWaitIds() {
         return mWaitList.keySet();
     }
 
@@ -69,6 +70,7 @@ public class InstaFeedAdapter extends BasePageableRecyclerAdapter<InstaNode, Ins
         if (user.getAvatar() == null) {
             if (mUsersMap.containsKey(user.getId())) {
                 instaFeed.setOwner(mUsersMap.get(user.getId()));
+                user = instaFeed.getOwner();
             } else {
                 if (!mWaitList.containsKey(user.getId())) {
                     mWaitList.put(user.getId(), new ArrayList<Integer>());
