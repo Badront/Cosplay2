@@ -1,4 +1,4 @@
-package ru.badr.cosplay2.fragment;
+package com.histler.insta.fragment;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -6,9 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.histler.insta.api.InstaFeed;
-import com.histler.insta.api.InstaResult;
-import com.histler.insta.task.InstaFirstRequest;
+import com.histler.insta.R;
+import com.histler.insta.adapter.InstaFeedAdapter;
+import com.histler.insta.adapter.viewholder.InstaFeedViewHolder;
+import com.histler.insta.api.v2.InstaMedia;
+import com.histler.insta.api.v2.node.InstaNode;
+import com.histler.insta.task.InstaRequest;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -16,16 +19,13 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
-import ru.badr.cosplay2.adapter.InstaFeedAdapter;
-import ru.badr.cosplay2.adapter.viewholder.InstaFeedViewHolder;
-import ru.badr.opencon.R;
 
 /**
  * Created by ABadretdinov
  * 25.09.2015
  * 16:30
  */
-public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedViewHolder> implements RequestListener<InstaResult> {
+public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedViewHolder> implements RequestListener<InstaMedia> {
     public static final String INSTAGRAM_PACKAGE = "com.instagram.android";
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
     private String mNextMaxFeedId;
@@ -66,13 +66,13 @@ public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedView
     private void loadFeed() {
         setRefreshing(true);
 
-        mSpiceManager.execute(new InstaFirstRequest(getActivity().getApplicationContext(), "opencon"), this);
+        mSpiceManager.execute(new InstaRequest("opencon", mNextMaxFeedId), this);
     }
 
     @Override
     public void onRecyclerViewItemClick(View v, int position) {
-        InstaFeed instaFeed = getAdapter().getItem(position);
-        Uri uri = Uri.parse(instaFeed.getLink());
+        InstaNode instaFeed = getAdapter().getItem(position);
+        Uri uri = Uri.parse("http://instagram.com/p/" + instaFeed.getCode());
         Intent instaIntent = new Intent(Intent.ACTION_VIEW, uri);
 
         instaIntent.setPackage(INSTAGRAM_PACKAGE);
@@ -102,15 +102,15 @@ public class InstagramFragment extends RecyclerFragment<InstaFeed, InstaFeedView
     }
 
     @Override
-    public void onRequestSuccess(InstaResult instaResult) {
+    public void onRequestSuccess(InstaMedia instaMedia) {
         setRefreshing(false);
-        if (instaResult != null) {
+        if (instaMedia != null) {
             if (mNextMaxFeedId == null || getAdapter() == null) {
-                setAdapter(new InstaFeedAdapter(instaResult.getFeeds()));
+                setAdapter(new InstaFeedAdapter(instaMedia.getNodes()));
             } else {
-                ((InstaFeedAdapter) getAdapter()).addData(instaResult.getFeeds());
+                ((InstaFeedAdapter) getAdapter()).addData(instaMedia.getNodes());
             }
-            mNextMaxFeedId = instaResult.getPagination().getNextMaxTagId();
+            mNextMaxFeedId = instaMedia.getPageInfo().getNextPageTag();
         }
     }
 }

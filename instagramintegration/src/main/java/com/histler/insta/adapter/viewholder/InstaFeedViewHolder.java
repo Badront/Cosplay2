@@ -1,13 +1,14 @@
-package ru.badr.cosplay2.adapter.viewholder;
+package com.histler.insta.adapter.viewholder;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.histler.insta.R;
+
 import ru.badr.base.adapter.OnItemClickListener;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.view.CircleImageView;
-import ru.badr.opencon.R;
 
 
 /**
@@ -22,6 +23,7 @@ public class InstaFeedViewHolder extends BaseViewHolder {
     public ImageView photo;
     public TextView tags;
     public TextView caption;
+    public View isVideo;
 
     public InstaFeedViewHolder(View itemView, OnItemClickListener clickListener) {
         super(itemView, clickListener);
@@ -35,5 +37,6 @@ public class InstaFeedViewHolder extends BaseViewHolder {
         photo = (ImageView) itemView.findViewById(R.id.image);
         caption = (TextView) itemView.findViewById(R.id.caption);
         tags = (TextView) itemView.findViewById(R.id.tags);
+        isVideo = itemView.findViewById(R.id.is_video);
     }
 }

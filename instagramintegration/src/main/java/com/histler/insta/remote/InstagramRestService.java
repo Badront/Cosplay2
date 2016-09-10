@@ -5,6 +5,7 @@ import com.histler.insta.api.InstaResult;
 import com.histler.insta.api.v2.InstaFirstResult;
 import com.histler.insta.api.v2.InstaNodeResult;
 import com.histler.insta.api.v2.InstaSecondResult;
+import com.histler.insta.api.v2.node.InstaUser;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -26,7 +27,13 @@ public interface InstagramRestService {
     Call<InstaResult> getRecent(@Path("tag") String tag, @Query("access_token") String clientId, @Query("max_tag_id") String maxTagId);
 
     @GET("/explore/tags/{tag}/?__a=1")
-    Call<InstaFirstResult> getFirstTagNodes(@Path("tag") String tag);
+    Call<InstaFirstResult> getTagNodes(@Path("tag") String tag, @Query("max_id") String maxId);
+
+    @GET("/query/")
+    Call<InstaSecondResult> getNextTagNodes(@Query("q") String complexQuery);
+
+    @GET("/query/?q=ig_user({userId}){id,username,profile_pic_url}")
+    Call<InstaUser> getUserInfo(@Path("userId") String userId);
 
     @POST("/query/")
     @FormUrlEncoded
