@@ -18,6 +18,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 import java.util.List;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.api.cards.Card;
@@ -48,7 +49,7 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
     private TextView mTitleView;
     private LinearLayout mFieldsHolder;
 
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
 
     private Card mCard;
 

@@ -18,6 +18,7 @@ import com.tonicartos.superslim.LayoutManager;
 
 import org.apache.commons.lang3.StringUtils;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.adapter.OnItemClickListener;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseFragment;
@@ -34,7 +35,7 @@ import ru.badr.opencon.R;
  * 18:16
  */
 public class JuryAndOrgsFragment extends BaseFragment implements RequestListener<JurySectionEntity.List>, OnItemClickListener {
-    protected SpiceManager mSpiceManager = new SpiceManager(LocalSpiceService.class);
+    protected SpiceManager mSpiceManager = new BaseSpiceManager(LocalSpiceService.class);
 
     protected View mProgressBarHolder;
     private RecyclerView mRecyclerView;

@@ -9,6 +9,7 @@ import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.fragment.BaseViewPagerFragment;
 import ru.badr.cosplay2.adapter.MediaPagerAdapter;
 import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
@@ -21,7 +22,7 @@ import ru.badr.opencon.R;
  * 15:28
  */
 public class MediaFragment extends BaseViewPagerFragment implements SwipeRefreshLayout.OnRefreshListener, RequestListener<AlbumsAndPhotos> {
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
     private MediaPagerAdapter mAdapter;
 
     @Override

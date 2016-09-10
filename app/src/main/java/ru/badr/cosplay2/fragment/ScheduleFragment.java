@@ -12,6 +12,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.tonicartos.superslim.LayoutManager;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseRecyclerFragment;
@@ -30,7 +31,7 @@ import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScrol
 public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<ScheduleNode.List> {
     VerticalRecyclerViewFastScroller mFastScroller;
     SectionTitleIndicator mSectionTitleIndicator;
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
 
     @Override
     public void onStart() {

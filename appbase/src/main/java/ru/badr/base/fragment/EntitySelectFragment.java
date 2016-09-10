@@ -24,6 +24,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import java.io.Serializable;
 import java.util.List;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.R;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.adapter.BaseRecyclerAdapter;
@@ -38,7 +39,7 @@ import ru.badr.base.util.retrofit.TaskRequest;
  * 16:54
  */
 public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends BaseViewHolder> extends BaseRecyclerFragment<T, VIEW_HOLDER> implements SearchView.OnQueryTextListener, RequestListener<List> {
-    protected SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    protected SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
     Handler mHandler = new Handler();
     private EntityLoader<T> mLoader;
     private String mTitle;

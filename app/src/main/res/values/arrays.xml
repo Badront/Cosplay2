@@ -8,6 +8,10 @@
         <item>Twitter</item>
         <item>Instagram</item>
     </string-array>
+    <string-array name="regulations_tabs">
+        <item>Регламент</item>
+        <item>Оферта</item>
+    </string-array>
     <string-array name="media_tabs">
         <item>Фотографии</item>
         <item>Альбомы</item>

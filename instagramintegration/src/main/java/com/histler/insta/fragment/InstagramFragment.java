@@ -21,6 +21,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 
 import java.util.Set;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.view.EndlessRecycleScrollListener;
 
@@ -31,7 +32,7 @@ import ru.badr.base.view.EndlessRecycleScrollListener;
  */
 public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedViewHolder> implements RequestListener<InstaMedia> {
     public static final String INSTAGRAM_PACKAGE = "com.instagram.android";
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
     private String mNextMaxFeedId;
     private UserRequestListener mUserRequestsListener = new UserRequestListener();
 

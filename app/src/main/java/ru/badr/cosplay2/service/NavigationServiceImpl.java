@@ -13,7 +13,7 @@ import ru.badr.cosplay2.fragment.MediaFragment;
 import ru.badr.cosplay2.fragment.MembersList;
 import ru.badr.cosplay2.fragment.NewsFragment;
 import ru.badr.cosplay2.fragment.PhotoCosplayListFragment;
-import ru.badr.cosplay2.fragment.RegulationsFragment;
+import ru.badr.cosplay2.fragment.RulesFragment;
 import ru.badr.cosplay2.fragment.ScheduleFragment;
 import ru.badr.cosplay2.fragment.SchemeFragment;
 import ru.badr.cosplay2.util.Utils;
@@ -73,8 +73,8 @@ public class NavigationServiceImpl implements NavigationService {
                 return NewsFragment.class;
             case R.id.scheme:
                 return SchemeFragment.class;
-            case R.id.regulations:
-                return RegulationsFragment.class;
+            case R.id.rules:
+                return RulesFragment.class;
             default:
             case R.id.about:
                 return AboutFragment.class;
