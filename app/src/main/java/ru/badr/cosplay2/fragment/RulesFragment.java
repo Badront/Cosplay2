@@ -12,7 +12,7 @@ import ru.badr.opencon.R;
 public class RulesFragment extends BaseViewPagerFragment {
     @Override
     public int getLayoutId() {
-        return R.layout.rules_layout;
+        return R.layout.simple_viewpager_layout;
     }
 
     @Override
