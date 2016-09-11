@@ -50,8 +50,8 @@ public class JuryFragment extends BaseFragment implements RequestListener<JurySe
     public void onStart() {
         super.onStart();
         if (!mSpiceManager.isStarted()) {
-            Context context = getActivity().getApplicationContext();
-            mSpiceManager.start(context);
+            Context context = getActivity();
+            mSpiceManager.start(context.getApplicationContext());
             mSpiceManager.execute(new JuryLoadRequest(context), this);
         }
     }

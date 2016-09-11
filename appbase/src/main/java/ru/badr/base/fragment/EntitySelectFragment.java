@@ -141,14 +141,14 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
         Context context = getActivity();
         if (context != null) {
             setRefreshing(true);
-            mSpiceManager.execute(new LoadRequest(context.getApplicationContext(), mSearch), this);
+            mSpiceManager.execute(new LoadRequest(context, mSearch), this);
         }
     }
 
     protected void showPreloaded() {
         Context context = getActivity();
         if (context != null) {
-            mSpiceManager.execute(new PreloadRequest(context.getApplicationContext(), mSearch), this);
+            mSpiceManager.execute(new PreloadRequest(context, mSearch), this);
         }
     }
 
@@ -195,7 +195,7 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
 
         public PreloadRequest(Context context, String search) {
             super(List.class);
-            this.mContext = context;
+            this.mContext = context.getApplicationContext();
             this.mSearch = search;
         }
 
@@ -216,7 +216,7 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
 
         public LoadRequest(Context context, String search) {
             super(List.class);
-            this.mContext = context;
+            this.mContext = context.getApplicationContext();
             this.mSearch = search;
         }
 

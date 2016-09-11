@@ -26,7 +26,7 @@ public class SectionedCardsLoadRequest extends TaskRequest<Topic.List> {
 
     public SectionedCardsLoadRequest(Context context) {
         super(Topic.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 

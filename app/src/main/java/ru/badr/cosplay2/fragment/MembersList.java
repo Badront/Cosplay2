@@ -95,7 +95,7 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         mSectionTitleIndicator.setVisibility(View.GONE);
         mFastScroller.setVisibility(View.GONE);
         setRefreshing(true);
-        mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity().getApplicationContext()), this);
+        mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity()), this);
     }
 
     @Override

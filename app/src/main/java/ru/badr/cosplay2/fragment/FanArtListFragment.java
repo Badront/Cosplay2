@@ -63,7 +63,7 @@ public class FanArtListFragment extends RecyclerFragment<ListCard, FestPhotoCard
     @Override
     public void onRefresh() {
         setRefreshing(true);
-        mSpiceManager.execute(new TaggedCardsLoadRequest(getActivity().getApplicationContext(), mTag), this);
+        mSpiceManager.execute(new TaggedCardsLoadRequest(getActivity(), mTag), this);
     }
 
     @Override

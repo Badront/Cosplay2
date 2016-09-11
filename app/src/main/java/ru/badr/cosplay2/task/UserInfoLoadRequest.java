@@ -16,7 +16,7 @@ public class UserInfoLoadRequest extends TaskRequest<User> {
 
     public UserInfoLoadRequest(Context context, long userId) {
         super(User.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         this.mUserId = userId;
     }
 

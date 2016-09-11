@@ -62,7 +62,7 @@ public class MediaFragment extends BaseViewPagerFragment implements SwipeRefresh
 
     @Override
     public void onRefresh() {
-        mSpiceManager.execute(new AlbumsAndPhotosLoadRequest(getActivity().getApplicationContext()), this);
+        mSpiceManager.execute(new AlbumsAndPhotosLoadRequest(getActivity()), this);
     }
 
     @Override

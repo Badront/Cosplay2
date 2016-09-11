@@ -33,7 +33,7 @@ public class AlbumsAndPhotosLoadRequest extends TaskRequest<AlbumsAndPhotos> {
 
     public AlbumsAndPhotosLoadRequest(Context context) {
         super(AlbumsAndPhotos.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 

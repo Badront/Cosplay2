@@ -102,7 +102,7 @@ public class UserInfoFragment extends BaseFragment implements RequestListener<Us
     public void onRefresh() {
         mScrollView.setVisibility(View.INVISIBLE);
         mProgressBarHolder.setVisibility(View.VISIBLE);
-        mSpiceManager.execute(new UserInfoLoadRequest(getActivity().getApplicationContext(), getArguments().getLong(Navigate.PARAM_ID)), this);
+        mSpiceManager.execute(new UserInfoLoadRequest(getActivity(), getArguments().getLong(Navigate.PARAM_ID)), this);
     }
 
     @Override

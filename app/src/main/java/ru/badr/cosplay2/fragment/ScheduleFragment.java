@@ -87,7 +87,7 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
         mSectionTitleIndicator.setVisibility(View.GONE);
         mFastScroller.setVisibility(View.GONE);
         setRefreshing(true);
-        mSpiceManager.execute(new ScheduleLoadRequest(getActivity().getApplicationContext()), this);
+        mSpiceManager.execute(new ScheduleLoadRequest(getActivity()), this);
     }
 
     @Override

@@ -75,7 +75,7 @@ public class FestCardInfoFragment extends BaseFragment implements SwipeRefreshLa
     public void onRefresh() {
         mContentView.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
-        mSpiceManager.execute(new CardResultLoadRequest(getActivity().getApplicationContext(), mCard), this);
+        mSpiceManager.execute(new CardResultLoadRequest(getActivity(), mCard), this);
     }
 
     @Override

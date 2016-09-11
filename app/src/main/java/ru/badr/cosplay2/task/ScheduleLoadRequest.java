@@ -26,7 +26,7 @@ public class ScheduleLoadRequest extends TaskRequest<ScheduleNode.List> {
 
     public ScheduleLoadRequest(Context context) {
         super(ScheduleNode.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 

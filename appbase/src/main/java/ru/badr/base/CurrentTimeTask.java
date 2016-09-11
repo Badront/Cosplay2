@@ -6,7 +6,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;
@@ -33,10 +32,9 @@ public class CurrentTimeTask extends TaskRequest<Date> {
             Response<ResponseBody> response = service.getCurrentTime().execute();
             if (response.isSuccessful()) {
                 String dateString = response.body().string();
-                DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");//2016-09-10T23:20:10+01:00
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");//2016-09-10T23:20:10+01:00
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(format.parse(dateString));
-                calendar.setTimeZone(TimeZone.getDefault());
                 return calendar.getTime();
             }
         }

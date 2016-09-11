@@ -18,7 +18,7 @@ public class JuryLoadRequest extends TaskRequest<JurySectionEntity.List> {
 
     public JuryLoadRequest(Context context) {
         super(JurySectionEntity.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
     }
 
     @Override

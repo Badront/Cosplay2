@@ -32,7 +32,7 @@ public class CardResultLoadRequest extends TaskRequest<ReqSectionHolder.List> {
 
     public CardResultLoadRequest(Context context, Card card) {
         super(ReqSectionHolder.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         this.mCard = card;
     }
 
