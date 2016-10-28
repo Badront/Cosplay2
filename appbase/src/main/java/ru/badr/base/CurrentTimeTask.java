@@ -2,6 +2,8 @@ package ru.badr.base;
 
 import android.content.Context;
 
+import com.octo.android.robospice.retry.DefaultRetryPolicy;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +25,7 @@ public class CurrentTimeTask extends TaskRequest<Date> {
     public CurrentTimeTask(Context context) {
         super(Date.class);
         mContext = context.getApplicationContext();
+        setRetryPolicy(new DefaultRetryPolicy(0, 0, 0));
     }
 
     @Override

@@ -79,8 +79,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else if (mNavigationView != null) {
-            mNavigationView.inflateMenu(mNavigationService.getNavigationMenuResId());
+            reInflateMenu();
         }
+    }
+
+    protected void reInflateMenu() {
+        mNavigationView.getMenu().clear();
+        mNavigationView.inflateMenu(mNavigationService.getNavigationMenuResId());
     }
 
     public void initFragment(Intent intent) {

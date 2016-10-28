@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import ru.badr.opencon.R;
 
@@ -30,7 +31,7 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.image_holder, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        Glide.with(this).load(mImagePath).into(imageView);
+        Glide.with(this).load(mImagePath).diskCacheStrategy(DiskCacheStrategy.NONE).into(imageView);
 
         return view;
     }
