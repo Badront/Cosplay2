@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * Created by Badr on 16.11.2015.
  */
-public class DateLongDeserializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
+public class DateLongSerializer implements JsonDeserializer<Date>, JsonSerializer<Date> {
     @Override
     public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         return new Date(jsonElement.getAsLong());

@@ -1,6 +1,9 @@
 package ru.badr.cosplay2.api;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by ABadretdinov
@@ -13,6 +16,16 @@ public class JuryEntity implements Serializable {
     private String city;
     private String image;
     private String description;
+    @SerializedName("show_up_date")
+    private Date showUpDate;
+
+    public Date getShowUpDate() {
+        return showUpDate;
+    }
+
+    public void setShowUpDate(Date showUpDate) {
+        this.showUpDate = showUpDate;
+    }
 
     public String getVk() {
         return vk;

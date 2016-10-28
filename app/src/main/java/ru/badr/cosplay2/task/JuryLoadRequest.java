@@ -2,11 +2,17 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.Date;
+import java.util.Iterator;
 
 import ru.badr.base.util.FileUtils;
+import ru.badr.base.util.json.DateLongSerializer;
 import ru.badr.base.util.retrofit.TaskRequest;
+import ru.badr.cosplay2.api.JuryEntity;
 import ru.badr.cosplay2.api.JurySectionEntity;
+import ru.badr.cosplay2.util.Utils;
 
 /**
  * Created by ABadretdinov
@@ -24,6 +30,24 @@ public class JuryLoadRequest extends TaskRequest<JurySectionEntity.List> {
     @Override
     public JurySectionEntity.List loadData() throws Exception {
         String fileText = FileUtils.getTextFromAsset(mContext, "jury.json");
-        return new Gson().fromJson(fileText, JurySectionEntity.List.class);
+        JurySectionEntity.List result = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new DateLongSerializer())
+                .create()
+                .fromJson(fileText, JurySectionEntity.List.class);
+        Iterator<JurySectionEntity> sectionIterator = result.iterator();
+        while (sectionIterator.hasNext()) {
+            JurySectionEntity section = sectionIterator.next();
+            Iterator<JuryEntity> iterator = section.getList().iterator();
+            while (iterator.hasNext()) {
+                JuryEntity entity = iterator.next();
+                if (entity.getShowUpDate().after(Utils.APP_START_TIME)) {
+                    iterator.remove();
+                }
+            }
+            if (section.getList().isEmpty()) {
+                sectionIterator.remove();
+            }
+        }
+        return result;
     }
 }

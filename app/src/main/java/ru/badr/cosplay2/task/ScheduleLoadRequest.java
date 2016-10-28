@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import ru.badr.base.util.json.DateLongDeserializer;
+import ru.badr.base.util.json.DateLongSerializer;
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.api.cards.list.ListCard;
@@ -38,7 +38,7 @@ public class ScheduleLoadRequest extends TaskRequest<ScheduleNode.List> {
         TopicsAndCards tac = container.getCosplay2RestService().getTopicsAndCards().execute().body();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Date.class, new DateLongDeserializer());
+        gsonBuilder.registerTypeAdapter(Date.class, new DateLongSerializer());
         ScheduleNode.List resultList = gsonBuilder.create().fromJson(result.getPlan(), ScheduleNode.List.class);
 
         ScheduleNode.List list = new ScheduleNode.List();
