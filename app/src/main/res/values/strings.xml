@@ -188,4 +188,5 @@
     <string name="female">Женский</string>
     <string name="unknown">Неизвестно</string>
     <string name="taken_place">Занятое место</string>
+    <string name="new_jury_available">Новый член жюри!</string>
 </resources>

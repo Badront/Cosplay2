@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean mHasMenu = true;
 
     protected NavigationView mNavigationView;
+    private int mMenuId;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -84,8 +85,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void reInflateMenu() {
-        mNavigationView.getMenu().clear();
-        mNavigationView.inflateMenu(mNavigationService.getNavigationMenuResId());
+        int newMenuId = mNavigationService.getNavigationMenuResId();
+        if (mMenuId != newMenuId) {
+            mMenuId = newMenuId;
+            mNavigationView.getMenu().clear();
+            mNavigationView.inflateMenu(mMenuId);
+        }
     }
 
     public void initFragment(Intent intent) {
@@ -96,11 +101,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             } else {
                 fragmentName = mNavigationService.getMainFragment(mNavigationService.getDefaultFragmentResId()).getName();
             }
-            Fragment fragment = (Fragment) Class.forName(fragmentName).newInstance();
-            fragment.setArguments(intent.getBundleExtra(Navigate.PARAM_ARGS));
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_frame, fragment, "main").commitAllowingStateLoss();
+            Fragment current = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+            Class<Fragment> newClass = (Class<Fragment>) Class.forName(fragmentName);
+            if (current == null || !current.getClass().equals(newClass)) {
+                Fragment fragment = newClass.newInstance();
+                fragment.setArguments(intent.getBundleExtra(Navigate.PARAM_ARGS));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frame, fragment, "main").commitAllowingStateLoss();
+            }
         } catch (Exception e) {
             Log.w(getClass().getName(), e.getLocalizedMessage());
             finish();

@@ -48,6 +48,7 @@ public class JuryLoadRequest extends TaskRequest<JurySectionEntity.List> {
                 sectionIterator.remove();
             }
         }
+        //NotificationUtils.showNotification(mContext,result.get(0).getList().get(0));
         return result;
     }
 }
