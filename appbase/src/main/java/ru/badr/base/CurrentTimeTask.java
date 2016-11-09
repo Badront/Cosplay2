@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.octo.android.robospice.retry.DefaultRetryPolicy;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -35,9 +33,8 @@ public class CurrentTimeTask extends TaskRequest<Date> {
             Response<ResponseBody> response = service.getCurrentTime().execute();
             if (response.isSuccessful()) {
                 String dateString = response.body().string();
-                DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");//2016-09-10T23:20:10+01:00
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTime(format.parse(dateString));
+                calendar.setTime(TimeApiService.TIME_API_FORMAT.parse(dateString));
                 return calendar.getTime();
             }
         }
