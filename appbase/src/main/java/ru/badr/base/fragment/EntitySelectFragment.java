@@ -24,6 +24,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import java.io.Serializable;
 import java.util.List;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.R;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.adapter.BaseRecyclerAdapter;
@@ -38,7 +39,7 @@ import ru.badr.base.util.retrofit.TaskRequest;
  * 16:54
  */
 public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends BaseViewHolder> extends BaseRecyclerFragment<T, VIEW_HOLDER> implements SearchView.OnQueryTextListener, RequestListener<List> {
-    protected SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    protected SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
     Handler mHandler = new Handler();
     private EntityLoader<T> mLoader;
     private String mTitle;
@@ -140,14 +141,14 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
         Context context = getActivity();
         if (context != null) {
             setRefreshing(true);
-            mSpiceManager.execute(new LoadRequest(context.getApplicationContext(), mSearch), this);
+            mSpiceManager.execute(new LoadRequest(context, mSearch), this);
         }
     }
 
     protected void showPreloaded() {
         Context context = getActivity();
         if (context != null) {
-            mSpiceManager.execute(new PreloadRequest(context.getApplicationContext(), mSearch), this);
+            mSpiceManager.execute(new PreloadRequest(context, mSearch), this);
         }
     }
 
@@ -194,7 +195,7 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
 
         public PreloadRequest(Context context, String search) {
             super(List.class);
-            this.mContext = context;
+            this.mContext = context.getApplicationContext();
             this.mSearch = search;
         }
 
@@ -215,7 +216,7 @@ public class EntitySelectFragment<T extends Serializable, VIEW_HOLDER extends Ba
 
         public LoadRequest(Context context, String search) {
             super(List.class);
-            this.mContext = context;
+            this.mContext = context.getApplicationContext();
             this.mSearch = search;
         }
 

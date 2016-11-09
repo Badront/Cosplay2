@@ -12,6 +12,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.tonicartos.superslim.LayoutManager;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseRecyclerFragment;
@@ -32,7 +33,7 @@ import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScrol
 public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> implements RequestListener<Topic.List> {
     VerticalRecyclerViewFastScroller mFastScroller;
     SectionTitleIndicator mSectionTitleIndicator;
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
 
     @Override
     public void onStart() {
@@ -94,7 +95,7 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
         mSectionTitleIndicator.setVisibility(View.GONE);
         mFastScroller.setVisibility(View.GONE);
         setRefreshing(true);
-        mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity().getApplicationContext()), this);
+        mSpiceManager.execute(new SectionedCardsLoadRequest(getActivity()), this);
     }
 
     @Override

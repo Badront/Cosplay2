@@ -12,7 +12,8 @@
         android:layout_marginBottom="@dimen/list_card_vertical_margin"
         android:layout_marginLeft="@dimen/card_margin"
         android:layout_marginRight="@dimen/card_margin"
-        android:layout_marginTop="@dimen/list_card_vertical_margin">
+        android:layout_marginTop="@dimen/list_card_vertical_margin"
+        android:foreground="?attr/selectableItemBackground">
 
         <com.twitter.sdk.android.tweetui.TweetView
             android:id="@+id/tweet"

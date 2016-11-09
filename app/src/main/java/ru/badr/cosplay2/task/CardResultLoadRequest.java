@@ -32,14 +32,14 @@ public class CardResultLoadRequest extends TaskRequest<ReqSectionHolder.List> {
 
     public CardResultLoadRequest(Context context, Card card) {
         super(ReqSectionHolder.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         this.mCard = card;
     }
 
     @Override
     public ReqSectionHolder.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        GetCardResult result = container.getCosplay2RestService().getCard(mCard.getId());
+        GetCardResult result = container.getCosplay2RestService().getCard(mCard.getId()).execute().body();
         ReqSectionHolder.List list = new ReqSectionHolder.List();
         if (result != null) {
             List<Field> fields = result.getFields();

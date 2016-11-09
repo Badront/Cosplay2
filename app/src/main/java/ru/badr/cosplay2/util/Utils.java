@@ -3,6 +3,7 @@ package ru.badr.cosplay2.util;
 import android.content.Context;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -21,23 +22,24 @@ import ru.badr.opencon.R;
  * 16:33
  */
 public class Utils {
-    public static final DateFormat SCHEDULE_TIME_FORMAT = DateFormat.getTimeInstance(DateFormat.SHORT);
+    public static final DateFormat SCHEDULE_TIME_FORMAT = new SimpleDateFormat("HH:mm");
+
+    public static volatile Date APP_START_TIME = new Date();
 
     static {
         SCHEDULE_TIME_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
     public static boolean isTimeHasCome() {
-        Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MILLISECOND, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.DATE, 25);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.DAY_OF_MONTH, 11);
         calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
-        calendar.set(Calendar.YEAR, 2015);
-        return calendar.getTime().after(date);
+        calendar.set(Calendar.YEAR, 2016);
+        return calendar.getTime().before(APP_START_TIME);
     }
 
     public static String getSmallCardImageUrl(Context context, Card card) {

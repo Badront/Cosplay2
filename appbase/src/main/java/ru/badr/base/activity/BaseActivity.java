@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean mHasMenu = true;
 
     protected NavigationView mNavigationView;
+    private int mMenuId;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -79,7 +80,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else if (mNavigationView != null) {
-            mNavigationView.inflateMenu(mNavigationService.getNavigationMenuResId());
+            reInflateMenu();
+        }
+    }
+
+    protected void reInflateMenu() {
+        int newMenuId = mNavigationService.getNavigationMenuResId();
+        if (mMenuId != newMenuId) {
+            mMenuId = newMenuId;
+            mNavigationView.getMenu().clear();
+            mNavigationView.inflateMenu(mMenuId);
         }
     }
 
@@ -91,11 +101,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             } else {
                 fragmentName = mNavigationService.getMainFragment(mNavigationService.getDefaultFragmentResId()).getName();
             }
-            Fragment fragment = (Fragment) Class.forName(fragmentName).newInstance();
-            fragment.setArguments(intent.getBundleExtra(Navigate.PARAM_ARGS));
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_frame, fragment, "main").commitAllowingStateLoss();
+            Fragment current = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+            Class<Fragment> newClass = (Class<Fragment>) Class.forName(fragmentName);
+            if (current == null || !current.getClass().equals(newClass)) {
+                Fragment fragment = newClass.newInstance();
+                fragment.setArguments(intent.getBundleExtra(Navigate.PARAM_ARGS));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frame, fragment, "main").commitAllowingStateLoss();
+            }
         } catch (Exception e) {
             Log.w(getClass().getName(), e.getLocalizedMessage());
             finish();

@@ -18,6 +18,7 @@ import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.Navigate;
@@ -30,7 +31,7 @@ import ru.badr.opencon.R;
  * Created by Badr on 24.11.2015.
  */
 public class UserInfoFragment extends BaseFragment implements RequestListener<User>, View.OnClickListener {
-    protected SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    protected SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
     private View mProgressBarHolder;
     private View mScrollView;
 
@@ -101,7 +102,7 @@ public class UserInfoFragment extends BaseFragment implements RequestListener<Us
     public void onRefresh() {
         mScrollView.setVisibility(View.INVISIBLE);
         mProgressBarHolder.setVisibility(View.VISIBLE);
-        mSpiceManager.execute(new UserInfoLoadRequest(getActivity().getApplicationContext(), getArguments().getLong(Navigate.PARAM_ID)), this);
+        mSpiceManager.execute(new UserInfoLoadRequest(getActivity(), getArguments().getLong(Navigate.PARAM_ID)), this);
     }
 
     @Override

@@ -33,14 +33,14 @@ public class AlbumsAndPhotosLoadRequest extends TaskRequest<AlbumsAndPhotos> {
 
     public AlbumsAndPhotosLoadRequest(Context context) {
         super(AlbumsAndPhotos.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override
     public AlbumsAndPhotos loadData() throws Exception {
         Cosplay2BeanContainer cosplay2BeanContainer = Cosplay2BeanContainer.getInstance(mContext);
-        AlbumsAndPhotos result = cosplay2BeanContainer.getCosplay2RestService().getAlbumsAndPhotos();
+        AlbumsAndPhotos result = cosplay2BeanContainer.getCosplay2RestService().getAlbumsAndPhotos().execute().body();
 
         if (result != null) {
             VkRestService vkService = cosplay2BeanContainer.getVkRestService();
@@ -59,7 +59,7 @@ public class AlbumsAndPhotosLoadRequest extends TaskRequest<AlbumsAndPhotos> {
                     photo.setVkId(Long.valueOf(vkId));
                     photoIds.append(ownerId).append('_').append(vkId);
                 }
-                VkPhotoResponse vkPhotoResponse = vkService.getPhotos(photoIds.toString());
+                VkPhotoResponse vkPhotoResponse = vkService.getPhotos(photoIds.toString()).execute().body();
                 if (vkPhotoResponse != null) {
                     for (Photo photo : result.getPhotos()) {
                         Iterator<VkPhoto> iterator = vkPhotoResponse.getPhotos().iterator();
@@ -98,7 +98,7 @@ public class AlbumsAndPhotosLoadRequest extends TaskRequest<AlbumsAndPhotos> {
                 }
                 for (Long ownerId : ownersAlbums.keySet()) {
                     AlbumExtraHolder extraHolder = ownersAlbums.get(ownerId);
-                    VkAlbumsResponse vkAlbumResponse = vkService.getAlbums(ownerId, extraHolder.albumsIds);
+                    VkAlbumsResponse vkAlbumResponse = vkService.getAlbums(ownerId, extraHolder.albumsIds).execute().body();
                     if (vkAlbumResponse != null && vkAlbumResponse.getAlbumHolder() != null) {
                         List<VkAlbum> vkAlbums = vkAlbumResponse.getAlbumHolder().getItems();
                         for (VkAlbum vkAlbum : vkAlbums) {

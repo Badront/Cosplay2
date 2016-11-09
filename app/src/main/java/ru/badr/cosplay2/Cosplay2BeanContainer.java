@@ -3,18 +3,18 @@ package ru.badr.cosplay2;
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
+import com.histler.insta.remote.InstagramRestService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-import retrofit.RestAdapter;
-import retrofit.converter.GsonConverter;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import ru.badr.base.util.SettingsUtils;
 import ru.badr.base.util.json.DateShortLongDeserializer;
 import ru.badr.base.util.json.SimpleDateSerializer;
 import ru.badr.cosplay2.remote.Cosplay2RestService;
-import ru.badr.cosplay2.remote.InstagramRestService;
 import ru.badr.cosplay2.remote.VkRestService;
 
 /**
@@ -25,14 +25,11 @@ import ru.badr.cosplay2.remote.VkRestService;
 public class Cosplay2BeanContainer {
 
     private static final Object MONITOR = new Object();
-    private static Cosplay2BeanContainer instance = null;
+    private static Cosplay2BeanContainer sInstance = null;
     private Properties properties;
-    private RestAdapter instagramRestAdapter;
     private InstagramRestService instagramRestService;
-    private RestAdapter cosplay2RestAdapter;
     private Cosplay2RestService cosplay2RestService;
 
-    private RestAdapter vkRestAdapter;
     private VkRestService vkRestService;
 
     private Cosplay2BeanContainer(Context context) {
@@ -40,68 +37,50 @@ public class Cosplay2BeanContainer {
     }
 
     public static Cosplay2BeanContainer getInstance(Context context) {
-        if (instance != null) {
-            return instance;
+        if (sInstance != null) {
+            return sInstance;
         }
         synchronized (MONITOR) {
-            if (instance == null) {
-                instance = new Cosplay2BeanContainer(context);
+            if (sInstance == null) {
+                sInstance = new Cosplay2BeanContainer(context);
             }
-            return instance;
+            return sInstance;
         }
-    }
-
-    public RestAdapter getInstagramRestAdapter() {
-        if (instagramRestAdapter == null) {
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(Date.class, new DateShortLongDeserializer());
-            instagramRestAdapter = new RestAdapter.Builder()
-                    .setEndpoint(properties.getProperty("instagram.url"))
-                    .setConverter(new GsonConverter(gsonBuilder.create()))
-                    .build();
-        }
-        return instagramRestAdapter;
     }
 
     public InstagramRestService getInstagramRestService() {
         if (instagramRestService == null) {
-            instagramRestService = getInstagramRestAdapter().create(InstagramRestService.class);
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(Date.class, new DateShortLongDeserializer());
+            Retrofit instagramRestAdapter = new Retrofit.Builder()
+                    .baseUrl(properties.getProperty("instagram.url"))
+                    .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
+                    .build();
+            instagramRestService = instagramRestAdapter.create(InstagramRestService.class);
         }
         return instagramRestService;
     }
 
-    public RestAdapter getCosplay2RestAdapter() {
-        if (cosplay2RestAdapter == null) {
-            GsonBuilder gsonBuilder = new GsonBuilder().registerTypeAdapter(Date.class, new SimpleDateSerializer(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
-            cosplay2RestAdapter = new RestAdapter.Builder()
-                    .setEndpoint(properties.getProperty("global.url16"))
-                    .setConverter(new GsonConverter(gsonBuilder.create()))
-                    .build();
-        }
-        return cosplay2RestAdapter;
-    }
-
     public Cosplay2RestService getCosplay2RestService() {
         if (cosplay2RestService == null) {
-            cosplay2RestService = getCosplay2RestAdapter().create(Cosplay2RestService.class);
+            GsonBuilder gsonBuilder = new GsonBuilder().registerTypeAdapter(Date.class, new SimpleDateSerializer(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
+            Retrofit cosplay2RestAdapter = new Retrofit.Builder()
+                    .baseUrl(properties.getProperty("global.url16"))
+                    .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
+                    .build();
+            cosplay2RestService = cosplay2RestAdapter.create(Cosplay2RestService.class);
         }
         return cosplay2RestService;
     }
 
-    public RestAdapter getVkRestAdapter() {
-        if (vkRestAdapter == null) {
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            vkRestAdapter = new RestAdapter.Builder()
-                    .setEndpoint(properties.getProperty("vk.url"))
-                    .setConverter(new GsonConverter(gsonBuilder.create()))
-                    .build();
-        }
-        return vkRestAdapter;
-    }
-
     public VkRestService getVkRestService() {
         if (vkRestService == null) {
-            vkRestService = getVkRestAdapter().create(VkRestService.class);
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            Retrofit vkRestAdapter = new Retrofit.Builder()
+                    .baseUrl(properties.getProperty("vk.url"))
+                    .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
+                    .build();
+            vkRestService = vkRestAdapter.create(VkRestService.class);
         }
         return vkRestService;
     }

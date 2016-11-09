@@ -23,7 +23,7 @@ public class TaggedCardsLoadRequest extends TaskRequest<ListCard.List> {
 
     public TaggedCardsLoadRequest(Context context, String propertyTag) {
         super(ListCard.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         this.mPropertyTag = propertyTag;
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
@@ -32,7 +32,7 @@ public class TaggedCardsLoadRequest extends TaskRequest<ListCard.List> {
     public ListCard.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
         String topicName = container.getProperties().getProperty(mPropertyTag);
-        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards();
+        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards().execute().body();
         ListCard.List list = new ListCard.List();
         if (result != null && result.getCards() != null && result.getTopics() != null) {
             List<Topic> topics = result.getTopics();

@@ -5,7 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import ru.badr.cosplay2.fragment.InstagramFragment;
+import com.histler.insta.fragment.InstagramFragment;
+
 import ru.badr.cosplay2.fragment.TwitterFragment;
 import ru.badr.opencon.R;
 

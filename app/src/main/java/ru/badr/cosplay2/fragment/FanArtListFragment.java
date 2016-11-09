@@ -8,6 +8,7 @@ import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
+import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.adapter.FestPhotoCardAdapter;
@@ -23,7 +24,7 @@ import ru.badr.opencon.R;
  * 18:28
  */
 public class FanArtListFragment extends RecyclerFragment<ListCard, FestPhotoCardViewHolder> implements RequestListener<ListCard.List> {
-    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+    private SpiceManager mSpiceManager = new BaseSpiceManager(UncachedSpiceService.class);
 
     private String mTag;
     private String mTitle;
@@ -62,7 +63,7 @@ public class FanArtListFragment extends RecyclerFragment<ListCard, FestPhotoCard
     @Override
     public void onRefresh() {
         setRefreshing(true);
-        mSpiceManager.execute(new TaggedCardsLoadRequest(getActivity().getApplicationContext(), mTag), this);
+        mSpiceManager.execute(new TaggedCardsLoadRequest(getActivity(), mTag), this);
     }
 
     @Override

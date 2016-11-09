@@ -26,14 +26,14 @@ public class SectionedCardsLoadRequest extends TaskRequest<Topic.List> {
 
     public SectionedCardsLoadRequest(Context context) {
         super(Topic.List.class);
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         setRetryPolicy(new DefaultRetryPolicy(1, DefaultRetryPolicy.DEFAULT_DELAY_BEFORE_RETRY, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override
     public Topic.List loadData() throws Exception {
         Cosplay2BeanContainer container = Cosplay2BeanContainer.getInstance(mContext);
-        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards();
+        TopicsAndCards result = container.getCosplay2RestService().getTopicsAndCards().execute().body();
         Properties properties = container.getProperties();
         List<String> notToIncludeTags = Arrays.asList(properties.getProperty("opencon.tag.photo"), properties.getProperty("opencon.tag.digital_fanart"), properties.getProperty("opencon.tag.traditional_fanart"));
 

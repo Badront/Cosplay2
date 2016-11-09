@@ -4,7 +4,17 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
+import com.octo.android.robospice.SpiceManager;
+import com.octo.android.robospice.persistence.DurationInMillis;
+import com.octo.android.robospice.persistence.exception.SpiceException;
+import com.octo.android.robospice.request.listener.RequestListener;
+
+import java.util.Date;
+
+import ru.badr.base.CurrentTimeTask;
 import ru.badr.base.util.BackListener;
+import ru.badr.base.util.retrofit.LocalSpiceService;
+import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;
 
 /**
@@ -15,8 +25,19 @@ import ru.badr.opencon.R;
 
 //todo https://github.com/RubenGees/Introduction
 //todo https://github.com/MiguelCatalan/MaterialSearchView
-public class MainActivity extends FragmentWrapperActivity {
+public class MainActivity extends FragmentWrapperActivity implements RequestListener<Date> {
+
+    private SpiceManager mSpiceManger = new SpiceManager(LocalSpiceService.class);
     private boolean mDoubleBackToExitPressedOnce = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!mSpiceManger.isStarted()) {
+            mSpiceManger.start(this);
+            mSpiceManger.execute(new CurrentTimeTask(this), this);
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -37,9 +58,23 @@ public class MainActivity extends FragmentWrapperActivity {
                         mDoubleBackToExitPressedOnce = false;
 
                     }
-                }, 2000);
+                }, DurationInMillis.ONE_SECOND * 2);
             }
         }
 
+    }
+
+    @Override
+    public void onRequestFailure(SpiceException spiceException) {
+        Utils.APP_START_TIME = new Date();
+        reInflateMenu();
+        initFragment();
+    }
+
+    @Override
+    public void onRequestSuccess(Date date) {
+        Utils.APP_START_TIME = date;
+        reInflateMenu();
+        initFragment();
     }
 }
