@@ -34,7 +34,7 @@ public class Utils {
         calendar.set(Calendar.MILLISECOND, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
         calendar.set(Calendar.DATE, 11);
         calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
         calendar.set(Calendar.YEAR, 2016);
