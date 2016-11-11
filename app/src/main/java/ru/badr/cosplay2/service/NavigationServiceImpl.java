@@ -38,16 +38,16 @@ public class NavigationServiceImpl implements NavigationService {
 
     @Override
     public int getDefaultFragmentResId() {
-        if (Utils.isTimeHasCome()) {
+        if (Utils.isMenuTimeHasCome()) {
             return R.id.schedule;
         } else {
-            return R.id.about;
+            return R.id.schedule;
         }
     }
 
     @Override
     public int getNavigationMenuResId() {
-        if (Utils.isTimeHasCome()) {
+        if (Utils.isMenuTimeHasCome()) {
             return R.menu.main_menu;
         } else {
             return R.menu.lite_menu;

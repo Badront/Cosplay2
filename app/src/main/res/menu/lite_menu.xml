@@ -3,6 +3,22 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/schedule"
+            android:icon="@drawable/schedule"
+            android:title="@string/schedule" />
+        <item
+            android:id="@+id/members"
+            android:icon="@drawable/members"
+            android:title="@string/members" />
+        <item
+            android:id="@+id/photocosplay"
+            android:icon="@drawable/photocosplay"
+            android:title="@string/photocosplay" />
+        <item
+            android:id="@+id/fanart"
+            android:icon="@drawable/fanart"
+            android:title="@string/fanart" />
+        <item
             android:id="@+id/jury"
             android:icon="@drawable/jury"
             android:title="@string/jury" />

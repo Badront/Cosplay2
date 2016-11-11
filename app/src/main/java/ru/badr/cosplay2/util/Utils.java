@@ -30,13 +30,25 @@ public class Utils {
         SCHEDULE_TIME_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
-    public static boolean isTimeHasCome() {
+    public static boolean isMenuTimeHasCome() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MILLISECOND, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.HOUR_OF_DAY, 21);
-        calendar.set(Calendar.DAY_OF_MONTH, 14);
+        calendar.set(Calendar.DAY_OF_MONTH, 20);
+        calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
+        calendar.set(Calendar.YEAR, 2016);
+        return calendar.getTime().before(APP_START_TIME);
+    }
+
+    public static boolean isTimeHasCome() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.DAY_OF_MONTH, 11);
         calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
         calendar.set(Calendar.YEAR, 2016);
         return calendar.getTime().before(APP_START_TIME);
