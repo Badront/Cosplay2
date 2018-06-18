@@ -1,5 +1,6 @@
 package ru.badr.cosplay2.adapter;
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +25,14 @@ public class TweetsAdapter extends BasePageableRecyclerAdapter<Tweet, TweetViewH
     }
 
     @Override
-    public TweetViewHolder onCreateViewHolder(ViewGroup container, int viewType) {
+    @NonNull
+    public TweetViewHolder onCreateViewHolder(@NonNull ViewGroup container, int viewType) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.tweet_row, container, false);
         return new TweetViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(TweetViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TweetViewHolder holder, int position) {
         Tweet tweet = getItem(position);
         holder.holder.removeAllViews();
         holder.holder.addView(new TweetView(holder.holder.getContext(), tweet));

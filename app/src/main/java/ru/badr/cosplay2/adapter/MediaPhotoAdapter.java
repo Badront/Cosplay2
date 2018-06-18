@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +26,14 @@ public class MediaPhotoAdapter extends BaseRecyclerAdapter<Photo, MediaPhotoView
     }
 
     @Override
-    public MediaPhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public MediaPhotoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_photo_row, parent, false);
         return new MediaPhotoViewHolder(view, mOnItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(MediaPhotoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MediaPhotoViewHolder holder, int position) {
         Photo photo = getItem(position);
         Context context = holder.itemView.getContext();
         holder.title.setText(photo.getTitle());

@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,8 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         switch (viewType) {
@@ -86,7 +88,7 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         LineItem lineItem = (LineItem) getItem(position);
         GridSLM.LayoutParams lp = GridSLM.LayoutParams.from(holder.itemView.getLayoutParams());
         ScheduleNode node = (ScheduleNode) lineItem.data;

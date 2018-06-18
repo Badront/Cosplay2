@@ -3,11 +3,13 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
+        google()
         maven { url 'https://maven.fabric.io/public' }
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:3.1.3'
         // The Fabric Gradle plugin uses an open ended version to react
         // quickly to Android tooling updates
         classpath 'io.fabric.tools:gradle:1.+'
@@ -20,9 +22,15 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    supportLibVersion = "27.1.1"
+    playServicesLibVersion = "15.0.0"
 }

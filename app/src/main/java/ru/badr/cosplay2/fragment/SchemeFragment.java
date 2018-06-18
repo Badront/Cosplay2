@@ -19,6 +19,7 @@ public class SchemeFragment extends BaseViewPagerFragment {
     }
 
     @Override
+    @TabLayout.Mode
     public int getTabMode() {
         return TabLayout.MODE_SCROLLABLE;
     }

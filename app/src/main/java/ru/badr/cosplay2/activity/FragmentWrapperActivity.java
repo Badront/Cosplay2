@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,7 +23,7 @@ public class FragmentWrapperActivity extends BaseActivity implements NavigationV
     protected View mMenuHeader;
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         menuItem.setChecked(true);
         mDrawerLayout.closeDrawers();
         FragmentManager fragmentManager = getSupportFragmentManager();

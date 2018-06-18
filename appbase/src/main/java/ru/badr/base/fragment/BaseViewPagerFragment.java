@@ -31,6 +31,7 @@ public abstract class BaseViewPagerFragment extends BaseFragment {
         return view;
     }
 
+    @TabLayout.Mode
     public int getTabMode() {
         return TabLayout.MODE_FIXED;
     }

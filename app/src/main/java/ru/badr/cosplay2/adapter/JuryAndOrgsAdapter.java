@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +63,8 @@ public class JuryAndOrgsAdapter extends BaseRecyclerAdapter<Object, BaseViewHold
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (viewType == VIEW_TYPE_HEADER) {
@@ -75,7 +77,7 @@ public class JuryAndOrgsAdapter extends BaseRecyclerAdapter<Object, BaseViewHold
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         LineItem lineItem = (LineItem) getItem(position);
         GridSLM.LayoutParams lp = GridSLM.LayoutParams.from(holder.itemView.getLayoutParams());
         if (lineItem.isHeader) {
