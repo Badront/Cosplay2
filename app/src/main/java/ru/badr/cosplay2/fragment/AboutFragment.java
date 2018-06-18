@@ -75,9 +75,18 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (mMapHolder.equals(v)) {
-            Uri mapsUri = Uri.parse("geo:0,0?q=" + getString(R.string.address));
+            String address = getString(R.string.address);
+            Uri mapsUri = Uri.parse("geo:0,0?q=" + address);
             Intent mapsIntent = new Intent(Intent.ACTION_VIEW, mapsUri);
-            startActivity(mapsIntent);
+            if (mapsIntent.resolveActivity(v.getContext().getPackageManager()) != null) {
+                startActivity(mapsIntent);
+            } else {
+                String uri = "http://maps.google.com/maps?f=d&hl=ru&saddr=" + address;
+                mapsIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                if (mapsIntent.resolveActivity(v.getContext().getPackageManager()) != null) {
+                    startActivity(mapsIntent);
+                }
+            }
         }
     }
 }
