@@ -124,6 +124,7 @@ public class MembersList extends BaseRecyclerFragment<Object, BaseViewHolder> im
             mFastScroller.setVisibility(View.VISIBLE);
         }
     }
+    //todo fast scroll from RecyclerView itself https://android.jlelse.eu/fast-scrolling-with-recyclerview-2b89d4574688
 
     @Override
     public void onRecyclerViewItemClick(View v, int position) {

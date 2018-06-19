@@ -16,8 +16,8 @@ import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
 import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
+import ru.badr.cosplay2.api.schedule.Plan;
 import ru.badr.cosplay2.api.schedule.ScheduleNode;
-import ru.badr.cosplay2.api.schedule.base.Plan;
 import ru.badr.cosplay2.util.Utils;
 
 /**

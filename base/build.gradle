@@ -1,0 +1,84 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "cosplay2"
+    productFlavors{
+        production{
+            dimension "cosplay2"
+        }
+        all{
+            variant->
+                def apiPropertiesFile = file("src/${variant.name}/settings.properties")
+                def apiProperties = new Properties()
+                apiProperties.load(new FileInputStream(apiPropertiesFile))
+
+                for (String key : apiProperties.stringPropertyNames()) {
+                    variant.buildConfigField("String", key, apiProperties[key])
+                }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    /*support*/
+    api 'com.android.support:support-fragment:' + rootProject.supportLibVersion
+    api 'com.android.support:support-core-ui:' + rootProject.supportLibVersion
+    api 'com.android.support:support-core-utils:' + rootProject.supportLibVersion
+    api 'com.android.support:support-annotations:' + rootProject.supportLibVersion
+    api 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
+
+    api 'com.android.support:design:' + rootProject.supportLibVersion
+    api 'com.android.support:cardview-v7:' + rootProject.supportLibVersion
+    api 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion
+
+    api 'com.github.bumptech.glide:glide:3.8.0'
+
+    api 'com.pnikosis:materialish-progress:1.7'
+    api 'com.hannesdorfmann.smoothprogressbar:library:1.0.0'
+    api 'com.octo.android.robospice:robospice:1.4.14'
+    api 'com.tonicartos:superslim:0.4.13'
+
+    /*dagger*/
+    api 'com.google.dagger:dagger:' + rootProject.daggerVersion
+    api 'com.google.dagger:dagger-android:' + rootProject.daggerVersion
+    api 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
+
+    /*async & network*/
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+    api 'com.google.code.gson:gson:2.8.2'
+    api 'com.squareup.retrofit2:converter-gson:2.2.0'
+    api('com.squareup.retrofit2:retrofit:2.2.0') {
+        exclude module: 'okhttp'
+    }
+
+    //rx
+    api 'io.reactivex.rxjava2:rxjava:2.1.8'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.1'
+    api 'com.jakewharton.rxbinding2:rxbinding-design:2.1.1'
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    api 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+
+    /*mvp*/
+    api "com.arello-mobile:moxy:"+rootProject.moxyVersion
+    api "com.arello-mobile:moxy-android:"+rootProject.moxyVersion
+    api "com.arello-mobile:moxy-app-compat:"+rootProject.moxyVersion
+}

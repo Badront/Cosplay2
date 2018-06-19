@@ -7,7 +7,7 @@ import ru.badr.cosplay2.api.cards.info.json.GetCardResult;
 import ru.badr.cosplay2.api.cards.info.json.GetUserResult;
 import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
 import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
-import ru.badr.cosplay2.api.schedule.base.Plan;
+import ru.badr.cosplay2.api.schedule.Plan;
 
 /**
  * Created by ABadretdinov

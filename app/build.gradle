@@ -29,7 +29,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':appbase')
+    implementation project(':base')
+    implementation project(":cosplay2")
     implementation project(':instagramintegration')
 
     implementation 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion

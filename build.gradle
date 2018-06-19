@@ -33,4 +33,9 @@ task clean(type: Delete) {
 ext {
     supportLibVersion = "27.1.1"
     playServicesLibVersion = "15.0.0"
+    constraintLibVersion = "1.1.0"
+    daggerVersion = "2.16"
+    timberVersion = "4.7.0"
+    moxyVersion = "1.5.5"
+    butterknifeVersion = "8.5.1"
 }

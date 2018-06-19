@@ -1,1 +1,1 @@
-include ':app', ':appbase', ':instagramintegration'
+include ':app', ':base', ':instagramintegration', ':cosplay2'

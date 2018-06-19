@@ -1,4 +1,4 @@
-package ru.badr.cosplay2.api.cards;
+package com.badr.cosplay2.model.cards;
 
 import com.google.gson.annotations.SerializedName;
 
