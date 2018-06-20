@@ -1,9 +1,10 @@
 package com.badr.cosplay2.model.cards.list;
 
+import com.badr.cosplay2.model.cards.Card;
+import com.badr.cosplay2.model.cards.CardImage;
+
 import java.util.ArrayList;
 
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.cards.CardImage;
 
 /**
  * Created by ABadretdinov

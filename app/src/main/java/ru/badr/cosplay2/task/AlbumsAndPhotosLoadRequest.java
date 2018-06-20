@@ -3,6 +3,9 @@ package ru.badr.cosplay2.task;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.badr.cosplay2.model.media.Album;
+import com.badr.cosplay2.model.media.AlbumsAndPhotos;
+import com.badr.cosplay2.model.media.Photo;
 import com.octo.android.robospice.retry.DefaultRetryPolicy;
 
 import java.util.ArrayList;
@@ -13,9 +16,6 @@ import java.util.Map;
 
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.media.Album;
-import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
-import ru.badr.cosplay2.api.media.Photo;
 import ru.badr.cosplay2.api.vk.VkAlbum;
 import ru.badr.cosplay2.api.vk.VkAlbumsResponse;
 import ru.badr.cosplay2.api.vk.VkPhoto;

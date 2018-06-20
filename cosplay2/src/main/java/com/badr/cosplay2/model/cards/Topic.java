@@ -1,5 +1,6 @@
 package com.badr.cosplay2.model.cards;
 
+import com.badr.cosplay2.model.cards.list.ListCard;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import ru.badr.base.util.HasId;
-import ru.badr.cosplay2.api.cards.list.ListCard;
 
 /**
  * Created by ABadretdinov

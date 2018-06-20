@@ -2,6 +2,9 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
+import com.badr.cosplay2.model.cards.Topic;
+import com.badr.cosplay2.model.cards.list.ListCard;
+import com.badr.cosplay2.model.cards.list.TopicsAndCards;
 import com.octo.android.robospice.retry.DefaultRetryPolicy;
 
 import java.util.ArrayList;
@@ -12,9 +15,6 @@ import java.util.Properties;
 
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.cards.Topic;
-import ru.badr.cosplay2.api.cards.list.ListCard;
-import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
 
 /**
  * Created by ABadretdinov

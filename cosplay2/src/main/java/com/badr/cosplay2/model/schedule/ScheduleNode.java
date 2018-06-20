@@ -1,14 +1,15 @@
 package com.badr.cosplay2.model.schedule;
 
+import com.badr.cosplay2.model.cards.Card;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.util.Utils;
 
 /**
  * Created by Badr on 15.11.2015.
@@ -22,9 +23,6 @@ public class ScheduleNode implements Serializable {
     private String cardCode;
     private Card card;
     private String title;
-    /*
-        @SerializedName("date_start")
-        private Date startDate;*/
     @SerializedName("time_start")
     private Date startTime;
     @SerializedName("time_end")
@@ -106,7 +104,7 @@ public class ScheduleNode implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder(getTitle());
         if (getStartTime() != null) {
-            builder.append(' ').append(Utils.SCHEDULE_TIME_FORMAT.format(getStartTime()));
+            builder.append(' ').append(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(getStartTime()));
         }
         return builder.toString();
     }

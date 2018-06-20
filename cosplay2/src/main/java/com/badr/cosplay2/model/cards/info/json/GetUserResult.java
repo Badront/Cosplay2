@@ -1,8 +1,9 @@
 package com.badr.cosplay2.model.cards.info.json;
 
+import com.badr.cosplay2.model.cards.User;
+
 import java.io.Serializable;
 
-import ru.badr.cosplay2.api.cards.User;
 
 /**
  * Created by Badr on 24.11.2015.

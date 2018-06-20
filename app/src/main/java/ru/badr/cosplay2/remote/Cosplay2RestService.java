@@ -1,14 +1,14 @@
 package ru.badr.cosplay2.remote;
 
+import com.badr.cosplay2.model.cards.info.json.GetCardResult;
+import com.badr.cosplay2.model.cards.info.json.GetUserResult;
+import com.badr.cosplay2.model.cards.list.TopicsAndCards;
+import com.badr.cosplay2.model.media.AlbumsAndPhotos;
+import com.badr.cosplay2.model.schedule.Plan;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import ru.badr.cosplay2.api.cards.info.json.GetCardResult;
-import ru.badr.cosplay2.api.cards.info.json.GetUserResult;
-import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
-import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
-import ru.badr.cosplay2.api.schedule.Plan;
-
 /**
  * Created by ABadretdinov
  * 19.10.2015

@@ -2,6 +2,11 @@ package ru.badr.cosplay2.util;
 
 import android.content.Context;
 
+import com.badr.cosplay2.model.cards.Card;
+import com.badr.cosplay2.model.cards.CardImage;
+import com.badr.cosplay2.model.cards.User;
+import com.badr.cosplay2.model.cards.list.ListCard;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,10 +15,6 @@ import java.util.Properties;
 import java.util.TimeZone;
 
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.cards.CardImage;
-import ru.badr.cosplay2.api.cards.User;
-import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.opencon.R;
 
 /**
@@ -57,6 +58,7 @@ public class Utils {
     public static String getSmallCardImageUrl(Context context, Card card) {
         return getCardImageUrl(context, card, "small");
     }
+
     public static String getCardImageUrl(Context context, Card card) {
         return getCardImageUrl(context, card, "large");
     }

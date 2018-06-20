@@ -3,6 +3,16 @@ package ru.badr.cosplay2.task;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.badr.cosplay2.model.cards.Card;
+import com.badr.cosplay2.model.cards.CardImage;
+import com.badr.cosplay2.model.cards.User;
+import com.badr.cosplay2.model.cards.info.Badge;
+import com.badr.cosplay2.model.cards.info.Field;
+import com.badr.cosplay2.model.cards.info.InfoCard;
+import com.badr.cosplay2.model.cards.info.ReqValue;
+import com.badr.cosplay2.model.cards.info.json.GetCardResult;
+import com.badr.cosplay2.model.cards.info.json.ReqSectionHolder;
+import com.badr.cosplay2.model.cards.info.json.ReqValuesHolder;
 import com.google.gson.Gson;
 
 import java.util.Iterator;
@@ -10,16 +20,6 @@ import java.util.List;
 
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.cards.CardImage;
-import ru.badr.cosplay2.api.cards.User;
-import ru.badr.cosplay2.api.cards.info.Badge;
-import ru.badr.cosplay2.api.cards.info.Field;
-import ru.badr.cosplay2.api.cards.info.InfoCard;
-import ru.badr.cosplay2.api.cards.info.ReqValue;
-import ru.badr.cosplay2.api.cards.info.json.GetCardResult;
-import ru.badr.cosplay2.api.cards.info.json.ReqSectionHolder;
-import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 
 /**
  * Created by ABadretdinov

@@ -2,6 +2,10 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
+import com.badr.cosplay2.model.cards.list.ListCard;
+import com.badr.cosplay2.model.cards.list.TopicsAndCards;
+import com.badr.cosplay2.model.schedule.Plan;
+import com.badr.cosplay2.model.schedule.ScheduleNode;
 import com.google.gson.GsonBuilder;
 import com.octo.android.robospice.retry.DefaultRetryPolicy;
 
@@ -14,10 +18,6 @@ import ru.badr.base.CurrentTimeTask;
 import ru.badr.base.util.json.DateLongSerializer;
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.cards.list.ListCard;
-import ru.badr.cosplay2.api.cards.list.TopicsAndCards;
-import ru.badr.cosplay2.api.schedule.Plan;
-import ru.badr.cosplay2.api.schedule.ScheduleNode;
 import ru.badr.cosplay2.util.Utils;
 
 /**

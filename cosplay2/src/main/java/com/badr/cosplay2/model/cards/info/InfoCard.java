@@ -1,10 +1,9 @@
 package com.badr.cosplay2.model.cards.info;
 
+import com.badr.cosplay2.model.cards.list.ListCard;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
-
-import ru.badr.cosplay2.api.cards.list.ListCard;
 
 /**
  * Created by ABadretdinov

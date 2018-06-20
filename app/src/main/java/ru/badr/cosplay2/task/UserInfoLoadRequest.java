@@ -2,10 +2,11 @@ package ru.badr.cosplay2.task;
 
 import android.content.Context;
 
+import com.badr.cosplay2.model.cards.User;
+import com.badr.cosplay2.model.cards.info.json.GetUserResult;
+
 import ru.badr.base.util.retrofit.TaskRequest;
 import ru.badr.cosplay2.Cosplay2BeanContainer;
-import ru.badr.cosplay2.api.cards.User;
-import ru.badr.cosplay2.api.cards.info.json.GetUserResult;
 
 /**
  * Created by Badr on 24.11.2015.

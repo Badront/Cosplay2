@@ -1,8 +1,7 @@
 package com.badr.cosplay2.model.cards.info;
 
+import com.badr.cosplay2.model.cards.Topic;
 import com.google.gson.annotations.SerializedName;
-
-import ru.badr.cosplay2.api.cards.Topic;
 
 /**
  * Created by ABadretdinov

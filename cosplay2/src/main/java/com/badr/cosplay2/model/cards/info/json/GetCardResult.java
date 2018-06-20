@@ -1,18 +1,18 @@
 package com.badr.cosplay2.model.cards.info.json;
 
+import com.badr.cosplay2.model.cards.User;
+import com.badr.cosplay2.model.cards.info.Badge;
+import com.badr.cosplay2.model.cards.info.Field;
+import com.badr.cosplay2.model.cards.info.InfoCard;
+import com.badr.cosplay2.model.cards.info.InfoTopic;
+import com.badr.cosplay2.model.cards.info.ReqSection;
+import com.badr.cosplay2.model.cards.info.ReqValue;
+import com.badr.cosplay2.model.cards.info.Section;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
 
-import ru.badr.cosplay2.api.cards.User;
-import ru.badr.cosplay2.api.cards.info.Badge;
-import ru.badr.cosplay2.api.cards.info.Field;
-import ru.badr.cosplay2.api.cards.info.InfoCard;
-import ru.badr.cosplay2.api.cards.info.InfoTopic;
-import ru.badr.cosplay2.api.cards.info.ReqSection;
-import ru.badr.cosplay2.api.cards.info.ReqValue;
-import ru.badr.cosplay2.api.cards.info.Section;
 
 /**
  * Created by ABadretdinov
