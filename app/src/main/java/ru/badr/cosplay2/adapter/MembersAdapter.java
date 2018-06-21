@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SectionIndexer;
 
+import com.badr.cosplay2.model.cards.Topic;
+import com.badr.cosplay2.model.cards.list.ListCard;
 import com.bumptech.glide.Glide;
 import com.tonicartos.superslim.GridSLM;
 import com.tonicartos.superslim.LayoutManager;
@@ -21,8 +23,6 @@ import ru.badr.base.adapter.viewholder.BaseViewHolder;
 import ru.badr.base.adapter.viewholder.HeaderViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
-import ru.badr.cosplay2.api.cards.Topic;
-import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;
 

@@ -5,12 +5,13 @@ import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
+import com.badr.cosplay2.model.media.Photo;
+
 import java.util.List;
 
 import ru.badr.base.fragment.RecyclerFragment;
 import ru.badr.cosplay2.adapter.MediaPhotoAdapter;
 import ru.badr.cosplay2.adapter.viewholder.MediaPhotoViewHolder;
-import ru.badr.cosplay2.api.media.Photo;
 
 /**
  * Created by ABadretdinov

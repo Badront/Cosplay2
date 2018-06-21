@@ -7,13 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.badr.cosplay2.model.media.Album;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import ru.badr.base.adapter.BaseRecyclerAdapter;
 import ru.badr.cosplay2.adapter.viewholder.MediaPhotoViewHolder;
-import ru.badr.cosplay2.api.media.Album;
 import ru.badr.opencon.R;
 
 /**

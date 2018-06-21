@@ -7,7 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.widget.SwipeRefreshLayout;
 
-import ru.badr.cosplay2.api.media.AlbumsAndPhotos;
+import com.badr.cosplay2.model.media.AlbumsAndPhotos;
+
 import ru.badr.cosplay2.fragment.MediaAlbumsFragment;
 import ru.badr.cosplay2.fragment.MediaPhotosFragment;
 import ru.badr.opencon.R;

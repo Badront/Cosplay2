@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.badr.cosplay2.model.cards.User;
 import com.bumptech.glide.Glide;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
@@ -22,7 +23,6 @@ import ru.badr.base.BaseSpiceManager;
 import ru.badr.base.activity.BaseActivity;
 import ru.badr.base.fragment.BaseFragment;
 import ru.badr.base.util.Navigate;
-import ru.badr.cosplay2.api.cards.User;
 import ru.badr.cosplay2.task.UserInfoLoadRequest;
 import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;

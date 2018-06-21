@@ -21,7 +21,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "cosplay2"
+    productFlavors{
+        production{
+            dimension "cosplay2"
+        }
+        all{
+            variant->
+                def apiPropertiesFile = file("src/${variant.name}/settings.properties")
+                def apiProperties = new Properties()
+                apiProperties.load(new FileInputStream(apiPropertiesFile))
 
+                for (String key : apiProperties.stringPropertyNames()) {
+                    variant.buildConfigField("String", key, apiProperties[key])
+                }
+        }
+    }
 }
 
 dependencies {

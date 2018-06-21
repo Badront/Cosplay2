@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -26,6 +27,7 @@ import ru.badr.base.util.json.SimpleDateSerializer;
  */
 @Module
 public class BaseModule {
+    public static final String BASE_URL = "base_url";
     //todo add analytics
 
     @Singleton
@@ -52,14 +54,15 @@ public class BaseModule {
     @Singleton
     @Provides
     Retrofit provideRetrofit(Converter.Factory converterFactory,
-                             CallAdapter.Factory callFactory) {
+                             CallAdapter.Factory callFactory,
+                             @Named(BASE_URL) String baseUrl) {
         return new Retrofit.Builder()
                 .client(
                         new OkHttpClient.Builder().build()
                 )
+                .baseUrl(baseUrl)
                 .addConverterFactory(converterFactory)
                 .addCallAdapterFactory(callFactory)
                 .build();
-        //todo .baseUrl(BuildConfig.TIME_API_URL)
     }
 }

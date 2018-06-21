@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.badr.cosplay2.model.cards.info.InfoCard;
+import com.badr.cosplay2.model.cards.info.json.ReqValuesHolder;
 import com.bumptech.glide.Glide;
 
-import ru.badr.cosplay2.api.cards.info.InfoCard;
-import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
 import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;
 

@@ -1,18 +1,19 @@
 package ru.badr.cosplay2.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.badr.cosplay2.model.cards.list.ListCard;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import ru.badr.base.adapter.BaseRecyclerAdapter;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
-import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;
 
@@ -27,13 +28,14 @@ public class FestPhotoCardAdapter extends BaseRecyclerAdapter<ListCard, FestPhot
     }
 
     @Override
-    public FestPhotoCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public FestPhotoCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.photocosplay_row, parent, false);
         return new FestPhotoCardViewHolder(view, mOnItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(FestPhotoCardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FestPhotoCardViewHolder holder, int position) {
         ListCard card = getItem(position);
         Context context = holder.itemView.getContext();
         holder.title.setText(card.getVotingTitle());

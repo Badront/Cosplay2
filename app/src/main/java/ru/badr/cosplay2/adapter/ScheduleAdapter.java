@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SectionIndexer;
 
+import com.badr.cosplay2.model.schedule.ScheduleNode;
 import com.bumptech.glide.Glide;
 import com.tonicartos.superslim.GridSLM;
 import com.tonicartos.superslim.LayoutManager;
@@ -21,7 +22,6 @@ import ru.badr.base.adapter.viewholder.HeaderViewHolder;
 import ru.badr.base.entity.LineItem;
 import ru.badr.cosplay2.adapter.viewholder.ScheduleSectionViewHolder;
 import ru.badr.cosplay2.adapter.viewholder.ScheduleViewHolder;
-import ru.badr.cosplay2.api.schedule.ScheduleNode;
 import ru.badr.cosplay2.util.Utils;
 import ru.badr.opencon.R;
 

@@ -6,7 +6,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import ru.badr.cosplay2.api.cards.info.json.ReqValuesHolder;
+import com.badr.cosplay2.model.cards.info.json.ReqValuesHolder;
 
 /**
  * Created by Badr on 14.11.2015.

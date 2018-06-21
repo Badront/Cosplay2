@@ -3,6 +3,8 @@ package ru.badr.cosplay2.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.badr.cosplay2.model.cards.Card;
+import com.badr.cosplay2.model.cards.list.ListCard;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -13,8 +15,6 @@ import ru.badr.base.fragment.BaseRecyclerFragment;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.adapter.FestPhotoCardAdapter;
 import ru.badr.cosplay2.adapter.viewholder.FestPhotoCardViewHolder;
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.cards.list.ListCard;
 import ru.badr.cosplay2.task.TaggedCardsLoadRequest;
 import ru.badr.opencon.R;
 

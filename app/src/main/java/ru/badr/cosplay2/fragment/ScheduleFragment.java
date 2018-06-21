@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.badr.cosplay2.model.cards.Card;
+import com.badr.cosplay2.model.schedule.ScheduleNode;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -18,8 +20,6 @@ import ru.badr.base.entity.LineItem;
 import ru.badr.base.fragment.BaseRecyclerFragment;
 import ru.badr.base.util.Navigate;
 import ru.badr.cosplay2.adapter.ScheduleAdapter;
-import ru.badr.cosplay2.api.cards.Card;
-import ru.badr.cosplay2.api.schedule.ScheduleNode;
 import ru.badr.cosplay2.task.ScheduleLoadRequest;
 import ru.badr.opencon.R;
 import xyz.danoz.recyclerviewfastscroller.sectionindicator.title.SectionTitleIndicator;
