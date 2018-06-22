@@ -1,5 +1,8 @@
 package com.badr.cosplay2.di;
 
+import android.app.Application;
+
+import dagger.BindsInstance;
 import dagger.Component;
 import ru.badr.base.di.BaseModule;
 
@@ -9,5 +12,13 @@ import ru.badr.base.di.BaseModule;
  */
 @Component(modules = {Cosplay2Module.class, BaseModule.class})
 public interface Cosplay2Component {
+    void inject(Application application);
 
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        Builder application(Application application);
+
+        Cosplay2Component build();
+    }
 }

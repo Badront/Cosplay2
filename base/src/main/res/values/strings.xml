@@ -17,4 +17,12 @@
     <string name="done">Готово</string>
     <string name="show_all">К списку</string>
     <string name="open_in_browser">В браузере</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Отмена</string>
+
+    <string name="permission_title_rationale">Permission needed</string>
+    <string name="permission_title_rationale_template">Please allow %1$s access</string>
+
+    <string name="permission_needed">%1$s requires access to your %2$s</string>
 </resources>

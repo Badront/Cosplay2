@@ -2,6 +2,8 @@ package com.badr.cosplay2.di;
 
 import com.badr.cosplay2.BuildConfig;
 import com.badr.cosplay2.data.network.ICosplay2Api;
+import com.badr.cosplay2.repository.EventsRepository;
+import com.badr.cosplay2.repository.IEventsRepository;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -31,4 +33,9 @@ public class Cosplay2Module {
         return BuildConfig.COSPLAY2_URL;
     }
 
+    @Singleton
+    @Provides
+    IEventsRepository provideEventsRepository(EventsRepository eventsRepository) {
+        return eventsRepository;
+    }
 }

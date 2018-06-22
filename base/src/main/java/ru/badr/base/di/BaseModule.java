@@ -1,5 +1,8 @@
 package ru.badr.base.di;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,6 +22,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.badr.base.SchedulersProvider;
+import ru.badr.base.ui.dialog.DialogManager;
+import ru.badr.base.ui.dialog.IDialogManager;
 import ru.badr.base.util.json.SimpleDateSerializer;
 
 /**
@@ -50,7 +55,6 @@ public class BaseModule {
                 .create();
     }
 
-
     @Singleton
     @Provides
     Retrofit provideRetrofit(Converter.Factory converterFactory,
@@ -64,5 +68,10 @@ public class BaseModule {
                 .addConverterFactory(converterFactory)
                 .addCallAdapterFactory(callFactory)
                 .build();
+    }
+
+    @Provides
+    IDialogManager provideDialogManager(@NonNull Context context) {
+        return new DialogManager(context);
     }
 }

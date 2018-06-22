@@ -45,4 +45,5 @@ dependencies {
     implementation ('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true
     }
+    annotationProcessor "com.jakewharton:butterknife-compiler:"+rootProject.butterknifeVersion
 }
