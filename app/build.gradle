@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: "androidx.navigation.safeargs"
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
@@ -45,5 +46,8 @@ dependencies {
     implementation ('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true
     }
+    implementation 'android.arch.navigation:navigation-fragment:'+rootProject.nav_version // use -ktx for Kotlin
+    implementation 'android.arch.navigation:navigation-ui:'+rootProject.nav_version  // use -ktx for Kotlin
+
     annotationProcessor "com.jakewharton:butterknife-compiler:"+rootProject.butterknifeVersion
 }
