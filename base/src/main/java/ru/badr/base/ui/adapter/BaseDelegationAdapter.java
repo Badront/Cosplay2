@@ -41,8 +41,8 @@ public abstract class BaseDelegationAdapter<T extends AdapterComparable<T>> exte
                     return false;
                 }
                 AdapterDelegate<List<T>> delegate = delegatesManager.getDelegateForViewType(wasType);
-                if (delegate instanceof JAdapterDelegate) {
-                    return ((JAdapterDelegate<T>) delegate).areItemsTheSame(oldItems, oldItemPosition, items, newItemPosition);
+                if (delegate instanceof BaseAdapterDelegate) {
+                    return ((BaseAdapterDelegate<T>) delegate).areItemsTheSame(oldItems, oldItemPosition, items, newItemPosition);
                 }
                 return false;
             }
@@ -55,8 +55,8 @@ public abstract class BaseDelegationAdapter<T extends AdapterComparable<T>> exte
                     return false;
                 }
                 AdapterDelegate<List<T>> delegate = delegatesManager.getDelegateForViewType(wasType);
-                if (delegate instanceof JAdapterDelegate) {
-                    return ((JAdapterDelegate<T>) delegate).areContentsTheSame(oldItems, oldItemPosition, items, newItemPosition);
+                if (delegate instanceof BaseAdapterDelegate) {
+                    return ((BaseAdapterDelegate<T>) delegate).areContentsTheSame(oldItems, oldItemPosition, items, newItemPosition);
                 }
                 return false;
             }
@@ -68,8 +68,8 @@ public abstract class BaseDelegationAdapter<T extends AdapterComparable<T>> exte
     public int getSpanSize(int position, int maxSpanSize) {
         int type = delegatesManager.getItemViewType(items, position);
         AdapterDelegate<List<T>> delegate = delegatesManager.getDelegateForViewType(type);
-        if (delegate instanceof JAdapterDelegate) {
-            return ((JAdapterDelegate<T>) delegate).getSpanSize(items, position, maxSpanSize);
+        if (delegate instanceof BaseAdapterDelegate) {
+            return ((BaseAdapterDelegate<T>) delegate).getSpanSize(items, position, maxSpanSize);
         }
         return 1;
     }

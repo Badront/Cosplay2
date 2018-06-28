@@ -2,6 +2,7 @@
 <resources>
     <color name="list_background">@android:color/white</color>
     <color name="alpha_black">#AA000000</color>
+    <color name="black">#000</color>
 
     <color name="red">#F44336</color>
     <color name="red_dark">#D32F2F</color>

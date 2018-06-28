@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:id="@+id/retry"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="?attr/selectableItemBackgroundBorderless"
+                                             android:gravity="center"
+                                             android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/InternetConnectionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/internet_connection_offline"
+        app:layout_constraintBottom_toTopOf="@+id/retryImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <ImageView
+        android:id="@+id/retryImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/retryText"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/ic_retry"/>
+
+    <TextView
+        android:id="@+id/retryText"
+        style="@style/RetryTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="@+id/retryImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/retryImage"
+        app:layout_constraintTop_toTopOf="@+id/retryImage"/>
+
+</android.support.constraint.ConstraintLayout>

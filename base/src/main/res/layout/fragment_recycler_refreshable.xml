@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/empty_text"
+        style="@style/EmptyListTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/list_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.julz.base.widget.JProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/progress_bar_size"
+        android:layout_height="@dimen/progress_bar_size"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="24dp"
+        android:indeterminate="true"
+        android:visibility="visible"/>
+
+    <include
+        layout="@layout/partial_connection_problem"
+        android:visibility="gone"/>
+</android.support.design.widget.CoordinatorLayout>

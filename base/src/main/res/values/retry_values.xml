@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--string-->
+    <string name="internet_connection_offline">The Internet connection appears\nto be offline</string>
+    <string name="retry">Retry</string>
+    <!--dimen-->
+    <dimen name="retry_text_size">13sp</dimen>
+    <dimen name="internet_connection_text_size">14sp</dimen>
+    <dimen name="progress_bar_size">32dp</dimen>
+</resources>
