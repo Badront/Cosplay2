@@ -3,8 +3,8 @@ package com.badr.cosplay2.data.network;
 import com.badr.cosplay2.model.cards.info.json.GetCardResult;
 import com.badr.cosplay2.model.cards.info.json.GetUserResult;
 import com.badr.cosplay2.model.cards.list.TopicsAndCards;
-import com.badr.cosplay2.model.event.EventType;
-import com.badr.cosplay2.model.event.Events;
+import com.badr.cosplay2.model.event.network.EventType;
+import com.badr.cosplay2.model.event.network.Events;
 import com.badr.cosplay2.model.media.AlbumsAndPhotos;
 import com.badr.cosplay2.model.schedule.Plan;
 

@@ -1,4 +1,4 @@
-package com.badr.cosplay2.model.event;
+package com.badr.cosplay2.model.event.network;
 
 import com.google.gson.annotations.SerializedName;
 

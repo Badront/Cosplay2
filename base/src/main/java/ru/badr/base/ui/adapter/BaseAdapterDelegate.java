@@ -2,7 +2,9 @@ package ru.badr.base.ui.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 
@@ -27,6 +29,16 @@ public abstract class BaseAdapterDelegate<T extends AdapterComparable<T>> extend
         T newItem = newItems.get(newItemPosition);
         return oldItem == newItem || (oldItem != null && oldItem.areContentSame(newItem));
     }
+
+
+    @NonNull
+    @Override
+    protected final RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+        return onCreateViewHolder(LayoutInflater.from(parent.getContext()), parent);
+    }
+
+    @NonNull
+    protected abstract RecyclerView.ViewHolder onCreateViewHolder(LayoutInflater inflater, ViewGroup parent);
 
     public int getSpanSize(List<T> items, int position, int maxSpanSize) {
         return maxSpanSize;

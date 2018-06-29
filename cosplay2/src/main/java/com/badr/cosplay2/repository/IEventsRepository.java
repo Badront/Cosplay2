@@ -1,7 +1,7 @@
 package com.badr.cosplay2.repository;
 
-import com.badr.cosplay2.model.event.Event;
-import com.badr.cosplay2.model.event.EventType;
+import com.badr.cosplay2.model.event.network.Event;
+import com.badr.cosplay2.model.event.network.EventType;
 
 import java.util.List;
 

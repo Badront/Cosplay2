@@ -30,7 +30,7 @@ public class Cosplay2Module {
     @Provides
     @Named(BaseModule.BASE_URL)
     String provideBaseUrl() {
-        return BuildConfig.COSPLAY2_URL;
+        return BuildConfig.COSPLAY2_API_URL;
     }
 
     @Singleton
