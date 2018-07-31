@@ -23,7 +23,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':base')
     api 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
 }

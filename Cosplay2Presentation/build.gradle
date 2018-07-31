@@ -1,0 +1,27 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    def presentationDependencies=rootProject.ext.cosplay2PresentationDependencies
+    def presentationTestDependencies=rootProject.ext.cosplay2PresentationTestDependencies
+
+    compileOnly         presentationDependencies.javaxAnnotation
+
+    implementation      project(':Cosplay2Domain')
+
+    implementation      presentationDependencies.rxKotlin
+    implementation      presentationDependencies.kotlin
+    implementation      presentationDependencies.javaxInject
+    implementation      presentationDependencies.moxy
+    kapt                presentationDependencies.moxyCompiler
+
+
+    testImplementation  presentationTestDependencies.junit
+    testImplementation  presentationTestDependencies.assertj
+    testImplementation  presentationTestDependencies.mockito
+    testImplementation  presentationTestDependencies.robolectric
+}
+
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

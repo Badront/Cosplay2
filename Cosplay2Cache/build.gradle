@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/db-schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def cacheDependencies = rootProject.ext.cosplay2AndroidCacheDependencies
+    def cacheTestDependencies = rootProject.ext.cosplay2AndroidCacheTestDependencies
+
+    compileOnly         cacheDependencies.javaxAnnotation
+
+    implementation      project(':Cosplay2Data')
+
+    kapt                cacheDependencies.daggerCompiler
+    implementation      cacheDependencies.dagger
+    implementation      cacheDependencies.rxKotlin
+    implementation      cacheDependencies.kotlin
+    implementation      cacheDependencies.javaxInject
+    implementation      cacheDependencies.androidAnnotations
+    implementation      cacheDependencies.roomRuntime
+    kapt                cacheDependencies.roomCompiler
+    implementation      cacheDependencies.roomRxJava
+
+    testImplementation  cacheTestDependencies.junit
+    testImplementation  cacheTestDependencies.kotlinJUnit
+    testImplementation  cacheTestDependencies.assertj
+    testImplementation  cacheTestDependencies.mockito
+    testImplementation  cacheTestDependencies.roomTesting
+    testImplementation  cacheTestDependencies.archTesting
+    testImplementation  cacheTestDependencies.supportRunner
+    testImplementation  cacheTestDependencies.supportRules
+    testImplementation  cacheTestDependencies.robolectric
+}
