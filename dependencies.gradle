@@ -36,6 +36,18 @@ ext{
     androidSupportRulesVersion = '1.0.2'
     espressoVersion = '3.0.0'
 
+    domainDependencies=[
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin:             "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    domainTestDependencies=[
+            junit:              "junit:junit:${junitVersion}",
+            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}"
+    ]
+
     cosplay2DomainDependencies=[
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",

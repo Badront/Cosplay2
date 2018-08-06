@@ -1,6 +1,6 @@
-package com.histler.voicevk.domain.interactor
+package com.histler.base.domain.interactor
 
-import com.histler.cosplay2.domain.executor.PostExecutionThread
+import com.histler.base.domain.executor.PostExecutionThread
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

@@ -4,10 +4,8 @@ sourceCompatibility = "7"
 targetCompatibility = "7"
 
 dependencies {
-    def domainDependencies = rootProject.ext.cosplay2DomainDependencies
-    def domainTestDependencies = rootProject.ext.cosplay2DomainTestDependencies
-
-    implementation project(':domain')
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
 
     implementation domainDependencies.javaxAnnotation
     implementation domainDependencies.javaxInject
