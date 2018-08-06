@@ -9,4 +9,4 @@ data class Participant(
         val name: String,
         val image: String,
         val nomination: Nomination,
-        val winType: WinType)
+        val winType: WinType?)

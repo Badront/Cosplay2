@@ -1,1 +1,1 @@
-include ':app', ':base', ':domain', ':instagramintegration', ':cosplay2', ':Cosplay2Domain', ':Cosplay2Data', ':Cosplay2Remote', ':Cosplay2Cache', ':Cosplay2Presentation'
+include ':app', ':base', ':domain', ':instagramintegration', ':cosplay2', ':Cosplay2Domain', ':Cosplay2Data', ':Cosplay2Remote', ':Cosplay2Cache', ':Cosplay2Presentation', ':data'
