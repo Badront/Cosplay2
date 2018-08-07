@@ -5,6 +5,7 @@ dependencies {
     def remoteTestDependencies = rootProject.ext.cosplay2RemoteTestDependencies
 
     implementation      project(':Cosplay2Data')
+    implementation      project(':remote')
 
     implementation      remoteDependencies.javaxAnnotation
     implementation      remoteDependencies.kotlin
