@@ -8,8 +8,11 @@ import io.reactivex.Observable
  * Created by abadretdinov
  * on 06.08.2018
  */
-interface ScheduleDataStore {
+interface EventsDataStore {
+
     fun clearSchedule(): Completable
+
     fun saveSchedule(schedule: List<ScheduleEntity>): Completable
+
     fun getSchedule(): Observable<List<ScheduleEntity>>
 }
