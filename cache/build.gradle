@@ -1,0 +1,11 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+dependencies {
+    def cacheDependencies = rootProject.ext.cacheDependencies
+    def cacheTestDependencies = rootProject.ext.cacheTestDependencies
+
+    implementation      cacheDependencies.javaxAnnotation
+    implementation      cacheDependencies.kotlin
+}
