@@ -9,6 +9,6 @@ import java.util.*
 data class ScheduleEntity(
         val id: Long,
         val name: String,
-        val image: String,
+        val image: String?,
         val type: ScheduleTypeEntity,
         val time: Date)

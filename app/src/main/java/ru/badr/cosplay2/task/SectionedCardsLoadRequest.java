@@ -45,7 +45,7 @@ public class SectionedCardsLoadRequest extends TaskRequest<Topic.List> {
 
             for (Topic topic : baseTopics) {
                 if (!notToIncludeTags.contains(topic.getTitle())) {
-                    topic.setCards(new ArrayList<ListCard>());
+                    topic.setCards(new ArrayList<>());
                     Iterator<ListCard> iterator = allCards.iterator();
                     while (iterator.hasNext()) {
                         ListCard card = iterator.next();

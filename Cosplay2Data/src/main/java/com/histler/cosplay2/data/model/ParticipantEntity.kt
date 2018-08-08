@@ -5,8 +5,8 @@ package com.histler.cosplay2.data.model
  * on 06.08.2018
  */
 data class ParticipantEntity(
-        val id: Long,
+        val id: Long?,
         val name: String,
-        val image: String,
+        val image: String?,
         val nomination: NominationEntity,
         val winType: WinTypeEntity?)

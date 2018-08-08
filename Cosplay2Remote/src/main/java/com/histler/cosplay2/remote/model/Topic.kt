@@ -10,6 +10,5 @@ class Topic(
         val id: Long,
         @SerializedName("url_code") val urlCode: String,
         @SerializedName("card_code") val cardCode: String,
-        val title: String,
-        val cards: List<TopicCard>
+        val title: String
 )

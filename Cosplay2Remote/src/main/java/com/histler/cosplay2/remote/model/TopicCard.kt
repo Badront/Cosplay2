@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  */
 open class TopicCard(
         val id: Long,
-        @SerializedName("topicName") val topicName: String,
+        @SerializedName("topicName") var topicName: String,
         @SerializedName("topic_id") val topicId: Long,
         @SerializedName("voting_number") val votingNumber: String,
         @SerializedName("voting_title") val votingTitle: String,
