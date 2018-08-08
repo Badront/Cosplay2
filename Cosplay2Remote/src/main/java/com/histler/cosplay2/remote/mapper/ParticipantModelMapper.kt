@@ -35,7 +35,7 @@ class ParticipantModelMapper @Inject constructor(private val urlProvider: UrlPro
 
     private fun getImageUrl(card: ListTopicCard): String {
         return if (card.image != null) {
-            urlProvider.getBaseFestivalUrl() + "uploads/" + urlProvider.getBaseFestivalUrl() + "/" + card.id + "/" + card.image.fileName + "_large.jpg"
+            urlProvider.getBaseFestivalUrl() + "uploads/" + urlProvider.getFestivalId() + "/" + card.id + "/" + card.image.fileName + "_large.jpg"
         } else {
             urlProvider.getBaseFestivalUrl() + "images/avatars/" + card.userId + "_full.png"
         }
