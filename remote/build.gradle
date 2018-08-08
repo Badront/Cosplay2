@@ -3,6 +3,9 @@ sourceCompatibility = "7"
 targetCompatibility = "7"
 
 dependencies {
+    def remoteDependencies = rootProject.ext.remoteDependencies
+    def remoteTestDependencies = rootProject.ext.remoteTestDependencies
 
+    implementation      remoteDependencies.javaxAnnotation
+    implementation      remoteDependencies.kotlin
 }
-

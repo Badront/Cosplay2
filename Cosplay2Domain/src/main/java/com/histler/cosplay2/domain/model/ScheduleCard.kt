@@ -9,6 +9,6 @@ import java.util.*
 data class ScheduleCard(
         val id: Long,
         val name: String,
-        val image: String,
+        val image: String?,
         val type: ScheduleCardType,
         val time: Date)

@@ -5,7 +5,7 @@ package com.histler.cosplay2.remote.model
  * on 07.08.2018
  */
 class ListTopicCard(
-        val image: TopicCardImage,
+        val image: TopicCardImage?,
         id: Long,
         topicName: String,
         topicId: Long,
