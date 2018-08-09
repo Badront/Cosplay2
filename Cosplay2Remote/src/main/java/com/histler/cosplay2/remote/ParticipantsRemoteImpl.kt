@@ -20,14 +20,13 @@ class ParticipantsRemoteImpl @Inject constructor(
     override fun getParticipants(): Observable<List<ParticipantEntity>> {
         return service
                 .getTopicsAndCards()
-                .map {
-                    val topics = it.topics
+                .map { tac ->
+                    val topics = tac.topics
                     val cards = mutableListOf<ListTopicCard>()
-                    cards.addAll(it.cards)
+                    cards.addAll(tac.cards)
                     val result = mutableListOf<Pair<ListTopicCard?, Topic>>()
 
                     for (topic in topics) {
-                        result.add(Pair(null, topic))
                         val iterator = cards.iterator()
                         while (iterator.hasNext()) {
                             val card = iterator.next()

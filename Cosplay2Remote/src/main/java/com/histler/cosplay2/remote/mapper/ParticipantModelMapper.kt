@@ -18,7 +18,7 @@ class ParticipantModelMapper @Inject constructor(private val urlProvider: UrlPro
         val card = model.first
         val topic = model.second
         return ParticipantEntity(
-                card?.id,
+                card?.id ?: 0,
                 card?.votingTitle ?: topic.title,
                 if (card != null) getImageUrl(card) else null,
                 NominationEntity(topic.id, topic.title),
