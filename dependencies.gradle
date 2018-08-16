@@ -107,6 +107,19 @@ ext{
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
+    presentationDependencies=[
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin:             "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            moxy:               "com.arello-mobile:moxy:${moxyVersion}"
+    ]
+
+    presentationTestDependencies=[
+            junit:              "junit:junit:${junitVersion}",
+            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}"
+    ]
+
     cosplay2DomainDependencies=[
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",

@@ -1,0 +1,18 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+dependencies {
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+
+    implementation      presentationDependencies.javaxAnnotation
+    implementation      presentationDependencies.javaxInject
+    implementation      presentationDependencies.rxKotlin
+    implementation      presentationDependencies.moxy
+
+    testImplementation  presentationTestDependencies.junit
+    testImplementation  presentationTestDependencies.mockito
+    testImplementation  presentationTestDependencies.assertj
+}

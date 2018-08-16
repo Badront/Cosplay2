@@ -8,6 +8,7 @@ dependencies {
     compileOnly         presentationDependencies.javaxAnnotation
 
     implementation      project(':Cosplay2Domain')
+    implementation      project(':presentation')
 
     implementation      presentationDependencies.rxKotlin
     implementation      presentationDependencies.kotlin
