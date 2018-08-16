@@ -8,5 +8,5 @@ import com.google.gson.annotations.SerializedName
  */
 class TopicsAndCards(
         val topics: List<Topic>,
-        @SerializedName("requests") val cards: List<ListTopicCard>
+        @SerializedName("requests") val cards: List<Request>
 )

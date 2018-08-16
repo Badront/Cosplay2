@@ -1,6 +1,7 @@
 package com.histler.cosplay2.domain.repository
 
-import com.histler.cosplay2.domain.model.Participant
+import com.histler.cosplay2.domain.model.Request
+import com.histler.cosplay2.domain.model.Topic
 import io.reactivex.Observable
 
 /**
@@ -8,5 +9,5 @@ import io.reactivex.Observable
  * on 06.08.2018
  */
 interface ParticipantsRepository {
-    fun getParticipants(sectionName: String? = null): Observable<List<Participant>>
+    fun getParticipants(sectionName: String? = null): Observable<Map<Topic, List<Request>>>
 }

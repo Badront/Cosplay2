@@ -1,6 +1,6 @@
 package com.histler.cosplay2.data.store
 
-import com.histler.cosplay2.data.model.ScheduleEntity
+import com.histler.cosplay2.data.model.ScheduleNodeEntity
 import com.histler.cosplay2.data.repository.EventsDataStore
 import com.histler.cosplay2.data.repository.EventsRemote
 import io.reactivex.Completable
@@ -14,11 +14,11 @@ import javax.inject.Inject
 class EventsRemoteDataStore @Inject constructor(
         private val eventsRemote: EventsRemote
 ) : EventsDataStore {
-    override fun saveSchedule(schedule: List<ScheduleEntity>): Completable {
+    override fun saveSchedule(schedule: List<ScheduleNodeEntity>): Completable {
         throw UnsupportedOperationException("Saving schedule isn't supported here...")
     }
 
-    override fun getSchedule(): Observable<List<ScheduleEntity>> {
+    override fun getSchedule(): Observable<List<ScheduleNodeEntity>> {
         return eventsRemote.getSchedule()
     }
 

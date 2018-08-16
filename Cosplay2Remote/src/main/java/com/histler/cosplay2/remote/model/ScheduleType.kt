@@ -7,6 +7,8 @@ package com.histler.cosplay2.remote.model
 enum class ScheduleType {
     DAY,
     PLACE,
+    BREAK,
     EVENT,
+    TOPIC,
     REQUEST
 }

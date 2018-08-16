@@ -6,6 +6,9 @@ package com.histler.cosplay2.data.model
  */
 enum class ScheduleTypeEntity {
     DAY,
-    BLOCK,
+    PLACE,
+    BREAK,
+    TOPIC,
+    EVENT,
     PARTICIPANT
 }

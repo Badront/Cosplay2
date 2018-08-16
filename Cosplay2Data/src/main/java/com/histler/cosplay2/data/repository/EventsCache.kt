@@ -1,6 +1,6 @@
 package com.histler.cosplay2.data.repository
 
-import com.histler.cosplay2.data.model.ScheduleEntity
+import com.histler.cosplay2.data.model.ScheduleNodeEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -13,9 +13,9 @@ interface EventsCache {
 
     fun clearSchedule(): Completable
 
-    fun saveSchedule(schedule: List<ScheduleEntity>): Completable
+    fun saveSchedule(schedule: List<ScheduleNodeEntity>): Completable
 
-    fun getSchedule(): Observable<List<ScheduleEntity>>
+    fun getSchedule(): Observable<List<ScheduleNodeEntity>>
 
     fun areScheduleCached(): Single<Boolean>
 

@@ -1,6 +1,6 @@
 package com.histler.cosplay2.data.store
 
-import com.histler.cosplay2.data.model.ScheduleEntity
+import com.histler.cosplay2.data.model.ScheduleNodeEntity
 import com.histler.cosplay2.data.repository.EventsCache
 import com.histler.cosplay2.data.repository.EventsDataStore
 import io.reactivex.Completable
@@ -18,11 +18,11 @@ class EventsCacheDataStore @Inject constructor(
         return eventsCache.clearSchedule()
     }
 
-    override fun saveSchedule(schedule: List<ScheduleEntity>): Completable {
+    override fun saveSchedule(schedule: List<ScheduleNodeEntity>): Completable {
         return eventsCache.saveSchedule(schedule)
     }
 
-    override fun getSchedule(): Observable<List<ScheduleEntity>> {
+    override fun getSchedule(): Observable<List<ScheduleNodeEntity>> {
         return eventsCache.getSchedule()
     }
 

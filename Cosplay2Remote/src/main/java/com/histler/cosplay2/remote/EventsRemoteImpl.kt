@@ -3,11 +3,11 @@ package com.histler.cosplay2.remote
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.histler.base.remote.serializer.DateLongSerializer
-import com.histler.cosplay2.data.model.ScheduleEntity
+import com.histler.cosplay2.data.model.ScheduleNodeEntity
 import com.histler.cosplay2.data.repository.EventsRemote
 import com.histler.cosplay2.remote.mapper.ScheduleModelMapper
-import com.histler.cosplay2.remote.model.ListTopicCard
 import com.histler.cosplay2.remote.model.Plan
+import com.histler.cosplay2.remote.model.Request
 import com.histler.cosplay2.remote.model.ScheduleNode
 import com.histler.cosplay2.remote.model.TopicsAndCards
 import com.histler.cosplay2.remote.service.Cosplay2ScheduleService
@@ -24,13 +24,13 @@ class EventsRemoteImpl @Inject constructor(
         private val service: Cosplay2ScheduleService,
         private val mapper: ScheduleModelMapper
 ) : EventsRemote {
-    override fun getSchedule(): Observable<List<ScheduleEntity>> {
+    override fun getSchedule(): Observable<List<ScheduleNodeEntity>> {
         return Observable
                 .zip(
                         service
                                 .getSchedule(),
                         service.getTopicsAndCards(),
-                        BiFunction<Plan, TopicsAndCards, List<Pair<ScheduleNode, ListTopicCard?>>> { plan, topics ->
+                        BiFunction<Plan, TopicsAndCards, List<Pair<ScheduleNode, Request?>>> { plan, topics ->
                             val gson = GsonBuilder()
                                     .registerTypeAdapter(Date::class.java, DateLongSerializer())
                                     .create()
@@ -39,20 +39,21 @@ class EventsRemoteImpl @Inject constructor(
                             parseNodes(scheduleNodes, topics.cards)
                         }
                 )
-                .map {
-                    it.map { mapper.mapFromModel(it) }
+                .map { pairs ->
+                    pairs.map { mapper.mapFromModel(it) }
                 }
     }
 
-    private fun parseNodes(nodes: List<ScheduleNode>, cards: List<ListTopicCard>): List<Pair<ScheduleNode, ListTopicCard?>> {
-        val resultList = mutableListOf<Pair<ScheduleNode, ListTopicCard?>>()
+    private fun parseNodes(nodes: List<ScheduleNode>, cards: List<Request>, parentNodeId: String? = null): List<Pair<ScheduleNode, Request?>> {
+        val resultList = mutableListOf<Pair<ScheduleNode, Request?>>()
         for (node in nodes) {
             val innerNodes = node.nodes
             node.nodes = null
-            var card: ListTopicCard? = null
-            if (node.cardId != null) {
+            node.parentId = parentNodeId
+            var card: Request? = null
+            if (node.requestId != null) {
                 for (topicCard in cards) {
-                    if (topicCard.id == node.cardId) {
+                    if (topicCard.id == node.requestId) {
                         card = topicCard
                         break
                     }
@@ -60,7 +61,7 @@ class EventsRemoteImpl @Inject constructor(
             }
             resultList.add(Pair(node, card))
             if (innerNodes != null && innerNodes.isNotEmpty()) {
-                resultList.addAll(parseNodes(innerNodes, cards))
+                resultList.addAll(parseNodes(innerNodes, cards, node.uid))
             }
         }
         return resultList

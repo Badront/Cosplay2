@@ -1,6 +1,6 @@
 package com.histler.cosplay2.data.repository
 
-import com.histler.cosplay2.data.model.ScheduleEntity
+import com.histler.cosplay2.data.model.ScheduleNodeEntity
 import io.reactivex.Observable
 
 /**
@@ -8,5 +8,5 @@ import io.reactivex.Observable
  * on 06.08.2018
  */
 interface EventsRemote {
-    fun getSchedule(): Observable<List<ScheduleEntity>>
+    fun getSchedule(): Observable<List<ScheduleNodeEntity>>
 }
