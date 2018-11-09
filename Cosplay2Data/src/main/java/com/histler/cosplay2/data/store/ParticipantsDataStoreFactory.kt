@@ -23,4 +23,8 @@ open class ParticipantsDataStoreFactory @Inject constructor(
     open fun getCacheDataStore(): TopicsAndRequestsDataStore {
         return participantsCacheDataStore
     }
+
+    open fun getRemoteDataStore(): TopicsAndRequestsDataStore {
+        return participantsRemoteDataStore
+    }
 }

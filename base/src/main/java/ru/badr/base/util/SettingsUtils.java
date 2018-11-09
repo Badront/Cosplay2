@@ -16,6 +16,7 @@ import java.util.Properties;
 public class SettingsUtils {
 
     public static final String SETTINGS_FILE = "settings.properties";
+    public static final String SETTINGS_RAW = "settings";
 
     public static String getAssetsSettingsProperty(Context context, String propertyName) {
         return getAssetsProperty(context, SETTINGS_FILE, propertyName);
@@ -35,6 +36,10 @@ public class SettingsUtils {
         return getAssetsProperties(context, SETTINGS_FILE);
     }
 
+    public static Properties getRawProperties(Context context) {
+        return getRawProperties(context, SETTINGS_RAW);
+    }
+
     public static Properties getAssetsProperties(Context context, String propertyFileName) {
         try {
             AssetManager assets = context.getAssets();
@@ -44,6 +49,16 @@ public class SettingsUtils {
             Log.e(SettingsUtils.class.getName() + "getAssetsProperties", e.getMessage());
             return null;
         }
+    }
+
+    public static Properties getRawProperties(Context context, String propertyFileName) {
+        InputStream inputStream = context
+                .getResources()
+                .openRawResource(
+                        context
+                                .getResources()
+                                .getIdentifier(propertyFileName, "raw", context.getApplicationContext().getPackageName()));
+        return getProperties(inputStream);
     }
 
     public static Properties getProperties(InputStream is) {

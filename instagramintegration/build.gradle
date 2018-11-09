@@ -6,11 +6,11 @@ repositories {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -26,3 +26,6 @@ dependencies {
     implementation project(':base')
     api 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
 }
+
+//todo https://habr.com/company/redmadrobot/blog/426617/
+//todo https://medium.com/google-developer-experts/exploring-the-android-app-bundle-ca16846fa3d7

@@ -8,7 +8,7 @@
     <color name="silver">#c0c0c0</color>
     <color name="bronze">#CD7F32</color>
 
-    <color name="extra_opencon_purple">#553679</color>
-    <color name="extra_opencon_purple_dark">#54376e</color>
-    <color name="extra_opencon_red">#E33956</color>
+    <color name="extra_opencon_purple">#2b0f49</color>
+    <color name="extra_opencon_purple_dark">#170946</color>
+    <color name="extra_opencon_red">#92264d</color>
 </resources>

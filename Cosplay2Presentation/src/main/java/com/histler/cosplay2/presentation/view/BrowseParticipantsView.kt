@@ -11,7 +11,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface BrowseParticipantsView : MvpView {
     fun showParticipants(show: Boolean)
+    fun showLoading(show: Boolean)
     fun showReload(show: Boolean)
     fun showError(message: String)
     fun hideError()
+    fun setParticipants(list: MutableList<Any>)
 }

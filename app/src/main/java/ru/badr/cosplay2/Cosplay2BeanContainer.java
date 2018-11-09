@@ -33,7 +33,7 @@ public class Cosplay2BeanContainer {
     private VkRestService vkRestService;
 
     private Cosplay2BeanContainer(Context context) {
-        properties = SettingsUtils.getAssetsProperties(context);
+        properties = SettingsUtils.getRawProperties(context);
     }
 
     public static Cosplay2BeanContainer getInstance(Context context) {
@@ -65,7 +65,7 @@ public class Cosplay2BeanContainer {
         if (cosplay2RestService == null) {
             GsonBuilder gsonBuilder = new GsonBuilder().registerTypeAdapter(Date.class, new SimpleDateSerializer(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
             Retrofit cosplay2RestAdapter = new Retrofit.Builder()
-                    .baseUrl(properties.getProperty("global.url16"))
+                    .baseUrl(properties.getProperty("global.url18"))
                     .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
                     .build();
             cosplay2RestService = cosplay2RestAdapter.create(Cosplay2RestService.class);

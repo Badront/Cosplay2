@@ -129,6 +129,32 @@ public class FileUtils {
         return null;
     }
 
+    public static String getTextFromRaw(Context context, String fileName) {
+        InputStream inputStream = context
+                .getResources()
+                .openRawResource(
+                        context.getResources().getIdentifier(fileName, "raw", context.getApplicationContext().getPackageName())
+                );
+        String text;
+        try {
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            int i;
+            i = inputStream.read();
+            while (i != -1) {
+                byteArrayOutputStream.write(i);
+                i = inputStream.read();
+            }
+            inputStream.close();
+            text = byteArrayOutputStream.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            text = null;
+        }
+        return text;
+    }
+
     public static String getTextFromAsset(Context context, String fileName) {
         AssetManager assetManager = context.getAssets();
         String text;
