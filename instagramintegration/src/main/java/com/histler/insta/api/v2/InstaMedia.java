@@ -2,7 +2,9 @@ package com.histler.insta.api.v2;
 
 import com.google.gson.annotations.SerializedName;
 import com.histler.insta.api.v2.node.InstaNode;
+import com.histler.insta.api.v2.node.InstaNodeEdge;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ import java.util.List;
 public class InstaMedia extends InstaCounter {
     @SerializedName("page_info")
     private InstaPageInfo pageInfo;
-    private List<InstaNode> nodes;
+    private List<InstaNodeEdge> edges;
 
     public InstaPageInfo getPageInfo() {
         return pageInfo;
@@ -23,10 +25,21 @@ public class InstaMedia extends InstaCounter {
     }
 
     public List<InstaNode> getNodes() {
-        return nodes;
+        if (edges != null) {
+            List<InstaNode> nodes = new ArrayList<>(edges.size());
+            for (InstaNodeEdge nodeEdge : edges) {
+                nodes.add(nodeEdge.getNode());
+            }
+            return nodes;
+        }
+        return null;
     }
 
-    public void setNodes(List<InstaNode> nodes) {
-        this.nodes = nodes;
+    public List<InstaNodeEdge> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(List<InstaNodeEdge> edges) {
+        this.edges = edges;
     }
 }

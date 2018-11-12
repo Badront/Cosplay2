@@ -11,24 +11,27 @@ import java.util.Date;
  * on 02.09.2016 1:52.
  */
 public class InstaNode implements Serializable {
+    @SerializedName("shortcode")
     private String code;
     @SerializedName("dimensions")
     private InstaResolution resolution;
     private InstaUser owner;
+    @SerializedName("edge_media_to_comment")
     private InstaCounter comments;
+    @SerializedName("edge_liked_by")
     private InstaCounter likes;
-    @SerializedName("caption")
-    private String description;
-    @SerializedName("date")
+    @SerializedName("edge_media_to_caption")
+    private InstaCaptionMediaEdge descriptionHolder;
+    @SerializedName("taken_at_timestamp")
     private Date createdTime;
     @SerializedName("thumbnail_src")
     private String thumbnailPath;
-    @SerializedName("display_src")
+    @SerializedName("display_url")
     private String imagePath;
     private String id;
     @SerializedName("is_video")
     private boolean isVideo;
-    @SerializedName("video_views")
+    @SerializedName("video_view_count")
     private int videoViews;
 
     public String getCode() {
@@ -72,11 +75,15 @@ public class InstaNode implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        return descriptionHolder.getEdges() != null && descriptionHolder.getEdges().size() > 0 ? descriptionHolder.getEdges().get(0).getNode().getText() : null;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public InstaCaptionMediaEdge getDescriptionHolder() {
+        return descriptionHolder;
+    }
+
+    public void setDescriptionHolder(InstaCaptionMediaEdge descriptionHolder) {
+        this.descriptionHolder = descriptionHolder;
     }
 
     public Date getCreatedTime() {

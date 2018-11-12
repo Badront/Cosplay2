@@ -7,13 +7,17 @@ import java.io.Serializable;
  * on 02.09.2016 1:59.
  */
 public class InstaFirstResult implements Serializable {
-    private InstaTag tag;
+    private InstaGraphQl graphql;
 
     public InstaTag getTag() {
-        return tag;
+        return graphql.getHashtag();
     }
 
-    public void setTag(InstaTag tag) {
-        this.tag = tag;
+    public InstaGraphQl getGraphql() {
+        return graphql;
+    }
+
+    public void setGraphql(InstaGraphQl graphql) {
+        this.graphql = graphql;
     }
 }
