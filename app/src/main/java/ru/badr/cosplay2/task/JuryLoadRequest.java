@@ -28,7 +28,7 @@ public class JuryLoadRequest extends TaskRequest<JurySectionEntity.List> {
     }
 
     @Override
-    public JurySectionEntity.List loadData() throws Exception {
+    public JurySectionEntity.List loadData() {
         String fileText = FileUtils.getTextFromRaw(mContext, "jury");
         JurySectionEntity.List result = new GsonBuilder()
                 .registerTypeAdapter(Date.class, new DateLongSerializer())

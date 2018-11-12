@@ -68,7 +68,7 @@ public class JuryFragment extends BaseFragment implements RequestListener<JurySe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.jury_n_orgs_layout, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LayoutManager(view.getContext());

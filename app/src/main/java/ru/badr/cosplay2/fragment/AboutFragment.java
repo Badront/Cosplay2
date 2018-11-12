@@ -47,7 +47,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Glide.with(getContext()).load("file:///android_asset/about16.png").into(mAboutImage);
+        Glide.with(getContext()).load(R.raw.about18).into(mAboutImage);
         mMapImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             @SuppressWarnings("deprecation")

@@ -1,6 +1,7 @@
 package ru.badr.cosplay2.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,10 +29,15 @@ public class ImageFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.image_holder, container, false);
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        Glide.with(this).load(mImagePath).diskCacheStrategy(DiskCacheStrategy.NONE).into(imageView);
+        ImageView imageView = view.findViewById(R.id.image);
+
+        Glide
+                .with(this)
+                .load(getResources().getIdentifier(mImagePath, "raw", container.getContext().getApplicationContext().getPackageName()))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
 
         return view;
     }

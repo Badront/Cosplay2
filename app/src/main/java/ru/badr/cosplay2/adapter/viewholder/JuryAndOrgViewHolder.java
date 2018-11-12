@@ -25,9 +25,9 @@ public class JuryAndOrgViewHolder extends BaseViewHolder {
 
     @Override
     protected void initView(View itemView) {
-        avatar = (ImageView) itemView.findViewById(R.id.avatar);
-        title = (TextView) itemView.findViewById(android.R.id.text1);
-        city = (TextView) itemView.findViewById(android.R.id.text2);
-        description = (TextView) itemView.findViewById(R.id.description);
+        avatar = itemView.findViewById(R.id.avatar);
+        title = itemView.findViewById(android.R.id.text1);
+        city = itemView.findViewById(android.R.id.text2);
+        description = itemView.findViewById(R.id.description);
     }
 }
