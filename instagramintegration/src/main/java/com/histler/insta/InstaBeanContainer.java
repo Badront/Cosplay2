@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.GsonBuilder;
 import com.histler.insta.remote.InstagramRestService;
+import com.histler.insta.remote.InstagramUserRestApi;
 
 import java.io.IOException;
 import java.util.Date;
@@ -29,6 +30,7 @@ public class InstaBeanContainer {
     private static final String SESSION_ID = "sessionid";
     private static InstaBeanContainer sInstance = null;
     private InstagramRestService instagramRestService;
+    private InstagramUserRestApi instagramUserRestApi;
     private InstaBeanContainer() {
     }
 
@@ -41,6 +43,12 @@ public class InstaBeanContainer {
                 sInstance = new InstaBeanContainer();
             }
             return sInstance;
+        }
+    }
+
+    public InstagramUserRestApi getInstagramUserRestApi() {
+        if (instagramUserRestApi == null) {
+            instagramRestService = re
         }
     }
 

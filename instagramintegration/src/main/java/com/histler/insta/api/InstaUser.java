@@ -11,8 +11,9 @@ import java.io.Serializable;
  */
 public class InstaUser implements Serializable {
     private String username;
-    @SerializedName("profile_picture")
+    @SerializedName("profile_pic_url")
     private String profileImage;
+    @SerializedName("pk")
     private String id;
     @SerializedName("full_name")
     private String fullName;

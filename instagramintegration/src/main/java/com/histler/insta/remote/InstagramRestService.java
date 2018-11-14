@@ -28,12 +28,14 @@ public interface InstagramRestService {
 
     @GET("/explore/tags/{tag}/?__a=1")
     Call<InstaFirstResult> getTagNodes(@Path("tag") String tag, @Query("max_id") String maxId);
+    //https://github.com/brunocvcunha/instagram4j
 
     @GET("/query/")
     Call<InstaSecondResult> getNextTagNodes(@Query("q") String complexQuery);
 
     @GET("/graphql/")
     Call<InstaUser> getUserInfo(@Query("q") String complexUserId);
+    //https://i.instagram.com/api/v1/users/7945689134/info/
     //https://www.instagram.com/graphql/query/?query_hash=7c16654f22c819fb63d1183034a5162f&variables=%7B%22user_id%22%3A%227945689134%22%2C%22include_chaining%22%3Atrue%2C%22include_reel%22%3Afalse%2C%22include_suggested_users%22%3Afalse%2C%22include_logged_out_extras%22%3Afalse%2C%22include_highlight_reels%22%3Afalse%7D
 
     @POST("/query/")
