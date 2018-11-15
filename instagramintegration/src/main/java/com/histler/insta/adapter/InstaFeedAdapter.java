@@ -1,6 +1,7 @@
 package com.histler.insta.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -57,13 +58,14 @@ public class InstaFeedAdapter extends BasePageableRecyclerAdapter<InstaNode, Ins
     }
 
     @Override
-    public InstaFeedViewHolder onCreateViewHolder(ViewGroup container, int viewType) {
+    @NonNull
+    public InstaFeedViewHolder onCreateViewHolder(@NonNull ViewGroup container, int viewType) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.insta_feed_row, container, false);
         return new InstaFeedViewHolder(view, mOnItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(InstaFeedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InstaFeedViewHolder holder, int position) {
         InstaNode instaFeed = getItem(position);
         Context context = holder.itemView.getContext();
         InstaUser user = instaFeed.getOwner();

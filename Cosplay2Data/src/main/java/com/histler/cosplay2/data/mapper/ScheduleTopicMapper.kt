@@ -26,7 +26,8 @@ class ScheduleTopicMapper @Inject constructor() : EntityMapper<ScheduleTopicEnti
                 domain.name,
                 domain.startTime,
                 domain.endTime,
-                domain.parentId
+                domain.parentId,
+                0
         )
     }
 }

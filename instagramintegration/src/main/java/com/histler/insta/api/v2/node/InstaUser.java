@@ -16,6 +16,16 @@ public class InstaUser implements Serializable {
     @SerializedName("profile_pic_url")
     private String avatar;
 
+    public InstaUser() {
+    }
+
+    public InstaUser(String id, String username, String fullName, String avatar) {
+        this.id = id;
+        this.username = username;
+        this.fullName = fullName;
+        this.avatar = avatar;
+    }
+
     public String getId() {
         return id;
     }

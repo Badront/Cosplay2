@@ -28,7 +28,8 @@ class ScheduleRequestMapper @Inject constructor() : EntityMapper<ScheduleRequest
                 domain.startTime,
                 domain.endTime,
                 domain.image,
-                domain.parentId
+                domain.parentId,
+                0
         )
     }
 }

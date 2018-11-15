@@ -48,8 +48,16 @@ public class InstaBeanContainer {
 
     public InstagramUserRestApi getInstagramUserRestApi() {
         if (instagramUserRestApi == null) {
-            instagramRestService = re
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(Date.class, new DateShortLongDeserializer());
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://i.instagram.com/api/v1/")
+                    .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
+                    .build();
+            instagramUserRestApi = retrofit.create(InstagramUserRestApi.class);
         }
+        return instagramUserRestApi;
     }
 
     public InstagramRestService getInstagramRestService() {

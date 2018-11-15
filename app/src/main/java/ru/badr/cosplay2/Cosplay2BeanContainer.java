@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.google.gson.GsonBuilder;
 import com.histler.insta.remote.InstagramRestService;
-import com.histler.insta.remote.InstagramUserRestApi;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +28,6 @@ public class Cosplay2BeanContainer {
     private static Cosplay2BeanContainer sInstance = null;
     private Properties properties;
     private InstagramRestService instagramRestService;
-    private InstagramUserRestApi instagramUserRestApi;
     private Cosplay2RestService cosplay2RestService;
 
     private VkRestService vkRestService;

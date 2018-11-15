@@ -150,7 +150,7 @@ public class InstagramFragment extends RecyclerFragment<InstaNode, InstaFeedView
         @Override
         public void onRequestSuccess(InstaUser instaUser) {
             InstaFeedAdapter adapter = (InstaFeedAdapter) getAdapter();
-            if (adapter != null) {
+            if (adapter != null && instaUser != null) {
                 adapter.updateUser(instaUser);
                 loadFirstUser();
             }

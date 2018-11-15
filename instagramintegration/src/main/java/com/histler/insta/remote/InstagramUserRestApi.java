@@ -12,6 +12,6 @@ import retrofit2.http.Path;
  */
 public interface InstagramUserRestApi {
 
-    @GET("/users/{user_id}/info/")
+    @GET("users/{user_id}/info/")
     Call<InstaUserResult> getUser(@Path("user_id") String complexUserId);
 }
