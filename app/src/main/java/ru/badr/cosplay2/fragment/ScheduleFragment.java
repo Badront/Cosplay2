@@ -68,9 +68,9 @@ public class ScheduleFragment extends BaseRecyclerFragment<Object, BaseViewHolde
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mFastScroller = (VerticalRecyclerViewFastScroller) view.findViewById(R.id.fast_scroller);
+        mFastScroller = view.findViewById(R.id.fast_scroller);
 
-        mSectionTitleIndicator = (SectionTitleIndicator) view.findViewById(R.id.fast_scroller_section_title_indicator);
+        mSectionTitleIndicator = view.findViewById(R.id.fast_scroller_section_title_indicator);
 
         RecyclerView recyclerView = getRecyclerView();
         mFastScroller.setRecyclerView(recyclerView);

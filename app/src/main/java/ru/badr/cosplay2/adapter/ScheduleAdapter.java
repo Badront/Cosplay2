@@ -110,6 +110,7 @@ public class ScheduleAdapter extends BaseRecyclerAdapter<Object, BaseViewHolder>
             Context context = sHolder.itemView.getContext();
             Glide.with(context).load(Utils.getCardImageUrl(context, node.getCard())).into(sHolder.photo);
             sHolder.title.setText(node.getTitle());
+            sHolder.time.setVisibility(View.INVISIBLE);
             sHolder.time.setText(Utils.SCHEDULE_TIME_FORMAT.format(node.getStartTime()));
         }
         lp.setSlm(LinearSLM.ID);

@@ -10,7 +10,7 @@ import java.io.Serializable;
  * 13:29
  */
 public class CardImage implements Serializable, Cloneable {
-    @SerializedName("fileName")
+    @SerializedName("filename")
     private long fileName;
     private ImageSize original;
     private ImageSize large;

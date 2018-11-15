@@ -52,7 +52,7 @@ public class ScheduleLoadRequest extends TaskRequest<ScheduleNode.List> {
 
         ScheduleNode.List list = new ScheduleNode.List();
         if (resultList != null && !resultList.isEmpty()) {
-            list.addAll(parseNodes(resultList, tac != null ? tac.getCards() : new ArrayList<ListCard>()));
+            list.addAll(parseNodes(resultList, tac != null ? tac.getCards() : new ArrayList<>()));
         }
         return list;
     }

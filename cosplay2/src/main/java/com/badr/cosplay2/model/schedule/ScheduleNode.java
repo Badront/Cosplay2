@@ -4,11 +4,13 @@ import com.badr.cosplay2.model.cards.Card;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -104,7 +106,9 @@ public class ScheduleNode implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder(getTitle());
         if (getStartTime() != null) {
-            builder.append(' ').append(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(getStartTime()));
+            DateFormat format = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            format.setTimeZone(TimeZone.getTimeZone("GMT"));
+            builder.append(' ').append(format.format(getStartTime()));
         }
         return builder.toString();
     }

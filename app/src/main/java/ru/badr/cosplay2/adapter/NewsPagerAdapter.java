@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.histler.insta.fragment.InstagramFragment;
 
-import ru.badr.cosplay2.fragment.TwitterFragment;
 import ru.badr.opencon.R;
 
 
@@ -28,8 +27,8 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new TwitterFragment();
-            case 1:
+               /* return new TwitterFragment();
+            case 1:*/
             default:
                 return new InstagramFragment();
         }

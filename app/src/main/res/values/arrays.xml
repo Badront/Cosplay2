@@ -5,7 +5,7 @@
         <item>Digital</item>
     </string-array>
     <string-array name="news_tabs">
-        <item>Twitter</item>
+        <!--<item>Twitter</item>-->
         <item>Instagram</item>
     </string-array>
     <string-array name="regulations_tabs">
